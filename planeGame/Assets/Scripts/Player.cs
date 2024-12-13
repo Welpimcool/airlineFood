@@ -8,13 +8,15 @@ public class Player : MonoBehaviour
     private Vector2 inpDirection;
     private Rigidbody2D body;
     private GameObject objHolding;
-    public string interactionTag = "Interactable";
+    private GameObject holdPos;
+    public LayerMask mask;
     public int walkSpeed = 5;
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         inpDirection = Vector2.up;
+        holdPos = GetComponentInChildren<GameObject>();
     }
 
     // Update is called once per frame
@@ -40,14 +42,11 @@ public class Player : MonoBehaviour
         body.velocity = direction * walkSpeed;
     }
     void pickup() {
-
-        RaycastHit2D hit = Physics2D.Raycast(body.position,inpDirection,10f);
-        Debug.DrawRay(body.position,inpDirection*10f,Color.yellow);
+        RaycastHit2D hit = Physics2D.Raycast(body.position,inpDirection,3f,mask);
+        Debug.DrawRay(body.position,inpDirection*3f,Color.yellow);
         if (hit) {
-            if (hit.collider.CompareTag(interactionTag)) {
-                Debug.Log("Hit something: "+hit.collider.name);
-            }
-            
+            Debug.Log("Hit something: "+hit.collider.name);
+            hit.collider.GetComponent<IngredientSpawner>().onInteraction();
         }
 
     }

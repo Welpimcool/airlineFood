@@ -17,7 +17,7 @@ public class IngredientSpawner : MonoBehaviour
         
     }
 
-    void onInteraction() {
-        
+    public GameObject onInteraction() {
+        return ingredient;
     }
 }
