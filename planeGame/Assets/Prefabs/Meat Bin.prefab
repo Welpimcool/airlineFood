@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 4158079189901608844}
   - component: {fileID: 6682077312153282372}
   - component: {fileID: 5280908404364310445}
+  - component: {fileID: 78542392669094855}
   m_Layer: 0
   m_Name: Meat Bin
   m_TagString: Untagged
@@ -222,6 +223,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &78542392669094855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8079823739414510911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0721ffe36ead64e32b7d17fd999ef4ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredient: {fileID: 1698332406731674876, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
 --- !u!1001 &2650305923825859256
 PrefabInstance:
   m_ObjectHideFlags: 0
