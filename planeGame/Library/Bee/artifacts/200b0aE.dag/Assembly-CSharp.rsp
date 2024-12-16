@@ -374,6 +374,7 @@
 "Assets/Scripts/CameraFollow.cs"
 "Assets/Scripts/IngredientSpawner.cs"
 "Assets/Scripts/Player.cs"
+"Assets/Scripts/Stove.cs"
 -langversion:9.0
 /deterministic
 /optimize+

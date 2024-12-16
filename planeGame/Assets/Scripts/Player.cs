@@ -49,15 +49,47 @@ public class Player : MonoBehaviour
     }
     void pickup() {
         RaycastHit2D hit = Physics2D.Raycast(body.position,inpDirection,3f,mask);
-        Debug.DrawRay(body.position,inpDirection*3f,Color.yellow);
-        if (hit.collider.GetComponent<IngredientSpawner>() != null) {
-            Debug.Log("Hit something: "+hit.collider.name);
-            objHolding = hit.collider.GetComponent<IngredientSpawner>().onInteraction();
-            objHolding = Instantiate(objHolding, body.transform.position, body.transform.rotation);
-            objHolding.transform.position = body.transform.position;
-            objHolding.transform.position = new Vector3(objHolding.transform.position.x+inpDirection.x,objHolding.transform.position.y+inpDirection.y,0);
-            objHolding.transform.parent = body.transform;
-        }
+        Debug.DrawRay(body.position,inpDirection*3f,Color.red);
+        Debug.Log("checking for object to pickup");
+        
+        if (hit) {
 
+            Debug.Log("checking for spawner");
+            if (hit.collider.GetComponent<IngredientSpawner>() != null) {
+                Debug.Log("Hit something: "+hit.collider.name);
+                if (objHolding != null) {
+                    Destroy(objHolding);
+                } else {
+                    objHolding = hit.collider.GetComponent<IngredientSpawner>().onInteraction();
+                    objHolding = Instantiate(objHolding, body.transform.position, body.transform.rotation);
+                    holdItem(objHolding);
+                }
+            } 
+            
+            Debug.Log("checking for stove");
+            if (hit.collider.GetComponent<Stove>() != null) {
+                Debug.Log("Hit something: "+hit.collider.name);
+                if (objHolding != null) {
+                    hit.collider.GetComponent<Stove>().placeItem(objHolding);
+                    Destroy(objHolding);
+                }
+                else {
+                    objHolding = hit.collider.GetComponent<Stove>().grabItem();
+                    holdItem(objHolding);
+                }
+            }
+
+        } else {
+            Debug.Log("Nothing Found");
+        }
+        
+        
+        
+    }
+    void holdItem(GameObject item) {
+        item.transform.position = body.transform.position;
+        item.transform.position = new Vector3(item.transform.position.x+inpDirection.x,item.transform.position.y+inpDirection.y,0);
+        item.transform.parent = body.transform;
+        item.transform.localScale = new Vector3(0.8f,0.8f,0);
     }
 }
