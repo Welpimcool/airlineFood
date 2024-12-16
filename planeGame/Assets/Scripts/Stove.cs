@@ -25,7 +25,6 @@ public class Stove : MonoBehaviour
     }
     public GameObject grabItem() {
         return objHolding;
-        Destroy(objHolding); //how do i execute this????
         
     }
 }

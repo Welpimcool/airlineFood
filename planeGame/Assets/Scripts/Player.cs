@@ -39,9 +39,15 @@ public class Player : MonoBehaviour
         body.velocity = direction * walkSpeed;
         if (direction != Vector2.zero) {
             if (Input.GetAxisRaw("Horizontal") < 0) {
-                body.rotation = Vector2.Angle(Vector2.up, direction);
+                body.rotation = Vector2.Angle(Vector2.up, inpDirection);
+            } else if (Input.GetAxisRaw("Horizontal") > 0) {
+                body.rotation = Vector2.Angle(Vector2.up, inpDirection) * -1;
             } else {
-                body.rotation = Vector2.Angle(Vector2.up, direction) * -1;
+                if (Input.GetAxisRaw("Vertical") > 0) {
+                    body.rotation = 0;
+                } else if (Input.GetAxisRaw("Vertical") < 0) {
+                    body.rotation = 180;
+                }
             }
             
         }
@@ -79,6 +85,19 @@ public class Player : MonoBehaviour
                 }
             }
 
+            Debug.Log("checking for table");
+            if (hit.collider.GetComponent<Table>() != null) {
+                Debug.Log("Hit something: "+hit.collider.name);
+                if (objHolding != null) {
+                    hit.collider.GetComponent<Table>().placeItem(objHolding);
+                    Destroy(objHolding);
+                }
+                else {
+                    objHolding = hit.collider.GetComponent<Table>().grabItem();
+                    holdItem(objHolding);
+                }
+            }
+
         } else {
             Debug.Log("Nothing Found");
         }
@@ -90,6 +109,6 @@ public class Player : MonoBehaviour
         item.transform.position = body.transform.position;
         item.transform.position = new Vector3(item.transform.position.x+inpDirection.x,item.transform.position.y+inpDirection.y,0);
         item.transform.parent = body.transform;
-        item.transform.localScale = new Vector3(0.8f,0.8f,0);
+        item.transform.localScale = new Vector3(0.5f,0.5f,0);
     }
 }
