@@ -32,6 +32,13 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E)) {
             pickup();
         }
+
+        if (Input.GetKeyDown(KeyCode.M)) {
+            GetComponentInChildren<Ingredient>().addValue(1);
+        }
+        if (Input.GetKeyDown(KeyCode.N)) {
+            GetComponentInChildren<Ingredient>().subtractValue(1);
+        }
     }
 
     void FixedUpdate() 
@@ -76,12 +83,14 @@ public class Player : MonoBehaviour
             if (hit.collider.GetComponent<Stove>() != null) {
                 Debug.Log("Hit something: "+hit.collider.name);
                 if (objHolding != null) {
-                    hit.collider.GetComponent<Stove>().placeItem(objHolding);
+                    hit.collider.GetComponent<Stove>().placeItem(objHolding, GetComponentInChildren<Ingredient>().getValue());
                     Destroy(objHolding);
                 }
                 else {
-                    objHolding = hit.collider.GetComponent<Stove>().grabItem();
+                    object[] list = hit.collider.GetComponent<Stove>().grabItem();
+                    objHolding = (GameObject) list[0];
                     holdItem(objHolding);
+                    GetComponentInChildren<Ingredient>().setValue((float) list[1]);
                 }
             }
 
@@ -110,5 +119,6 @@ public class Player : MonoBehaviour
         item.transform.position = new Vector3(item.transform.position.x+inpDirection.x,item.transform.position.y+inpDirection.y,0);
         item.transform.parent = body.transform;
         item.transform.localScale = new Vector3(0.5f,0.5f,0);
+        item.transform.rotation = body.transform.rotation;
     }
 }

@@ -5,11 +5,16 @@ using UnityEngine;
 public class Ingredient : MonoBehaviour
 {
     public bool prop = false;
+    private float value = 0;
+    public float maxValue = 10;
+    public GameObject meter;
     // Start is called before the first frame update
     void Start()
     {
         if (!prop) {
-
+            GetComponentInChildren<Meter>().setMaxValue(maxValue);
+        } else {
+            Destroy(meter);
         }
     }
 
@@ -17,7 +22,19 @@ public class Ingredient : MonoBehaviour
     void Update()
     {
         if (!prop) {
-            
+            GetComponentInChildren<Meter>().setValue(value);
         }
+    }
+    public void setValue(float inp) {
+        value = inp;
+    }
+    public void addValue(float inp) {
+        value += inp;
+    }
+    public void subtractValue(float inp) {
+        value -= inp;
+    }
+    public float getValue() {
+        return value;
     }
 }
