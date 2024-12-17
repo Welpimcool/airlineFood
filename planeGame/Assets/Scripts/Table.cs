@@ -25,6 +25,5 @@ public class Table : MonoBehaviour
     }
     public GameObject grabItem() {
         return objHolding;
-        
     }
 }

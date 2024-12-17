@@ -15,7 +15,9 @@ public class Stove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (objHolding != null) {
+            
+        }
     }
 
     public void placeItem(GameObject ingredient) {
@@ -25,6 +27,5 @@ public class Stove : MonoBehaviour
     }
     public GameObject grabItem() {
         return objHolding;
-        
     }
 }

@@ -276,6 +276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meat (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1821527855700851429, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4606446785104011396, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -341,6 +345,10 @@ PrefabInstance:
     - target: {fileID: 1698332406731674876, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_Name
       value: Meat (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821527855700851429, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4606446785104011396, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_SortingOrder
@@ -408,6 +416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meat (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1821527855700851429, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4606446785104011396, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -473,6 +485,10 @@ PrefabInstance:
     - target: {fileID: 1698332406731674876, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_Name
       value: Meat (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821527855700851429, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4606446785104011396, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_SortingOrder
@@ -540,6 +556,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meat (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1821527855700851429, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4606446785104011396, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -606,6 +626,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meat
       objectReference: {fileID: 0}
+    - target: {fileID: 1821527855700851429, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4606446785104011396, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -671,6 +695,10 @@ PrefabInstance:
     - target: {fileID: 1698332406731674876, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_Name
       value: Meat (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821527855700851429, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4606446785104011396, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_SortingOrder
