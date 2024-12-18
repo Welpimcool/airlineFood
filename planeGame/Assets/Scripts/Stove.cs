@@ -7,7 +7,6 @@ public class Stove : MonoBehaviour
 {
     private GameObject objHolding;
     private Rigidbody2D body;
-    private float objValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +17,11 @@ public class Stove : MonoBehaviour
     void Update()
     {
         if (objHolding != null) {
-            objValue += Time.deltaTime;
-            GetComponentInChildren<Ingredient>().setValue(objValue);
+            GetComponentInChildren<Ingredient>().addValue(Time.deltaTime);
+            if (GetComponentInChildren<Ingredient>().getState() >= 4) {
+                Destroy(objHolding);
+                Debug.Log("burned food, state:"+GetComponentInChildren<Ingredient>().getState());
+            }
         }
     }
 
@@ -29,10 +31,9 @@ public class Stove : MonoBehaviour
         objHolding.transform.position = body.transform.position;
         objHolding.transform.parent = body.transform;
         GetComponentInChildren<Ingredient>().setValue(value);
-        objValue = value;
     }
     public object[] grabItem() {
-        object[] a = {objHolding,objValue};
+        object[] a = {objHolding,GetComponentInChildren<Ingredient>().getValue()};
         objHolding = null;
         return a;
     }

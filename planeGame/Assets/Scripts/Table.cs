@@ -6,6 +6,7 @@ public class Table : MonoBehaviour
 {
     private GameObject objHolding;
     private Rigidbody2D body;
+    private float objValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +19,17 @@ public class Table : MonoBehaviour
         
     }
 
-    public void placeItem(GameObject ingredient) {
+    public void placeItem(GameObject ingredient, float value) {
         objHolding = ingredient;
         objHolding = Instantiate(ingredient, body.transform.position, body.transform.rotation);
         objHolding.transform.position = body.transform.position;
+        objHolding.transform.parent = body.transform;
+        GetComponentInChildren<Ingredient>().setValue(value);
+        objValue = value;
     }
-    public GameObject grabItem() {
-        return objHolding;
+    public object[] grabItem() {
+        object[] a = {objHolding,objValue};
+        objHolding = null;
+        return a;
     }
 }

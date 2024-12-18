@@ -98,12 +98,14 @@ public class Player : MonoBehaviour
             if (hit.collider.GetComponent<Table>() != null) {
                 Debug.Log("Hit something: "+hit.collider.name);
                 if (objHolding != null) {
-                    hit.collider.GetComponent<Table>().placeItem(objHolding);
+                    hit.collider.GetComponent<Table>().placeItem(objHolding, GetComponentInChildren<Ingredient>().getValue());
                     Destroy(objHolding);
                 }
                 else {
-                    objHolding = hit.collider.GetComponent<Table>().grabItem();
+                    object[] list = hit.collider.GetComponent<Table>().grabItem();
+                    objHolding = (GameObject) list[0];
                     holdItem(objHolding);
+                    GetComponentInChildren<Ingredient>().setValue((float) list[1]);
                 }
             }
 
