@@ -39,9 +39,6 @@ public class Ingredient : MonoBehaviour
     public void addValue(float inp) {
         value += inp;
     }
-    public void subtractValue(float inp) {
-        value -= inp;
-    }
     public float getValue() {
         return value;
     }

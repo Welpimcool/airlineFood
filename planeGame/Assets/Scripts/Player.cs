@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private Vector2 inpDirection;
     private Rigidbody2D body;
     private GameObject objHolding;
+    private float objScale;
     public LayerMask mask;
     public int walkSpeed = 5;
     // Start is called before the first frame update
@@ -37,7 +38,7 @@ public class Player : MonoBehaviour
             GetComponentInChildren<Ingredient>().addValue(1);
         }
         if (Input.GetKeyDown(KeyCode.N)) {
-            GetComponentInChildren<Ingredient>().subtractValue(1);
+            GetComponentInChildren<Ingredient>().addValue(-1);
         }
     }
 
@@ -73,8 +74,10 @@ public class Player : MonoBehaviour
                 if (objHolding != null) {
                     Destroy(objHolding);
                 } else {
-                    objHolding = hit.collider.GetComponent<IngredientSpawner>().onInteraction();
+                    object[] list = hit.collider.GetComponent<IngredientSpawner>().onInteraction();
+                    objHolding = (GameObject) list[0];
                     objHolding = Instantiate(objHolding, body.transform.position, body.transform.rotation);
+                    objScale = (float)list[1];
                     holdItem(objHolding);
                 }
             } 
@@ -120,7 +123,7 @@ public class Player : MonoBehaviour
         item.transform.position = body.transform.position;
         item.transform.position = new Vector3(item.transform.position.x+inpDirection.x,item.transform.position.y+inpDirection.y,0);
         item.transform.parent = body.transform;
-        item.transform.localScale = new Vector3(0.5f,0.5f,0);
+        item.transform.localScale = new Vector3(objScale,objScale,0);
         item.transform.rotation = body.transform.rotation;
     }
 }
