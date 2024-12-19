@@ -20,12 +20,19 @@ public class Table : MonoBehaviour
     }
 
     public void placeItem(GameObject ingredient, float value) {
-        objHolding = ingredient;
-        objHolding = Instantiate(ingredient, body.transform.position, body.transform.rotation);
-        objHolding.transform.position = body.transform.position;
-        objHolding.transform.parent = body.transform;
-        GetComponentInChildren<Ingredient>().setValue(value);
-        objValue = value;
+        if (objHolding == null)
+        {
+            objHolding = ingredient;
+            objHolding = Instantiate(ingredient, body.transform.position, body.transform.rotation);
+            objHolding.transform.position = body.transform.position;
+            objHolding.transform.parent = body.transform;
+            GetComponentInChildren<Ingredient>().setValue(value);
+            objValue = value;
+        }
+        else 
+        {
+            //Add code for combining multiple ingredients
+        }
     }
     public object[] grabItem() {
         object[] a = {objHolding,objValue};

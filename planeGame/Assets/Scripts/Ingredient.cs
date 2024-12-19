@@ -23,15 +23,7 @@ public class Ingredient : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!prop) {
-            GetComponentInChildren<Meter>().setValue(value);
-            if (value >= maxValue) {
-                value = 0;
-                state += 1;
-                Debug.Log("state increased:"+state);
-            }
-
-        }
+        //cooking
     }
     public void setValue(float inp) {
         value = inp;
@@ -47,5 +39,9 @@ public class Ingredient : MonoBehaviour
     }
     public void setState(int inp) {
         state = inp;
+    }
+    public bool combine(GameObject ingredient1, GameObject ingredient2)
+    {
+        return true;
     }
 }
