@@ -381,6 +381,7 @@
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/Stove.cs"
 "Assets/Scripts/Table.cs"
+"Assets/Scripts/WeatherShift.cs"
 -langversion:9.0
 /deterministic
 /optimize+
