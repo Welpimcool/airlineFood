@@ -9,6 +9,8 @@ public class Ingredient : MonoBehaviour
     public float maxValue = 10;
     public GameObject meter;
     private int state;
+    public string ingredientName = "";
+    public string[] combineList = {};
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +42,25 @@ public class Ingredient : MonoBehaviour
     public void setState(int inp) {
         state = inp;
     }
-    public bool combine(GameObject ingredient1, GameObject ingredient2)
-    {
-        return true;
+    public string getName() {
+        return ingredientName;
+    }
+    public bool canCombine(GameObject ingredient) {
+        string nm = ingredient.GetComponent<Ingredient>().getName();
+        foreach(string i in combineList) {
+            if (i == nm) {
+                return true;
+            }
+        }
+        return false;
+        
+    }
+
+    public void combine(GameObject ingredient) {
+        if (canCombine(ingredient)) {
+            //base code
+            //impliment food object that this will create
+        }
+        // if both food cannot combine
     }
 }
