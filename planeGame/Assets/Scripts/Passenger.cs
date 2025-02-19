@@ -13,20 +13,19 @@ public class Passenger : MonoBehaviour
     {
         orderTime = 60;
         StartCoroutine(Order(orderTime));
-        GetComponentInChildren<Meter>().setMaxValue(orderTime);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        GetComponentInChildren<Canvas>().enabled = false;
     }
     public float getTimeRemaining()
     {
         return timeRemaining;
     }
-    private IEnumerator Order(float orderTime)
+    public void test()
     {
+        Order(orderTime);
+    }
+    public IEnumerator Order(float orderTime)
+    {
+        GetComponentInChildren<Canvas>().enabled = true;
         float timeRemaining = orderTime;
         while (timeRemaining > 0)
         {
@@ -37,8 +36,8 @@ public class Passenger : MonoBehaviour
                 anger += Time.deltaTime;
             }
             yield return null;
-            Debug.Log(timeRemaining);
-            Debug.Log(anger);
+            //Debug.Log(timeRemaining);
+            //Debug.Log(anger);
             if (anger >= 5)
             {
                 GetComponentInParent<SpriteRenderer>().color = Color.red;
