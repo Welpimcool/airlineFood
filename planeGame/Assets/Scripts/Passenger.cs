@@ -37,8 +37,8 @@ public class Passenger : MonoBehaviour
                 anger += Time.deltaTime;
             }
             yield return null;
-            Debug.Log(timeRemaining);
-            Debug.Log(anger);
+            // Debug.Log(timeRemaining);
+            // Debug.Log(anger);
             if (anger >= 5)
             {
                 GetComponentInParent<SpriteRenderer>().color = Color.red;

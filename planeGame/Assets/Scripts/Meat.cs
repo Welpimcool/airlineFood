@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Meat : Ingredient
@@ -9,6 +10,8 @@ public class Meat : Ingredient
     {
         this.setState(0);
         this.setValue(0);
+        this.ingredientName = "Meat";
+        this.combinationList = new string[] {"",""};
     }
 
     // Update is called once per frame

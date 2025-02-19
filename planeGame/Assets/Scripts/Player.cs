@@ -100,9 +100,11 @@ public class Player : MonoBehaviour
             Debug.Log("checking for table");
             if (hit.collider.GetComponent<Table>() != null) {
                 Debug.Log("Hit something: "+hit.collider.name);
-                if (objHolding != null) {
-                    hit.collider.GetComponent<Table>().placeItem(objHolding, GetComponentInChildren<Ingredient>().getValue());
-                    Destroy(objHolding);
+                if (objHolding != null) { // no idea if code work
+                    bool test = hit.collider.GetComponent<Table>().placeItem(objHolding, GetComponentInChildren<Ingredient>().getValue());
+                    if (test) {
+                        Destroy(objHolding);
+                    }
                 }
                 else {
                     object[] list = hit.collider.GetComponent<Table>().grabItem();

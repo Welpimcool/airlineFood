@@ -19,7 +19,7 @@ public class Table : MonoBehaviour
         
     }
 
-    public void placeItem(GameObject ingredient, float value) {
+    public bool placeItem(GameObject ingredient, float value) {
         if (objHolding == null)
         {
             objHolding = ingredient;
@@ -28,10 +28,12 @@ public class Table : MonoBehaviour
             objHolding.transform.parent = body.transform;
             GetComponentInChildren<Ingredient>().setValue(value);
             objValue = value;
+            return true;
         }
         else 
         {
             //Add code for combining multiple ingredients
+            return objHolding.GetComponent<Ingredient>().combine(ingredient);
         }
     }
     public object[] grabItem() {
