@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5532102257765977405}
   - component: {fileID: 7610677494539301442}
   m_Layer: 5
-  m_Name: Meter
+  m_Name: MeterObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3471652604474918885
 MonoBehaviour:
   m_ObjectHideFlags: 0
