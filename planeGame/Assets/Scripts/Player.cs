@@ -64,11 +64,11 @@ public class Player : MonoBehaviour
     void pickup() {
         RaycastHit2D hit = Physics2D.Raycast(body.position,inpDirection,3f,mask);
         Debug.DrawRay(body.position,inpDirection*3f,Color.red);
-        Debug.Log("checking for object to pickup");
+        Debug.Log("checking for interactables");
         
         if (hit) {
 
-            Debug.Log("checking for spawner");
+            // Debug.Log("checking for spawner");
             if (hit.collider.GetComponent<IngredientSpawner>() != null) {
                 Debug.Log("Hit something: "+hit.collider.name);
                 if (objHolding != null) {
@@ -80,10 +80,10 @@ public class Player : MonoBehaviour
                     objScale = (float)list[1];
                     holdItem(objHolding);
                 }
-            } 
+            }
             
-            Debug.Log("checking for stove");
-            if (hit.collider.GetComponent<Stove>() != null) {
+            // Debug.Log("checking for stove");
+            else if (hit.collider.GetComponent<Stove>() != null) {
                 Debug.Log("Hit something: "+hit.collider.name);
                 if (objHolding != null) {
                     hit.collider.GetComponent<Stove>().placeItem(objHolding, GetComponentInChildren<Ingredient>().getValue());
@@ -97,8 +97,8 @@ public class Player : MonoBehaviour
                 }
             }
 
-            Debug.Log("checking for table");
-            if (hit.collider.GetComponent<Table>() != null) {
+            // Debug.Log("checking for table");
+            else if (hit.collider.GetComponent<Table>() != null) {
                 Debug.Log("Hit something: "+hit.collider.name);
                 if (objHolding != null) { // no idea if code work
                     bool test = hit.collider.GetComponent<Table>().placeItem(objHolding, GetComponentInChildren<Ingredient>().getValue());

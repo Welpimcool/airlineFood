@@ -10,8 +10,9 @@ public class Meat : Ingredient
     {
         this.setState(0);
         this.setValue(0);
-        this.ingredientName = "Meat";
-        this.combinationList = new string[] {"",""};
+        this.setCook(true);
+        this.setName("Meat");
+        this.setList(new string[] {"Plate"});
     }
 
     // Update is called once per frame
@@ -19,14 +20,7 @@ public class Meat : Ingredient
     {
         if (!prop)
         {
-            GetComponentInChildren<Meter>().setValue(this.getValue());
-            if (this.getValue() >= maxValue)
-            {
-                this.setValue(0);
-                this.setState(this.getState() + 1);
-                Debug.Log("state increased:" + this.getState());
-            }
-
+            // cooking code moved to ingredient
         }
     }
 }

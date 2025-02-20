@@ -33,12 +33,26 @@ public class Table : MonoBehaviour
         else 
         {
             //Add code for combining multiple ingredients
-            return objHolding.GetComponent<Ingredient>().combine(ingredient);
+            bool didWork = objHolding.GetComponent<Ingredient>().combine(ingredient);
+            if (didWork) {
+                holdCombinedItem(ingredient);
+                return true;
+            } else {
+                return false;
+            }
         }
     }
     public object[] grabItem() {
         object[] a = {objHolding,objValue};
         objHolding = null;
         return a;
+    }
+
+    private void holdCombinedItem(GameObject ingredient) {
+        string name1 = objHolding.GetComponent<Ingredient>().getName();
+        name1 += " ";
+        name1 += ingredient.GetComponent<Ingredient>().getName();
+        // use Contains() method to check for all the ingredients to find sprite to use
+        // make a class that is a base for combined food, its only methods is combine more ingredients and serve
     }
 }

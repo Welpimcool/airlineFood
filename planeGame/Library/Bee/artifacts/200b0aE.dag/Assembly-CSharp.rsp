@@ -379,6 +379,7 @@
 "Assets/Scripts/Meter.cs"
 "Assets/Scripts/OrderMeter.cs"
 "Assets/Scripts/Passenger.cs"
+"Assets/Scripts/Plate.cs"
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/Stove.cs"
 "Assets/Scripts/Table.cs"

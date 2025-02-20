@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class Ingredient : MonoBehaviour
 {
     public bool prop = false;
+    private bool canCook = false;
     private float value = 0;
     public float maxValue = 10;
     public GameObject meter;
     private int state;
-    public string[] combinationList;
-    public string ingredientName;
+    private string[] combinationList;
+    private string ingredientName;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,15 @@ public class Ingredient : MonoBehaviour
     void Update()
     {
         //cooking
+        if (canCook) {
+            GetComponentInChildren<Meter>().setValue(value);
+            if (value >= maxValue)
+            {
+                setValue(0);
+                setState(state + 1);
+                Debug.Log("state increased:" + state);
+            }
+        }
     }
     public void setValue(float inp) {
         value = inp;
@@ -46,15 +57,24 @@ public class Ingredient : MonoBehaviour
     public string[] getList() {
         return combinationList;
     }
+    public void setList(string[] inp) {
+        this.combinationList = inp;
+    }
     public string getName() {
         return ingredientName;
     }
+    public void setName(string inp) {
+        ingredientName = inp;
+    }
+    public void setCook(bool a) {
+        canCook = a;
+    }
     private bool canCombine(GameObject ingredient) {
         string nm = ingredient.GetComponent<Ingredient>().getName();
-        foreach (string i in combinationList) {
-            if (i == nm) {
-            return true;
-            } 
+        foreach (string i in this.combinationList) {
+            if (i.Equals(nm)) {
+                return true;
+            }
         }
         return false;
     }
