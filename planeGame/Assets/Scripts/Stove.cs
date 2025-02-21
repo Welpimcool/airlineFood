@@ -17,7 +17,9 @@ public class Stove : MonoBehaviour
     void Update()
     {
         if (objHolding != null) {
-            GetComponentInChildren<Ingredient>().addValue(Time.deltaTime);
+            if (objHolding.GetComponent<Ingredient>().getCook()) {
+                GetComponentInChildren<Ingredient>().addValue(Time.deltaTime);
+            }
             if (GetComponentInChildren<Ingredient>().getState() >= 4) {
                 Destroy(objHolding);
                 Debug.Log("burned food, state:"+GetComponentInChildren<Ingredient>().getState());

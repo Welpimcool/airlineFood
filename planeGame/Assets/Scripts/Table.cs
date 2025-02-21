@@ -7,6 +7,7 @@ public class Table : MonoBehaviour
     private GameObject objHolding;
     private Rigidbody2D body;
     private float objValue;
+    public GameObject food;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,10 +50,20 @@ public class Table : MonoBehaviour
     }
 
     private void holdCombinedItem(GameObject ingredient) {
-        string name1 = objHolding.GetComponent<Ingredient>().getName();
-        name1 += " ";
-        name1 += ingredient.GetComponent<Ingredient>().getName();
+        // string name1 = objHolding.GetComponent<Ingredient>().getName();
+        // name1 += " ";
+        // name1 += ingredient.GetComponent<Ingredient>().getName();
+
+
         // use .Contains() method to check for all the ingredients to find sprite to use
         // make a class that is a base for combined food, its only methods is combine more ingredients and serve
+
+
+
+        //temp food placeholder
+        Destroy(objHolding);
+        objHolding = Instantiate(food);
+        objHolding.transform.position = body.transform.position;
+        objHolding.transform.parent = body.transform;
     }
 }

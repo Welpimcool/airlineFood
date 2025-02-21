@@ -17,8 +17,8 @@ public class Ingredient : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!prop) {
-            GetComponentInChildren<Meter>().setMaxValue(maxValue);
+        if (!prop || !canCook) {
+            meter.GetComponentInChildren<Meter>().setMaxValue(maxValue);
             state = 0;
         } else {
             Destroy(meter);
@@ -44,6 +44,7 @@ public class Ingredient : MonoBehaviour
     }
     public void addValue(float inp) {
         value += inp;
+        Debug.Log("added "+inp+" to value, new total is :"+value);
     }
     public float getValue() {
         return value;
@@ -68,6 +69,9 @@ public class Ingredient : MonoBehaviour
     }
     public void setCook(bool a) {
         canCook = a;
+    }
+    public bool getCook() {
+        return canCook;
     }
     private bool canCombine(GameObject ingredient) {
         string nm = ingredient.GetComponent<Ingredient>().getName();
