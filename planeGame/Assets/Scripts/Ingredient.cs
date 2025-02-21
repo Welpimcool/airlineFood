@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,15 @@ public class Ingredient : MonoBehaviour
     private int state;
     private string[] combinationList;
     private string ingredientName;
+    Dictionary<String, int> sprite = new()
+    {
+        ["Food"] = 0,
+        ["Meat Plate"] = 1
+        // [""] = 2,
+        // [""] = 3,
+        // [""] = 4,
+        // [""] = 5
+    };
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +82,9 @@ public class Ingredient : MonoBehaviour
     }
     public bool getCook() {
         return canCook;
+    }
+    public Dictionary<string, int> getSpriteList() {
+        return sprite;
     }
     private bool canCombine(GameObject ingredient) {
         string nm = ingredient.GetComponent<Ingredient>().getName();

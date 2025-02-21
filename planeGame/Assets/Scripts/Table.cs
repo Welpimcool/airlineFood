@@ -50,9 +50,8 @@ public class Table : MonoBehaviour
     }
 
     private void holdCombinedItem(GameObject ingredient) {
-        // string name1 = objHolding.GetComponent<Ingredient>().getName();
-        // name1 += " ";
-        // name1 += ingredient.GetComponent<Ingredient>().getName();
+        string name1 = objHolding.GetComponent<Ingredient>().getName();
+        string name2 = ingredient.GetComponent<Ingredient>().getName();
 
 
         // use .Contains() method to check for all the ingredients to find sprite to use
@@ -61,9 +60,15 @@ public class Table : MonoBehaviour
 
 
         //temp food placeholder
+        
+
         Destroy(objHolding);
         objHolding = Instantiate(food);
         objHolding.transform.position = body.transform.position;
         objHolding.transform.parent = body.transform;
+
+        objHolding.GetComponent<Food>().findSprite(new string[] {name1,name2});
+
+        Debug.Log("spriteNum:"+objHolding.GetComponent<Food>().getSpriteNum());
     }
 }
