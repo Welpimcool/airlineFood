@@ -15,7 +15,8 @@ public class Ingredient : MonoBehaviour
     private int state;
     private string[] combinationList;
     private string ingredientName;
-    Dictionary<String, int> sprite = new()
+    private float scale;
+    Dictionary<String, int> spriteDict = new()
     {
         ["Food"] = 0,
         ["Meat Plate"] = 1
@@ -27,6 +28,7 @@ public class Ingredient : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        scale = 1;
         if (!prop || !canCook) {
             meter.GetComponentInChildren<Meter>().setMaxValue(maxValue);
             state = 0;
@@ -69,7 +71,7 @@ public class Ingredient : MonoBehaviour
         return combinationList;
     }
     public void setList(string[] inp) {
-        this.combinationList = inp;
+        combinationList = inp;
     }
     public string getName() {
         return ingredientName;
@@ -84,7 +86,15 @@ public class Ingredient : MonoBehaviour
         return canCook;
     }
     public Dictionary<string, int> getSpriteList() {
-        return sprite;
+        return spriteDict;
+    }
+    public float getScale() {
+        Debug.Log("Getting scale:"+scale);
+        return scale;
+    }
+    public void setScale(float inp) {
+        scale = inp;
+        Debug.Log("Setting scale:"+scale);
     }
     private bool canCombine(GameObject ingredient) {
         string nm = ingredient.GetComponent<Ingredient>().getName();

@@ -36,6 +36,7 @@ public class Table : MonoBehaviour
             //Add code for combining multiple ingredients
             bool didWork = objHolding.GetComponent<Ingredient>().combine(ingredient);
             if (didWork) {
+                Debug.Log("Can combine, passing through "+ingredient.GetComponent<Ingredient>().getName());
                 holdCombinedItem(ingredient);
                 return true;
             } else {

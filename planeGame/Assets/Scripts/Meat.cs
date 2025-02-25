@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Meat : Ingredient
 {
@@ -11,6 +12,7 @@ public class Meat : Ingredient
         this.setState(0);
         this.setValue(0);
         this.setCook(true);
+        this.setScale(1);
         this.setName("Meat");
         this.setList(new string[] {"Plate"});
     }

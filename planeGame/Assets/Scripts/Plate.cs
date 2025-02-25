@@ -11,6 +11,7 @@ public class Plate : Ingredient
         this.setValue(0);
         this.setCook(false);
         this.setName("Plate");
+        this.setScale(1);
         this.setList(new string[] {"Meat"});
     }
 

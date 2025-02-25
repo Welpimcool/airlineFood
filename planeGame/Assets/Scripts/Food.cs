@@ -5,18 +5,19 @@ using UnityEngine;
 public class Food : Ingredient
 {
     private int spriteNum;
+    public Sprite[] sprites;
+    public SpriteRenderer spriteRenderer;
     
     // Start is called before the first frame update
     void Start()
     {
-        // sprite.Add("Meat Plate", 1);
-        // sprite.Add("Meat Plate Egg", 2);
-        
+        // spriteRenderer = GetComponent<SpriteRenderer>();
 
         this.setState(0);
         this.setValue(0);
         this.setCook(false);
         this.setName("Food");
+        this.setScale(1);
         this.setList(new string[] {""});
 
         spriteNum = 0;
@@ -53,7 +54,24 @@ public class Food : Ingredient
     }
 
     public void changeSprite() {
+        if (spriteRenderer == null) {
+            Debug.LogError("SpriteRenderer is not assigned!");
+            return; // Avoid the exception
+        }
+
+        // Check if sprites array is populated
+        if (sprites == null || sprites.Length == 0) {
+            Debug.LogError("Sprites array is not initialized or empty!");
+            return; // Avoid the exception
+        }
+
+        if (spriteNum < 0 || spriteNum >= sprites.Length) {
+            Debug.LogError("spriteNum is out of bounds!");
+            return; // Avoid the exception
+        }
         // use spriteNum to change the current sprite
+        spriteRenderer.sprite = sprites[spriteNum];
+        
     }
 
     public int getSpriteNum() {

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stove : MonoBehaviour
+public class Stove : MonoBehaviour //change to be a subclass of table
 {
     private GameObject objHolding;
     private Rigidbody2D body;
