@@ -9,7 +9,7 @@ public class PassengerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {  
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < 4; i++)
         {
             SelectPassenger();
         }
@@ -20,7 +20,7 @@ public class PassengerManager : MonoBehaviour
         selectedPassenger = PassengerList[Random.Range(0, PassengerList.Length)];
         if (selectedPassenger.GetComponent<Passenger>().getIsOrderActive() == false)
         {
-            selectedPassenger.GetComponent<Passenger>().StartCoroutine(selectedPassenger.GetComponent<Passenger>().Order(60));
+            selectedPassenger.GetComponent<Passenger>().StartCoroutine(selectedPassenger.GetComponent<Passenger>().Order(10));
             Debug.Log(selectedPassenger);
         }
         else
@@ -31,7 +31,11 @@ public class PassengerManager : MonoBehaviour
     }
     public void OrderComplete()
     {
-
+        SelectPassenger();
+    }
+    public void OrderFailed()
+    {
+        SelectPassenger();
     }
     // Update is called once per frame
     void Update()
