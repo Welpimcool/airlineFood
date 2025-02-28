@@ -15,7 +15,7 @@ public class Ingredient : MonoBehaviour
     private int state;
     private string[] combinationList;
     private string ingredientName;
-    private float scale;
+    public float scale;
     Dictionary<String, int> spriteDict = new()
     {
         ["Food"] = 0,
@@ -89,12 +89,12 @@ public class Ingredient : MonoBehaviour
         return spriteDict;
     }
     public float getScale() {
-        Debug.Log("Getting scale:"+scale);
+        Debug.Log("Getting scale:"+scale, gameObject);
         return scale;
     }
     public void setScale(float inp) {
         scale = inp;
-        Debug.Log("Setting scale:"+scale);
+        Debug.Log("Setting scale:"+scale, gameObject);
     }
     private bool canCombine(GameObject ingredient) {
         string nm = ingredient.GetComponent<Ingredient>().getName();

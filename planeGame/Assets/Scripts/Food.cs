@@ -11,15 +11,14 @@ public class Food : Ingredient
     // Start is called before the first frame update
     void Start()
     {
-        // spriteRenderer = GetComponent<SpriteRenderer>();
-
+        if (!prop) {
+        // this.setScale(1);
         this.setState(0);
         this.setValue(0);
         this.setCook(false);
         this.setName("Food");
-        this.setScale(1);
         this.setList(new string[] {""});
-
+        }
         spriteNum = 0;
     }
 
@@ -47,31 +46,10 @@ public class Food : Ingredient
             if (temp.Equals("")) {
                 this.setName(i);
                 spriteNum = sprite[i];
-                changeSprite();
+                spriteRenderer.sprite = sprites[spriteNum];
             }
             
         }
-    }
-
-    public void changeSprite() {
-        if (spriteRenderer == null) {
-            Debug.LogError("SpriteRenderer is not assigned!");
-            return; // Avoid the exception
-        }
-
-        // Check if sprites array is populated
-        if (sprites == null || sprites.Length == 0) {
-            Debug.LogError("Sprites array is not initialized or empty!");
-            return; // Avoid the exception
-        }
-
-        if (spriteNum < 0 || spriteNum >= sprites.Length) {
-            Debug.LogError("spriteNum is out of bounds!");
-            return; // Avoid the exception
-        }
-        // use spriteNum to change the current sprite
-        spriteRenderer.sprite = sprites[spriteNum];
-        
     }
 
     public int getSpriteNum() {

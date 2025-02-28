@@ -47,11 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prop: 0
-  canCook: 0
   maxValue: 10
   meter: {fileID: 0}
-  combinationList: []
-  ingredientName: 
+  scale: 1
 --- !u!1 &7144133368355822149
 GameObject:
   m_ObjectHideFlags: 0

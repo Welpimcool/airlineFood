@@ -17,8 +17,7 @@ public class IngredientSpawner : MonoBehaviour
         
     }
 
-    public object[] onInteraction() {
-        object[] a = {ingredient,ingredient.GetComponent<Ingredient>().getScale()};
-        return a;
+    public GameObject onInteraction() {
+        return ingredient;
     }
 }

@@ -9,12 +9,14 @@ public class Meat : Ingredient
     // Start is called before the first frame update
     void Start()
     {
+        if (!prop) {
+        // this.setScale(0.75f);
         this.setState(0);
         this.setValue(0);
         this.setCook(true);
-        this.setScale(1);
         this.setName("Meat");
         this.setList(new string[] {"Plate"});
+        }
     }
 
     // Update is called once per frame

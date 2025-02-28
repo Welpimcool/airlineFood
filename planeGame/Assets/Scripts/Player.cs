@@ -75,10 +75,8 @@ public class Player : MonoBehaviour
                 if (objHolding != null) {
                     Destroy(objHolding);
                 } else {
-                    object[] list = hit.collider.GetComponent<IngredientSpawner>().onInteraction();
-                    objHolding = (GameObject) list[0];
+                    objHolding = hit.collider.GetComponent<IngredientSpawner>().onInteraction();
                     objHolding = Instantiate(objHolding, body.transform.position, body.transform.rotation);
-                    objScale = (float)list[1];
                     holdItem(objHolding);
                 }
             }
@@ -123,6 +121,8 @@ public class Player : MonoBehaviour
         
     }
     void holdItem(GameObject item) {
+        objScale = objHolding.GetComponent<Ingredient>().getScale();
+
         item.transform.position = body.transform.position;
         item.transform.position = new Vector3(item.transform.position.x+inpDirection.x,item.transform.position.y+inpDirection.y,0);
         item.transform.parent = body.transform;
