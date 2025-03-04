@@ -100,6 +100,7 @@ MonoBehaviour:
   prop: 0
   maxValue: 10
   meter: {fileID: 0}
+  scale: 0.5
   sprites:
   - {fileID: -648548907, guid: b3cb0c6e6b8c544fdb92186892bedd8b, type: 3}
   - {fileID: 1035153756, guid: b3cb0c6e6b8c544fdb92186892bedd8b, type: 3}

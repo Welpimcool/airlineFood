@@ -103,7 +103,7 @@ MonoBehaviour:
   prop: 0
   maxValue: 10
   meter: {fileID: 2806904759940151472, guid: c3d30a4741f77443c93fa2f171160ec9, type: 3}
-  scale: 0.75
+  scale: 0.5
 --- !u!1 &4364110455071475855
 GameObject:
   m_ObjectHideFlags: 0
