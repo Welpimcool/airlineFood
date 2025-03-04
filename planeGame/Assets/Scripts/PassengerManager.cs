@@ -6,6 +6,7 @@ public class PassengerManager : MonoBehaviour
 {
     [SerializeField] GameObject[] PassengerList;
     GameObject selectedPassenger;
+    public static int ordersCompleted;
     // Start is called before the first frame update
     void Start()
     {  
@@ -32,6 +33,8 @@ public class PassengerManager : MonoBehaviour
     public void OrderComplete()
     {
         SelectPassenger();
+        ordersCompleted++;
+
     }
     public void OrderFailed()
     {

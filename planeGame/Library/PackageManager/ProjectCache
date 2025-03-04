@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638695517057379331
-    m_Hash: 2680011544
+      ticks: 638767273449263228
+    m_Hash: 463431052
   m_LockFileStatus:
     m_FilePath: C:/Users/clevow4744/Documents/GitHub/airlineFood/planeGame/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638695517057384443
-    m_Hash: 3801396933
+      ticks: 638767273449323067
+    m_Hash: 537568405
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -4139,6 +4139,7 @@ m_ResolvedPackages:
     - 1.1.8
     - 1.2.0
     - 1.2.1
+    - 1.2.2
     compatible:
     - 1.1.4
     - 1.1.5
@@ -4520,6 +4521,7 @@ m_ResolvedPackages:
     - 2.5.0-pre.2
     - 2.5.1
     - 2.5.2
+    - 2.5.3
     compatible:
     - 1.2.4
     - 1.3.1
@@ -4547,7 +4549,8 @@ m_ResolvedPackages:
     - 2.5.0-pre.2
     - 2.5.1
     - 2.5.2
-    recommended: 2.5.2
+    - 2.5.3
+    recommended: 2.5.3
     deprecated: []
   dependencies:
   - name: com.unity.burst
