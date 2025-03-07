@@ -13,7 +13,7 @@ public class Plate : Ingredient
         this.setValue(0);
         this.setCook(false);
         this.setName("Plate");
-        this.setList(new string[] {"Meat"});
+        this.setList(new string[] {"Meat","Fish"});
         }
     }
 

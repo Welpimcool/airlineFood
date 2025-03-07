@@ -19,8 +19,8 @@ public class Ingredient : MonoBehaviour
     Dictionary<String, int> spriteDict = new()
     {
         ["Food"] = 0,
-        ["Meat Plate"] = 1
-        // [""] = 2,
+        ["Meat Plate"] = 1,
+        ["Fish Plate"] = 2
         // [""] = 3,
         // [""] = 4,
         // [""] = 5
@@ -28,28 +28,29 @@ public class Ingredient : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // meter = GetComponentInChildren<Meter>();
         scale = 1;
-        if (!prop || !canCook) {
-            meter.GetComponentInChildren<Meter>().setMaxValue(maxValue);
+        if (!prop && !canCook) {
+            GetComponentInChildren<Meter>().setMaxValue(maxValue); // max value not correctly set, resets value once picked up
             state = 0;
         } else {
-            Destroy(meter);
+            Destroy(meter); //idk if this works anymore
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //cooking
-        if (canCook) {
-            GetComponentInChildren<Meter>().setValue(value);
-            if (value >= maxValue)
-            {
-                setValue(0);
-                setState(state + 1);
-                Debug.Log("state increased:" + state);
-            }
-        }
+        // //cooking
+        // if (canCook) {
+        //     GetComponentInChildren<Meter>().setValue(value);
+        //     if (value >= maxValue)
+        //     {
+        //         setValue(0);
+        //         setState(state + 1);
+        //         Debug.Log("state increased:" + state);
+        //     }
+        // }
     }
     public void setValue(float inp) {
         value = inp;
@@ -95,6 +96,12 @@ public class Ingredient : MonoBehaviour
     public void setScale(float inp) {
         scale = inp;
         Debug.Log("Setting scale:"+scale, gameObject);
+    }
+    public GameObject getMeter(){
+        return meter;
+    }
+    public float getMaxValue() {
+        return maxValue;
     }
     private bool canCombine(GameObject ingredient) {
         string nm = ingredient.GetComponent<Ingredient>().getName();

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9106164460771458735}
   - component: {fileID: 6621694256008768461}
   - component: {fileID: 3943491040262864011}
-  - component: {fileID: 6739808846376916545}
   - component: {fileID: 7508302907091148030}
+  - component: {fileID: 6739808846376916545}
   m_Layer: 3
   m_Name: Table
   m_TagString: Untagged
@@ -132,19 +132,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6739808846376916545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8432434827097439491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9dff0a6901e6459c9c3ff83a8fc4dee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  food: {fileID: 112150227504496519, guid: 6f8c1b5e69f6d4bca8893bc72366b7b6, type: 3}
 --- !u!50 &7508302907091148030
 Rigidbody2D:
   serializedVersion: 4
@@ -172,3 +159,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6739808846376916545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8432434827097439491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9dff0a6901e6459c9c3ff83a8fc4dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  food: {fileID: 112150227504496519, guid: 6f8c1b5e69f6d4bca8893bc72366b7b6, type: 3}

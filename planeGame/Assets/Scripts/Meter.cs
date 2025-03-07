@@ -9,6 +9,7 @@ public class Meter : MonoBehaviour
     public Gradient gradient;
     public Image fill;
     public void setValue(float value) {
+        // Debug.Log("meter value updated to "+value);
         Slider.value = value;
         fill.color = gradient.Evaluate(Slider.normalizedValue);
     }

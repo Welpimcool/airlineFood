@@ -24,7 +24,16 @@ public class Meat : Ingredient
     {
         if (!prop)
         {
-            // cooking code moved to ingredient
+            //cooking
+            if (getCook()) {
+                GetComponentInChildren<Meter>().setValue(getValue());
+                if (getValue() >= getMaxValue())
+                {
+                    setValue(0);
+                    setState(getState() + 1);
+                    Debug.Log("state increased:" + getState());
+                }
+            }
         }
     }
 }

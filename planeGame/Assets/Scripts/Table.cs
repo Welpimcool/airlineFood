@@ -23,7 +23,8 @@ public class Table : MonoBehaviour
     public bool placeItem(GameObject ingredient, float value) {
         if (objHolding == null)
         {
-            objHolding = ingredient;
+            // objHolding = ingredient;
+            // Debug.Log("Instantiating object:"+ingredient+" as object "+this.name);
             objHolding = Instantiate(ingredient, body.transform.position, body.transform.rotation);
             objHolding.transform.position = body.transform.position;
             objHolding.transform.parent = body.transform;
@@ -71,5 +72,17 @@ public class Table : MonoBehaviour
         objHolding.GetComponent<Food>().findSprite(new string[] {name1,name2});
 
         Debug.Log("spriteNum:"+objHolding.GetComponent<Food>().getSpriteNum());
+    }
+    public GameObject getHolding() {
+        return objHolding;
+    }
+    public void setHolding(GameObject a) {//i dont know if this is needed
+        objHolding = a;
+    }
+    public void kill() {
+        Destroy(objHolding);
+    }
+    public void setBody(Rigidbody2D a) {
+        body = a;
     }
 }

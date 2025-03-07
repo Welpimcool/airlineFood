@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
 
             // Debug.Log("checking for spawner");
             if (hit.collider.GetComponent<IngredientSpawner>() != null) {
-                // Debug.Log("Hit something: "+hit.collider.name);
+                Debug.Log("Hit something: "+hit.collider.name);
                 if (objHolding != null) {
                     Destroy(objHolding);
                 } else {
@@ -80,26 +80,11 @@ public class Player : MonoBehaviour
                     holdItem(objHolding);
                 }
             }
-            
-            // Debug.Log("checking for stove");
-            else if (hit.collider.GetComponent<Stove>() != null) {
-                // Debug.Log("Hit something: "+hit.collider.name);
-                if (objHolding != null) {
-                    hit.collider.GetComponent<Stove>().placeItem(objHolding, GetComponentInChildren<Ingredient>().getValue());
-                    Destroy(objHolding);
-                }
-                else {
-                    object[] list = hit.collider.GetComponent<Stove>().grabItem();
-                    objHolding = (GameObject) list[0];
-                    holdItem(objHolding);
-                    GetComponentInChildren<Ingredient>().setValue((float) list[1]);
-                }
-            }
 
             // Debug.Log("checking for table");
             else if (hit.collider.GetComponent<Table>() != null) {
-                // Debug.Log("Hit something: "+hit.collider.name);
-                if (objHolding != null) { // no idea if code work
+                Debug.Log("Hit something: "+hit.collider.name);
+                if (objHolding != null) {
                     bool test = hit.collider.GetComponent<Table>().placeItem(objHolding, GetComponentInChildren<Ingredient>().getValue());
                     if (test) {
                         Destroy(objHolding);
