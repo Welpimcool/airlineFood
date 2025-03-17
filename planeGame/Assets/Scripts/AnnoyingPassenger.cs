@@ -19,6 +19,7 @@ public class AnnoyingPassenger : MonoBehaviour
         origin = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
+        agent.autoTraverseOffMeshLink = true;
         agent.updateUpAxis = false;
         passengerPosition = GetComponentInParent<Transform>().position;
         left = (passengerPosition.x <= -5);
@@ -44,6 +45,7 @@ public class AnnoyingPassenger : MonoBehaviour
 
     public IEnumerator imWalkinEre() 
     {
+
         if (left)
         {
             passengerPosition.x += 4;
@@ -57,10 +59,13 @@ public class AnnoyingPassenger : MonoBehaviour
         Debug.Log("to aisle");
         while (true)
         {
-            if (agent.remainingDistance < 0.1)
+            Debug.Log("distance is "+agent.remainingDistance);
+            if (Vector3.Distance(target.position, transform.position) < 0.1)
             {
+                Debug.Log("distance is less");
                 if (i == 0)
                 {
+                    Debug.Log("distance is " + agent.remainingDistance);
                     agent.SetDestination(bathroom.position);
                     Debug.Log("to bathroom");
                     i = 1;
@@ -68,7 +73,8 @@ public class AnnoyingPassenger : MonoBehaviour
                     Debug.Log("done");
                     agent.SetDestination(target.position);
                     while (true) 
-                    { 
+                    {
+                        Debug.Log("distance is " + agent.remainingDistance);
                         if (agent.remainingDistance < 0.1)
                         {
                             agent.SetDestination(origin);
