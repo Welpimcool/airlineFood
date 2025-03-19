@@ -28,7 +28,7 @@ public class Table : MonoBehaviour
             objHolding = Instantiate(ingredient, body.transform.position, body.transform.rotation);
             objHolding.transform.position = body.transform.position;
             objHolding.transform.parent = body.transform;
-            GetComponentInChildren<Ingredient>().setValue(value);
+            objHolding.GetComponentInChildren<Ingredient>().setValue(value);
             objValue = value;
             return true;
         }
@@ -46,7 +46,7 @@ public class Table : MonoBehaviour
         }
     }
     public object[] grabItem() {
-        object[] a = {objHolding,objValue};
+        object[] a = {objHolding,objHolding.GetComponent<Ingredient>().getValue()};
         objHolding = null;
         return a;
     }

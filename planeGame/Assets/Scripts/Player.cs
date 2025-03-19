@@ -84,17 +84,17 @@ public class Player : MonoBehaviour
             // Debug.Log("checking for table");
             else if (hit.collider.GetComponent<Table>() != null) {
                 Debug.Log("Hit something: "+hit.collider.name);
-                if (objHolding != null) {
-                    bool test = hit.collider.GetComponent<Table>().placeItem(objHolding, GetComponentInChildren<Ingredient>().getValue());
+                if (objHolding != null) { // if holding something
+                    bool test = hit.collider.GetComponent<Table>().placeItem(objHolding, objHolding.GetComponentInChildren<Ingredient>().getValue());
                     if (test) {
                         Destroy(objHolding);
                     }
                 }
-                else {
+                else { //if not holding something
                     object[] list = hit.collider.GetComponent<Table>().grabItem();
                     objHolding = (GameObject) list[0];
                     holdItem(objHolding);
-                    GetComponentInChildren<Ingredient>().setValue((float) list[1]);
+                    objHolding.GetComponentInChildren<Ingredient>().setValue((float) list[1]);
                 }
             }
 
