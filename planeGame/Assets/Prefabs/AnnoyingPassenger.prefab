@@ -99,12 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff31f1b1dfe344440bafb00bec050843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  origin: {x: 0, y: 0, z: 0}
-  left: 0
-  passengerPosition: {x: 0, y: 0, z: 0}
-  transform: {fileID: 1980261691912311553}
-  target: {fileID: 0}
-  bathroom: {fileID: 0}
 --- !u!195 &8265830848195079100
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -112,7 +106,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716384910479669284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.38
   m_Speed: 2

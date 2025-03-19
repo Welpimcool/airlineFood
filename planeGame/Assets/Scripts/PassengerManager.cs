@@ -10,6 +10,7 @@ public class PassengerManager : MonoBehaviour
     [SerializeField] Transform bathroom;
     GameObject selectedPassenger;
     public static int ordersCompleted;
+
     // Start is called before the first frame update
     void Start()
     {  
@@ -38,11 +39,9 @@ public class PassengerManager : MonoBehaviour
     }
     public void SelectAnnoyingPassenger()
     {
-        //selectedPassenger = annoyingPassengerList[Random.Range(0, annoyingPassengerList.Length)];
-        //NavMesh Split messes with distance, fix
-        selectedPassenger = annoyingPassengerList[0];
-            selectedPassenger.GetComponent<AnnoyingPassenger>().StartCoroutine(selectedPassenger.GetComponent<AnnoyingPassenger>().imWalkinEre());
-            Debug.Log(selectedPassenger);
+        selectedPassenger = annoyingPassengerList[Random.Range(0, annoyingPassengerList.Length)];
+        selectedPassenger.GetComponent<AnnoyingPassenger>().StartCoroutine(selectedPassenger.GetComponent<AnnoyingPassenger>().imWalkinEre());
+        Debug.Log(selectedPassenger);
     }
     public void OrderComplete()
     {
