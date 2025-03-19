@@ -13,6 +13,7 @@ public class Ingredient : MonoBehaviour
     public float maxValue = 10;
     public GameObject meter;
     private int state;
+    private int maxState;
     private string[] combinationList;
     private string ingredientName;
     public float scale;
@@ -28,14 +29,14 @@ public class Ingredient : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // meter = GetComponentInChildren<Meter>();
-        scale = 1;
-        if (!prop && !canCook) {
-            GetComponentInChildren<Meter>().setMaxValue(maxValue); // max value not correctly set, resets value once picked up
-            state = 0;
-        } else {
-            Destroy(meter); //idk if this works anymore
-        }
+        // // meter = GetComponentInChildren<Meter>();
+        // scale = 1;
+        // if (!prop && !canCook) {
+        //     GetComponentInChildren<Meter>().setMaxValue(maxValue); // max value not correctly set, resets value once picked up
+        //     state = 0;
+        // } else {
+        //     Destroy(meter); //idk if this works anymore
+        // }
     }
 
     // Update is called once per frame
@@ -102,6 +103,15 @@ public class Ingredient : MonoBehaviour
     }
     public float getMaxValue() {
         return maxValue;
+    }
+    public void setMaxValue(float a) {
+        maxValue = a;
+    }
+    public int getMaxState() {
+        return maxState;
+    }
+    public void setMaxState(int a) {
+        maxState = a;
     }
     private bool canCombine(GameObject ingredient) {
         string nm = ingredient.GetComponent<Ingredient>().getName();

@@ -17,7 +17,7 @@ public class Stove : Table
             if (getHolding().GetComponent<Ingredient>().getCook()) {
                 getHolding().GetComponentInChildren<Ingredient>().addValue(Time.deltaTime);
             }
-            if (getHolding().GetComponentInChildren<Ingredient>().getState() >= 4) {
+            if (getHolding().GetComponentInChildren<Ingredient>().getState() > getHolding().GetComponentInChildren<Ingredient>().getMaxState()) {
                 kill();
                 Debug.Log("burned food, state:"+GetComponentInChildren<Ingredient>().getState());
             }
