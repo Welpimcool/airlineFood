@@ -5,7 +5,6 @@ using UnityEngine;
 public class IngredientSpawner : MonoBehaviour
 {
     public GameObject ingredient;
-    public float scale;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +17,7 @@ public class IngredientSpawner : MonoBehaviour
         
     }
 
-    public object[] onInteraction() {
-        object[] a = {ingredient,scale};
-        return a;
+    public GameObject onInteraction() {
+        return ingredient;
     }
 }

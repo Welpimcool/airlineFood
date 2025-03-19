@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5761139131411619110}
   - component: {fileID: 4606446785104011396}
-  - component: {fileID: 1821527855700851429}
+  - component: {fileID: 1605644950198116248}
   m_Layer: 0
   m_Name: Meat
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1821527855700851429
+--- !u!114 &1605644950198116248
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,12 +97,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1698332406731674876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e32022a8dca438a8e4d505e64c6bfc, type: 3}
+  m_Script: {fileID: 11500000, guid: 26685d3fce697584eb1e44da5d043eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prop: 0
   maxValue: 10
-  meter: {fileID: 4863137375241653393}
+  meter: {fileID: 2806904759940151472, guid: c3d30a4741f77443c93fa2f171160ec9, type: 3}
+  scale: 0.5
 --- !u!1 &4364110455071475855
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,10 +485,5 @@ PrefabInstance:
 --- !u!224 &908995510500031509 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7571696894077225012, guid: c3d30a4741f77443c93fa2f171160ec9, type: 3}
-  m_PrefabInstance: {fileID: 7316507354669888545}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4863137375241653393 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2806904759940151472, guid: c3d30a4741f77443c93fa2f171160ec9, type: 3}
   m_PrefabInstance: {fileID: 7316507354669888545}
   m_PrefabAsset: {fileID: 0}

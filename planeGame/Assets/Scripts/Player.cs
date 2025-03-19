@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -64,45 +65,30 @@ public class Player : MonoBehaviour
     void pickup() {
         RaycastHit2D hit = Physics2D.Raycast(body.position,inpDirection,3f,mask);
         Debug.DrawRay(body.position,inpDirection*3f,Color.red);
-        Debug.Log("checking for object to pickup");
+        // Debug.Log("checking for interactables");
         
         if (hit) {
 
-            Debug.Log("checking for spawner");
+            // Debug.Log("checking for spawner");
             if (hit.collider.GetComponent<IngredientSpawner>() != null) {
                 Debug.Log("Hit something: "+hit.collider.name);
                 if (objHolding != null) {
                     Destroy(objHolding);
                 } else {
-                    object[] list = hit.collider.GetComponent<IngredientSpawner>().onInteraction();
-                    objHolding = (GameObject) list[0];
+                    objHolding = hit.collider.GetComponent<IngredientSpawner>().onInteraction();
                     objHolding = Instantiate(objHolding, body.transform.position, body.transform.rotation);
-                    objScale = (float)list[1];
                     holdItem(objHolding);
-                }
-            } 
-            
-            Debug.Log("checking for stove");
-            if (hit.collider.GetComponent<Stove>() != null) {
-                Debug.Log("Hit something: "+hit.collider.name);
-                if (objHolding != null) {
-                    hit.collider.GetComponent<Stove>().placeItem(objHolding, GetComponentInChildren<Ingredient>().getValue());
-                    Destroy(objHolding);
-                }
-                else {
-                    object[] list = hit.collider.GetComponent<Stove>().grabItem();
-                    objHolding = (GameObject) list[0];
-                    holdItem(objHolding);
-                    GetComponentInChildren<Ingredient>().setValue((float) list[1]);
                 }
             }
 
-            Debug.Log("checking for table");
-            if (hit.collider.GetComponent<Table>() != null) {
+            // Debug.Log("checking for table");
+            else if (hit.collider.GetComponent<Table>() != null) {
                 Debug.Log("Hit something: "+hit.collider.name);
                 if (objHolding != null) {
-                    hit.collider.GetComponent<Table>().placeItem(objHolding, GetComponentInChildren<Ingredient>().getValue());
-                    Destroy(objHolding);
+                    bool test = hit.collider.GetComponent<Table>().placeItem(objHolding, GetComponentInChildren<Ingredient>().getValue());
+                    if (test) {
+                        Destroy(objHolding);
+                    }
                 }
                 else {
                     object[] list = hit.collider.GetComponent<Table>().grabItem();
@@ -120,6 +106,8 @@ public class Player : MonoBehaviour
         
     }
     void holdItem(GameObject item) {
+        objScale = objHolding.GetComponent<Ingredient>().getScale();
+
         item.transform.position = body.transform.position;
         item.transform.position = new Vector3(item.transform.position.x+inpDirection.x,item.transform.position.y+inpDirection.y,0);
         item.transform.parent = body.transform;
