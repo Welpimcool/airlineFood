@@ -8,40 +8,32 @@ public class AnnoyingPassenger : MonoBehaviour
 {
     private Vector3 origin;
     private bool left;
-    private Vector3 passengerPosition;
     private NavMeshAgent agent;
     public static Transform target;
     public static Transform bathroom;
 
 
-    // Start is called before the first frame update
+// Start is called before the first frame update
     void Start()
     {
 
     }
     public IEnumerator imWalkinEre() 
     {
+//Waits to make sure every thing else is initialized, sets origin, initializes agent
         yield return new WaitForSeconds(1f);
         origin = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        
         agent = GetComponent<NavMeshAgent>();
         agent.enabled = true;
         agent.updateRotation = false;
         agent.autoTraverseOffMeshLink = true;
         agent.updateUpAxis = false;
-        passengerPosition = GetComponentInParent<Transform>().position;
-        left = (passengerPosition.x <= -5);
 
-        if (left)
-        {
-            passengerPosition.x += 4;
-        }
-        else
-        {
-            passengerPosition.x -= 4;
-        }
-      
+//Sets agent target to the aisle to the right of the bathroom
         agent.SetDestination(target.position);
         Debug.Log("to aisle");
+//Checks whether it is at desired position, changes target
         while (true)
         {
             Debug.Log("distance is "+agent.remainingDistance);
@@ -54,13 +46,17 @@ public class AnnoyingPassenger : MonoBehaviour
                 Debug.Log("to bathroom");
                 yield return new WaitForSeconds(10);
                 Debug.Log("done");
+//Changes destination back to aisle after bathroom
                 agent.SetDestination(target.position);
+//Checks whether it is at desired position, changes target
                 while (true) 
                 {
                     Debug.Log("distance is " + agent.remainingDistance);
                     if (agent.remainingDistance < 0.1)
                     {
+//Changes destination back to seat
                         agent.SetDestination(origin);
+//Checks whether it is at desired position, changes target
                         while (true)
                         {
                             yield return new WaitForSeconds(.1f);
@@ -81,11 +77,4 @@ public class AnnoyingPassenger : MonoBehaviour
          
         }
     }
-    //IEnumerator bathroomBreak()
-    //{
-    //    Debug.Log("starting");
-        
-        
-    //}
-    
 }
