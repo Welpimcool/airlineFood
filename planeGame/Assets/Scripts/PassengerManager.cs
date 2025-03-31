@@ -10,7 +10,7 @@ public class PassengerManager : MonoBehaviour
     [SerializeField] Transform bathroom;
     GameObject selectedPassenger;
     public static int ordersCompleted;
-
+    public static int angryPassengers;
     // Start is called before the first frame update
     void Start()
     {  

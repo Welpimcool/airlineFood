@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Passenger : MonoBehaviour
 {
+    private bool annoyed = false;
     private bool angy = false;
     private bool isOrderActive = false;
     private float timeRemaining;
@@ -31,7 +32,7 @@ public class Passenger : MonoBehaviour
         bool sensitive = Random.Range(0, 2) == 1;
         float timeRemaining = orderTime;
  //Makes time tick down
-        if (angy)
+        if (annoyed)
         {
             timeRemaining -= orderTime / 5;
         }
@@ -45,16 +46,39 @@ public class Passenger : MonoBehaviour
             timeRemaining -= Time.deltaTime;
             GetComponentInChildren<Meter>().setValue(timeRemaining);
 //Makes anger increase if order took too long
-            if (timeRemaining < orderTime / 10 || (sensitive && timeRemaining < orderTime/5 && WeatherShift.weather ==1))
+            if ((timeRemaining < orderTime / 10 || (sensitive && timeRemaining < orderTime/5 && WeatherShift.weather ==1) && !annoyed))
             {
-                angy = true;
-                GetComponentInParent<SpriteRenderer>().color = Color.red;
+                if (!angy) 
+                {
+                    GetComponentInParent<SpriteRenderer>().color = Color.yellow;
+                }
+                annoyed = true;
             }
 //idk why this is needed but it is
             yield return null;
         }
+       
         GetComponentInChildren<Canvas>().enabled = false;
         isOrderActive = false;
         GetComponentInParent<PassengerManager>().OrderFailed();
+        if (angy)
+        {
+            GameManager.lose();
+        }else
+        {
+            angy = true;
+            annoyed = false;
+            GetComponentInParent<SpriteRenderer>().color = Color.red;
+
+        }
+        //if (angy)
+        //{
+        //    GetComponentInParent<SpriteRenderer>().color = Color.red;
+        //}
+        //else if (annoyed)
+        //{
+        //    GetComponentInParent<SpriteRenderer>().color = Color.yellow;
+        //}
+
     }
 }

@@ -382,6 +382,7 @@
 "Assets/Scripts/CameraFollow.cs"
 "Assets/Scripts/Fish.cs"
 "Assets/Scripts/Food.cs"
+"Assets/Scripts/GameManager.cs"
 "Assets/Scripts/Ingredient.cs"
 "Assets/Scripts/IngredientSpawner.cs"
 "Assets/Scripts/MainMenu.cs"
