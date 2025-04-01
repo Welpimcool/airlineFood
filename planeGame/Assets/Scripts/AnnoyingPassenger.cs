@@ -32,26 +32,26 @@ public class AnnoyingPassenger : MonoBehaviour
 
 //Sets agent target to the aisle to the right of the bathroom
         agent.SetDestination(target.position);
-        Debug.Log("to aisle");
+        // Debug.Log("to aisle");
 //Checks whether it is at desired position, changes target
         while (true)
         {
-            Debug.Log("distance is "+agent.remainingDistance);
+            // Debug.Log("distance is "+agent.remainingDistance);
             if (Vector3.Distance(target.position, transform.position) < 0.1)
             {
-                Debug.Log("distance is less");
+                // Debug.Log("distance is less");
 
-                Debug.Log("distance is " + agent.remainingDistance);
+                // Debug.Log("distance is " + agent.remainingDistance);
                 agent.SetDestination(bathroom.position);
-                Debug.Log("to bathroom");
+                // Debug.Log("to bathroom");
                 yield return new WaitForSeconds(10);
-                Debug.Log("done");
+                // Debug.Log("done");
 //Changes destination back to aisle after bathroom
                 agent.SetDestination(target.position);
 //Checks whether it is at desired position, changes target
                 while (true) 
                 {
-                    Debug.Log("distance is " + agent.remainingDistance);
+                    // Debug.Log("distance is " + agent.remainingDistance);
                     if (agent.remainingDistance < 0.1)
                     {
 //Changes destination back to seat

@@ -29,11 +29,11 @@ public class PassengerManager : MonoBehaviour
         if (selectedPassenger.GetComponent<Passenger>().getIsOrderActive() == false)
         {
             selectedPassenger.GetComponent<Passenger>().StartCoroutine(selectedPassenger.GetComponent<Passenger>().Order(10));
-            Debug.Log(selectedPassenger);
+            // Debug.Log(selectedPassenger);
         }
         else
         {
-            Debug.Log("reroll");
+            // Debug.Log("reroll");
             SelectPassenger();
         }
     }
@@ -41,7 +41,7 @@ public class PassengerManager : MonoBehaviour
     {
         selectedPassenger = annoyingPassengerList[Random.Range(0, annoyingPassengerList.Length)];
         selectedPassenger.GetComponent<AnnoyingPassenger>().StartCoroutine(selectedPassenger.GetComponent<AnnoyingPassenger>().imWalkinEre());
-        Debug.Log(selectedPassenger);
+        // Debug.Log(selectedPassenger);
     }
     public void OrderComplete()
     {

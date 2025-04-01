@@ -10,8 +10,8 @@ public class Fish : Ingredient
         if (!prop) {
         // this.setScale(0.75f);
         this.setMaxValue(10);
-        this.setState(0);
-        this.setValue(0);
+        // this.setState(0);
+        // this.setValue(0);
         this.setMaxState(2);
         GetComponentInChildren<Meter>().setMaxValue(this.getMaxValue());
         this.setCook(true);

@@ -17,7 +17,7 @@ public class Meter : MonoBehaviour
     }
     public void setMaxValue(float value) {
         Slider.maxValue = value;
-        Slider.value = 0;
+        // Slider.value = 0;
         fill.color = gradient.Evaluate(0f);
     }
     public void hide() {

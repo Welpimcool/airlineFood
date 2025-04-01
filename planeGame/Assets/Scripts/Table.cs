@@ -29,7 +29,9 @@ public class Table : MonoBehaviour
             objHolding.transform.position = body.transform.position;
             objHolding.transform.parent = body.transform;
             objHolding.GetComponentInChildren<Ingredient>().setValue(value);
+            objHolding.GetComponentInChildren<Ingredient>().setState(ingredient.GetComponentInChildren<Ingredient>().getState());
             objValue = value;
+            // Debug.Log("place state:"+objHolding.GetComponentInChildren<Ingredient>().getState());
             return true;
         }
         else 
@@ -46,7 +48,7 @@ public class Table : MonoBehaviour
         }
     }
     public object[] grabItem() {
-        object[] a = {objHolding,objHolding.GetComponent<Ingredient>().getValue()};
+        object[] a = {objHolding,objHolding.GetComponent<Ingredient>().getValue(),objHolding.GetComponent<Ingredient>().getState()};
         objHolding = null;
         return a;
     }

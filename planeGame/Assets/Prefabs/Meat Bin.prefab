@@ -272,6 +272,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4158079189901608844}
     m_Modifications:
+    - target: {fileID: 1605644950198116248, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1698332406731674876, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_Name
       value: Meat (1)
@@ -342,6 +346,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4158079189901608844}
     m_Modifications:
+    - target: {fileID: 1605644950198116248, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1698332406731674876, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_Name
       value: Meat (2)
@@ -412,6 +420,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4158079189901608844}
     m_Modifications:
+    - target: {fileID: 1605644950198116248, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1698332406731674876, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_Name
       value: Meat (4)
@@ -482,6 +494,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4158079189901608844}
     m_Modifications:
+    - target: {fileID: 1605644950198116248, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1698332406731674876, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_Name
       value: Meat (3)
@@ -552,6 +568,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4158079189901608844}
     m_Modifications:
+    - target: {fileID: 1605644950198116248, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1698332406731674876, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_Name
       value: Meat (6)
@@ -622,6 +642,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4158079189901608844}
     m_Modifications:
+    - target: {fileID: 1605644950198116248, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1698332406731674876, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_Name
       value: Meat
@@ -692,6 +716,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4158079189901608844}
     m_Modifications:
+    - target: {fileID: 1605644950198116248, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
+      propertyPath: prop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1698332406731674876, guid: 13d6ec36284484e06addd2a261d38364, type: 3}
       propertyPath: m_Name
       value: Meat (5)
