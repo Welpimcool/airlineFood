@@ -84,11 +84,20 @@ public class Player : MonoBehaviour
             // Debug.Log("checking for table");
             else if (hit.collider.GetComponent<Table>() != null) {
                 Debug.Log("Hit something: "+hit.collider.name);
+<<<<<<< Updated upstream
                 if (objHolding != null) {
                     bool test = hit.collider.GetComponent<Table>().placeItem(objHolding, GetComponentInChildren<Ingredient>().getValue());
                     if (test) {
+=======
+                if (objHolding != null) { // if holding something
+                    object[] test = hit.collider.GetComponent<Table>().placeItem(objHolding);
+                    if ((bool) test[0]) {
+>>>>>>> Stashed changes
                         Destroy(objHolding);
                     }
+                    GameObject temp = (GameObject) test[1];
+                    Debug.Log("Value:"+temp.GetComponentInChildren<Ingredient>().getValue());
+                    WaitUntilZero(temp);
                 }
                 else {
                     object[] list = hit.collider.GetComponent<Table>().grabItem();
@@ -113,5 +122,10 @@ public class Player : MonoBehaviour
         item.transform.parent = body.transform;
         item.transform.localScale = new Vector3(objScale,objScale,0);
         item.transform.rotation = body.transform.rotation;
+    }
+    private IEnumerable WaitUntilZero(GameObject a) {
+        Debug.Log("waiting for zero");
+        yield return new WaitUntil(() => a.GetComponentInChildren<Ingredient>().getValue() == 0);
+        Debug.Log("ingredient has a value of zero");
     }
 }

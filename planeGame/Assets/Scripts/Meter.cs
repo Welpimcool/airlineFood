@@ -12,13 +12,21 @@ public class Meter : MonoBehaviour
     public Image border;
     public void setValue(float value) {
         // Debug.Log("meter value updated to "+value);
+        // if (value == 0 && Slider.value != 0) {
+        //     // Debug.Log("value set to 0 from "+Slider.value);
+        // }
         Slider.value = value;
         fill.color = gradient.Evaluate(Slider.normalizedValue);
     }
     public void setMaxValue(float value) {
-        Slider.maxValue = value;
-        Slider.value = 0;
-        fill.color = gradient.Evaluate(0f);
+        // Debug.Log("max value set to "+value+", value was "+Slider.value,this);
+        float temp = Slider.value;
+        if (Slider.maxValue != value) {
+            Slider.maxValue = value;
+            Slider.value = temp;
+            fill.color = gradient.Evaluate(0f);
+        }
+        
     }
     public void hide() {
         fill.enabled = false;

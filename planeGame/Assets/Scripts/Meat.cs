@@ -10,15 +10,15 @@ public class Meat : Ingredient
     void Start()
     {
         if (!prop) {
-        // this.setScale(0.75f);
-        this.setMaxValue(10);
-        this.setState(0);
-        this.setValue(0);
-        this.setMaxState(3);
-        GetComponentInChildren<Meter>().setMaxValue(this.getMaxValue());
-        this.setCook(true);
-        this.setName("Meat");
-        this.setList(new string[] {"Plate"});
+            // this.setScale(0.75f);
+            this.setMaxValue(10);
+            this.setState(0);
+            // this.setValue(0);
+            this.setMaxState(3);
+            GetComponentInChildren<Meter>().setMaxValue(this.getMaxValue());
+            this.setCook(true);
+            this.setName("Meat");
+            this.setList(new string[] {"Plate"});
         } else {
             GetComponentInChildren<Meter>().hide();
         }

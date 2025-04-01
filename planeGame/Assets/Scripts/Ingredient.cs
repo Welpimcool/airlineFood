@@ -58,7 +58,6 @@ public class Ingredient : MonoBehaviour
     }
     public void addValue(float inp) {
         value += inp;
-        Debug.Log("added "+inp+" to value, new total is :"+value);
     }
     public float getValue() {
         return value;
@@ -91,12 +90,12 @@ public class Ingredient : MonoBehaviour
         return spriteDict;
     }
     public float getScale() {
-        Debug.Log("Getting scale:"+scale, gameObject);
+        // Debug.Log("Getting scale:"+scale, gameObject);
         return scale;
     }
     public void setScale(float inp) {
         scale = inp;
-        Debug.Log("Setting scale:"+scale, gameObject);
+        // Debug.Log("Setting scale:"+scale, gameObject);
     }
     public GameObject getMeter(){
         return meter;

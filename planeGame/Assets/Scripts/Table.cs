@@ -20,17 +20,26 @@ public class Table : MonoBehaviour
         
     }
 
-    public bool placeItem(GameObject ingredient, float value) {
+    public object[] placeItem(GameObject ingredient) {
         if (objHolding == null)
         {
             // objHolding = ingredient;
             // Debug.Log("Instantiating object:"+ingredient+" as object "+this.name);
             objHolding = Instantiate(ingredient, body.transform.position, body.transform.rotation);
+            
             objHolding.transform.position = body.transform.position;
             objHolding.transform.parent = body.transform;
+<<<<<<< Updated upstream
             GetComponentInChildren<Ingredient>().setValue(value);
             objValue = value;
             return true;
+=======
+            objValue = ingredient.GetComponentInChildren<Ingredient>().getValue();
+            objHolding.GetComponentInChildren<Ingredient>().setValue(objValue);
+            objHolding.GetComponentInChildren<Ingredient>().setState(ingredient.GetComponentInChildren<Ingredient>().getState());
+            object[] a = {true,objHolding};
+            return a;
+>>>>>>> Stashed changes
         }
         else 
         {
@@ -39,9 +48,11 @@ public class Table : MonoBehaviour
             if (didWork) {
                 Debug.Log("Can combine, passing through "+ingredient.GetComponent<Ingredient>().getName());
                 holdCombinedItem(ingredient);
-                return true;
+                object[] t = {true};
+                return t;
             } else {
-                return false;
+                object[] f = {false};
+                return f;
             }
         }
     }
@@ -85,4 +96,6 @@ public class Table : MonoBehaviour
     public void setBody(Rigidbody2D a) {
         body = a;
     }
+    
+        
 }
