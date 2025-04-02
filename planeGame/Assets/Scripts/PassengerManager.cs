@@ -11,6 +11,7 @@ public class PassengerManager : MonoBehaviour
     GameObject selectedPassenger;
     public static int ordersCompleted;
     public static int angryPassengers;
+    private int ordersFinished;
     // Start is called before the first frame update
     void Start()
     {  
@@ -28,7 +29,7 @@ public class PassengerManager : MonoBehaviour
         selectedPassenger = PassengerList[Random.Range(0, PassengerList.Length)];
         if (selectedPassenger.GetComponent<Passenger>().getIsOrderActive() == false)
         {
-            selectedPassenger.GetComponent<Passenger>().StartCoroutine(selectedPassenger.GetComponent<Passenger>().Order(10));
+            selectedPassenger.GetComponent<Passenger>().StartCoroutine(selectedPassenger.GetComponent<Passenger>().Order(setOrderTime()));
             // Debug.Log(selectedPassenger);
         }
         else
@@ -45,17 +46,27 @@ public class PassengerManager : MonoBehaviour
     }
     public void OrderComplete()
     {
+        ordersFinished++;
         SelectPassenger();
         ordersCompleted++;
 
     }
     public void OrderFailed()
     {
+        ordersFinished++;
         SelectPassenger();
+    }
+    public float setOrderTime() 
+    {
+        float i = 60 * Mathf.Pow((0.05f * Random.Range(18, 19)), (int) (ordersFinished/4));
+        return i;
     }
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ordersCompleted++;
+        }
     }
 }
