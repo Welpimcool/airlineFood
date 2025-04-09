@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class Passenger : MonoBehaviour
 {
@@ -9,8 +11,18 @@ public class Passenger : MonoBehaviour
     private bool angy = false;
     private bool isOrderActive = false;
     private float timeRemaining;
+    private string orderedItem;
+    [SerializeField] TextMeshProUGUI orderText;
+    Dictionary<string, int> foodList = new() //later change to make a refrence to the ingredient list
+    {
+        ["Food"] = 0,
+        ["Meat Plate"] = 1,
+        ["Fish Plate"] = 2
+        // [""] = 3,
+        // [""] = 4,
+        // [""] = 5
+    };
 
-   
 
     void Start()
     { 
@@ -29,6 +41,8 @@ public class Passenger : MonoBehaviour
 //Processes the actual order
     public IEnumerator Order(float orderTime)
     {
+        orderedItem = selectFood();
+        Debug.Log(orderedItem);
         bool sensitive = Random.Range(0, 2) == 1;
         float timeRemaining = orderTime;
  //Makes time tick down
@@ -41,6 +55,7 @@ public class Passenger : MonoBehaviour
 //Prepares Meter
         GetComponentInChildren<Meter>().setMaxValue(orderTime);
         GetComponentInChildren<Canvas>().enabled = true;
+        orderText.text = orderedItem;
         while (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
@@ -71,14 +86,22 @@ public class Passenger : MonoBehaviour
             GetComponentInParent<SpriteRenderer>().color = Color.red;
 
         }
-        //if (angy)
-        //{
-        //    GetComponentInParent<SpriteRenderer>().color = Color.red;
-        //}
-        //else if (annoyed)
-        //{
-        //    GetComponentInParent<SpriteRenderer>().color = Color.yellow;
-        //}
 
+
+    }
+    public string selectFood()
+    {
+        string[] list = new string[3];
+        int j = 0;
+        foreach (string i in foodList.Keys)
+        {
+            list[j] = i;
+            j++;
+        }
+        return list[Random.Range(1, 3)];
+    }
+    public string getOrderedFood()
+    {
+        return orderedItem;
     }
 }
