@@ -17,7 +17,7 @@ public class Food : Ingredient
         this.setState(0);
         this.setValue(0);
         this.setCook(false);
-        this.setName("Food");
+        // this.setName("Food");
         this.setList(new string[] {""});
         }
         spriteNum = 0;
@@ -29,7 +29,7 @@ public class Food : Ingredient
         
     }
 
-    public void findSprite(string[] a) {
+    public string findSprite(string[] a) {
         Debug.Log("finding spriteNum");
         string temp;
         Dictionary<string,int> sprite = this.getSpriteList();
@@ -45,12 +45,13 @@ public class Food : Ingredient
             temp = temp.Replace(" ","");
             Debug.Log("turned string: "+i+" into string: "+temp);
             if (temp.Equals("")) {
-                this.setName(i);
                 spriteNum = sprite[i];
                 spriteRenderer.sprite = sprites[spriteNum];
+                return i;
             }
             
         }
+        return "";
     }
 
     public int getSpriteNum() {

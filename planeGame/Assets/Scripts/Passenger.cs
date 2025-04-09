@@ -28,31 +28,31 @@ public class Passenger : MonoBehaviour
     { 
         GetComponentInChildren<Canvas>().enabled = false;
     }
-//Gets time remaining in order
-    public float getTimeRemaining()
+
+    public float getTimeRemaining() //Gets time remaining in order
     {
         return timeRemaining;
     }
- //Gets whether the passenger has already ordered
-    public bool getIsOrderActive()
+ 
+    public bool getIsOrderActive() //Gets whether the passenger has already ordered
     {
         return isOrderActive;
     }
-//Processes the actual order
-    public IEnumerator Order(float orderTime)
+    
+    public IEnumerator Order(float orderTime) //Processes the actual order
     {
         orderedItem = selectFood();
-        Debug.Log(orderedItem);
+        // Debug.Log(orderedItem);
         bool sensitive = Random.Range(0, 2) == 1;
         float timeRemaining = orderTime;
- //Makes time tick down
+        //Makes time tick down
         if (annoyed)
         {
             timeRemaining -= orderTime / 5;
         }
         isOrderActive = true;
         yield return new WaitForSeconds(1);
-//Prepares Meter
+        //Prepares Meter
         GetComponentInChildren<Meter>().setMaxValue(orderTime);
         GetComponentInChildren<Canvas>().enabled = true;
         orderText.text = orderedItem;
@@ -60,16 +60,16 @@ public class Passenger : MonoBehaviour
         {
             timeRemaining -= Time.deltaTime;
             GetComponentInChildren<Meter>().setValue(timeRemaining);
-//Makes anger increase if order took too long
+            //Makes anger increase if order took too long
             if ((timeRemaining < orderTime / 10 || (sensitive && timeRemaining < orderTime/5 && WeatherShift.weather ==1) && !annoyed))
             {
                 if (!angy) 
                 {
                     GetComponentInParent<SpriteRenderer>().color = Color.yellow;
                 }
-                annoyed = true;
+                annoyed = true; //maybe make it so they cannot be annoyed and angry?
             }
-//idk why this is needed but it is
+            //idk why this is needed but it is
             yield return null;
         }
        
@@ -100,6 +100,40 @@ public class Passenger : MonoBehaviour
         }
         return list[Random.Range(1, 3)];
     }
+
+    public bool onInteraction(GameObject item) { 
+        /*
+        current idea:
+        interaction with player, needs to detect if the passanger has an order
+        compare players item with the order, and if order is filled then destroy player item
+        (use bool to determine destroyed or not) 
+
+
+        alternitive idea:
+        make the passenger hold the food even if it is incorrect 
+        and have main order loop check if the holding item is correct 
+        instead of having to make this function stop the main one
+        */
+        
+        if (isOrderActive) {
+            if (item.GetComponentInChildren<Ingredient>().getName().Equals(orderedItem)) { // THERE IS AN ERROR, order is correctly filled but not fully stopped
+                //mark order as complete
+
+                isOrderActive = false;
+                GetComponentInParent<PassengerManager>().OrderComplete(); //i dont know what other varibles need to be changed
+                //IEnumerator functions might break if things change half way through
+
+
+                Debug.Log("order filled");
+                return true; //tells player to delete item
+            }
+            Debug.Log("Incorrect item, needed:"+orderedItem+", gave:"+item.GetComponentInChildren<Ingredient>().getName());
+        } else {
+            Debug.Log("The passenger is not ordering");
+        }
+        return false;
+    }
+
     public string getOrderedFood()
     {
         return orderedItem;

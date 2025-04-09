@@ -100,6 +100,13 @@ public class Player : MonoBehaviour
                 }
             }
 
+            else if (hit.collider.GetComponent<Passenger>() != null) {
+                bool des = hit.collider.GetComponent<Passenger>().onInteraction(objHolding);
+                if (des) {
+                    Destroy(objHolding);
+                }
+            }
+
         } else {
             Debug.Log("Nothing Found");
         }

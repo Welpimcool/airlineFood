@@ -71,7 +71,10 @@ public class Table : MonoBehaviour
         objHolding.transform.position = body.transform.position;
         objHolding.transform.parent = body.transform;
 
-        objHolding.GetComponent<Food>().findSprite(new string[] {name1,name2});
+        string str = objHolding.GetComponent<Food>().findSprite(new string[] {name1,name2});
+        if (str != "") {
+            objHolding.GetComponent<Food>().setName(str);
+        }
 
         Debug.Log("spriteNum:"+objHolding.GetComponent<Food>().getSpriteNum());
     }
