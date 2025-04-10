@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static void lose()
     {
         Debug.Log("you lose");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     void Start()
     {

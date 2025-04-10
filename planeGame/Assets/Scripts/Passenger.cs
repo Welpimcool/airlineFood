@@ -56,8 +56,9 @@ public class Passenger : MonoBehaviour
         GetComponentInChildren<Meter>().setMaxValue(orderTime);
         GetComponentInChildren<Canvas>().enabled = true;
         orderText.text = orderedItem;
-        while (timeRemaining > 0)
+        while (isOrderActive &&timeRemaining > 0)
         {
+
             timeRemaining -= Time.deltaTime;
             GetComponentInChildren<Meter>().setValue(timeRemaining);
             //Makes anger increase if order took too long
@@ -74,20 +75,27 @@ public class Passenger : MonoBehaviour
         }
        
         GetComponentInChildren<Canvas>().enabled = false;
-        isOrderActive = false;
-        GetComponentInParent<PassengerManager>().OrderFailed();
-        if (angy)
+        if(isOrderActive == false)
         {
-            GameManager.lose();
-        }else
-        {
-            angy = true;
-            annoyed = false;
-            GetComponentInParent<SpriteRenderer>().color = Color.red;
-
+            Debug.Log("Order Stopped");
         }
+        else
+        {
+            Debug.Log("Order Failed");
+            GetComponentInParent<PassengerManager>().OrderFailed();
+            if (angy)
+            {
+                GameManager.lose();
+            }
+            else
+            {
+                angy = true;
+                annoyed = false;
+                GetComponentInParent<SpriteRenderer>().color = Color.red;
+                isOrderActive = false;
 
-
+            }
+        }
     }
     public string selectFood()
     {
