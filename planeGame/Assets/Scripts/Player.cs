@@ -41,6 +41,9 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.N)) {
             GetComponentInChildren<Ingredient>().addValue(-1);
         }
+        if (Input.GetKeyDown(KeyCode.H)) {
+            GameManager.lose();
+        }
     }
 
     void FixedUpdate() 
@@ -101,10 +104,13 @@ public class Player : MonoBehaviour
             }
 
             else if (hit.collider.GetComponent<Passenger>() != null) {
-                bool des = hit.collider.GetComponent<Passenger>().onInteraction(objHolding);
-                if (des) {
-                    Destroy(objHolding);
+                if (objHolding != null) {
+                    bool des = hit.collider.GetComponent<Passenger>().onInteraction(objHolding);
+                    if (des) {
+                        Destroy(objHolding);
+                    }
                 }
+                
             }
 
         } else {

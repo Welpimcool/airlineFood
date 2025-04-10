@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PassengerManager : MonoBehaviour
@@ -12,9 +13,12 @@ public class PassengerManager : MonoBehaviour
     public static int ordersCompleted;
     public static int angryPassengers;
     private int ordersFinished;
+    
+    public static float survivalTime;
     // Start is called before the first frame update
     void Start()
     {  
+        survivalTime = 0;
         AnnoyingPassenger.target = target;
         AnnoyingPassenger.bathroom = bathroom;
         SelectAnnoyingPassenger();
@@ -68,5 +72,6 @@ public class PassengerManager : MonoBehaviour
         {
             ordersCompleted++;
         }
+        survivalTime += Time.deltaTime;
     }
 }
