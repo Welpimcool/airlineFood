@@ -58,15 +58,6 @@ public class Table : MonoBehaviour
         string name1 = objHolding.GetComponent<Ingredient>().getName();
         string name2 = ingredient.GetComponent<Ingredient>().getName();
 
-
-        // use .Contains() method to check for all the ingredients to find sprite to use
-        // make a class that is a base for combined food, its only methods is combine more ingredients and serve
-
-
-
-        //temp food placeholder
-        
-
         Destroy(objHolding);
         objHolding = Instantiate(food);
         objHolding.transform.position = body.transform.position;

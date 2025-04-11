@@ -16,10 +16,10 @@ public class Passenger : MonoBehaviour
     Dictionary<string, int> foodList = new() //later change to make a refrence to the ingredient list
     {
         ["Food"] = 0,
-        ["Meat Plate"] = 1,
-        ["Fish Plate"] = 2
-        // [""] = 3,
-        // [""] = 4,
+        ["0Meat Plate"] = 1,
+        ["0Fish Plate"] = 2,
+        ["1Meat Plate"] = 3,
+        ["1Fish Plate"] = 4
         // [""] = 5
     };
 
@@ -99,14 +99,14 @@ public class Passenger : MonoBehaviour
     }
     public string selectFood()
     {
-        string[] list = new string[3];
+        string[] list = new string[5];
         int j = 0;
         foreach (string i in foodList.Keys)
         {
             list[j] = i;
             j++;
         }
-        return list[Random.Range(1, 3)];
+        return list[Random.Range(1, 5)];
     }
 
     public bool onInteraction(GameObject item) { 

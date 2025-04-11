@@ -13,11 +13,18 @@ public class Player : MonoBehaviour
     private float objScale;
     public LayerMask mask;
     public int walkSpeed = 5;
+    public int sprintSpeed = 10;
+    public float maxStamina = 2.5f; //seconds (hopefully)
+    public float curStamina;
+    bool sprinting = false;
+    bool cooldown = false;
+    [SerializeField] GameObject staminaWheel;
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         inpDirection = Vector2.up;
+        curStamina = maxStamina;
     }
 
     // Update is called once per frame
@@ -47,11 +54,47 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B)) {
             Debug.Log("held item name: "+GetComponentInChildren<Ingredient>().getName());
         }
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            if (curStamina > 0 && cooldown == false){ //sprinting
+                sprinting = true;
+                curStamina -= Time.deltaTime;
+            } else {
+                cooldown = true;
+            }
+        } else { //not holding shift
+            sprinting = false;
+            if (!cooldown) {
+                curStamina += Time.deltaTime;
+                if (curStamina >= maxStamina) {
+                    curStamina = maxStamina;
+                }
+            }
+        }
+        if (cooldown) {
+            sprinting = false;
+            curStamina += Time.deltaTime;
+            if (curStamina >= maxStamina) {
+                curStamina = maxStamina;
+                cooldown = false;
+            }
+        }
+
+        staminaWheel.transform.localScale = new Vector3(curStamina/maxStamina,curStamina/maxStamina,0);
+        if (cooldown) {
+            staminaWheel.GetComponent<SpriteRenderer>().color = Color.red;
+        } else {
+            staminaWheel.GetComponent<SpriteRenderer>().color = Color.green;
+        }
     }
 
     void FixedUpdate() 
     {
-        body.velocity = direction * walkSpeed;
+        if (sprinting == false) {
+            body.velocity = direction * walkSpeed;
+        } else {
+            body.velocity = direction * sprintSpeed;
+        }
+        
         if (direction != Vector2.zero) {
             if (Input.GetAxisRaw("Horizontal") < 0) {
                 body.rotation = Vector2.Angle(Vector2.up, inpDirection);

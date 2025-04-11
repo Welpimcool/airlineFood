@@ -20,10 +20,10 @@ public class Ingredient : MonoBehaviour
     Dictionary<String, int> spriteDict = new()
     {
         ["Food"] = 0,
-        ["Meat Plate"] = 1,
-        ["Fish Plate"] = 2
-        // [""] = 3,
-        // [""] = 4,
+        ["0Meat Plate"] = 1,
+        ["0Fish Plate"] = 2,
+        ["1Meat Plate"] = 3,
+        ["1Fish Plate"] = 4
         // [""] = 5
     };
     // Start is called before the first frame update
@@ -79,7 +79,7 @@ public class Ingredient : MonoBehaviour
         return ingredientName;
     }
     public void setName(string inp) {
-        Debug.Log("name set to "+inp+" from "+ingredientName);
+        // Debug.Log("name set to "+inp+" from "+ingredientName);
         ingredientName = inp;
     }
     public void setCook(bool a) {
@@ -115,13 +115,21 @@ public class Ingredient : MonoBehaviour
         maxState = a;
     }
     private bool canCombine(GameObject ingredient) {
-        string nm = ingredient.GetComponent<Ingredient>().getName();
+        string nm1 = ingredient.GetComponent<Ingredient>().getName();
+        string nm2 = this.getName();
+        bool if1 = false;
+        bool if2 = false;
         foreach (string i in this.combinationList) {
-            if (i.Equals(nm)) {
-                return true;
+            if (i.Equals(nm1)) {
+                if1 = true;
             }
         }
-        return false;
+        foreach (string i in ingredient.GetComponent<Ingredient>().getList()) {
+            if (i.Equals(nm2)) {
+                if2 = true;
+            }
+        }
+        return if1 && if2;
     }
     public bool combine(GameObject ingredient) {
         if (canCombine(ingredient)) {

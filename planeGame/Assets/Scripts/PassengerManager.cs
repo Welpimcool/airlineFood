@@ -22,10 +22,8 @@ public class PassengerManager : MonoBehaviour
         AnnoyingPassenger.target = target;
         AnnoyingPassenger.bathroom = bathroom;
         SelectAnnoyingPassenger();
-        for(int i = 0; i < 4; i++)
-        {
-            SelectPassenger();
-        }
+        StartCoroutine("passOnStart");
+        
     }
     //Picks a random passenger to place an order, only picks one that isnt already chosen
     public void SelectPassenger()
@@ -73,5 +71,13 @@ public class PassengerManager : MonoBehaviour
             ordersCompleted++;
         }
         survivalTime += Time.deltaTime;
+    }
+    private IEnumerator passOnStart() {
+        for(int i = 0; i < 4; i++)
+        {
+            SelectPassenger();
+            yield return new WaitForSeconds(Random.Range(0,8));
+        }
+        
     }
 }
