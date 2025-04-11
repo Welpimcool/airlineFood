@@ -110,26 +110,13 @@ public class Passenger : MonoBehaviour
     }
 
     public bool onInteraction(GameObject item) { 
-        /*
-        current idea:
-        interaction with player, needs to detect if the passanger has an order
-        compare players item with the order, and if order is filled then destroy player item
-        (use bool to determine destroyed or not) 
-
-
-        alternitive idea:
-        make the passenger hold the food even if it is incorrect 
-        and have main order loop check if the holding item is correct 
-        instead of having to make this function stop the main one
-        */
-        
+        // Debug.Log(item.ToString(),item);
         if (isOrderActive) {
-            if (item.GetComponentInChildren<Ingredient>().getName().Equals(orderedItem)) { // THERE IS AN ERROR, order is correctly filled but not fully stopped
+            Debug.Log("comparing if "+item.GetComponentInChildren<Ingredient>().getName()+" equals "+orderedItem);
+            if (item.GetComponentInChildren<Ingredient>().getName().Equals(orderedItem)) {
                 //mark order as complete
-
                 isOrderActive = false;
-                GetComponentInParent<PassengerManager>().OrderComplete(); //i dont know what other varibles need to be changed
-                //IEnumerator functions might break if things change half way through
+                GetComponentInParent<PassengerManager>().OrderComplete();
 
 
                 Debug.Log("order filled");

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LoseScreen : MonoBehaviour
 {
@@ -25,5 +26,10 @@ public class LoseScreen : MonoBehaviour
         int minute = (int) time/60;
         int seconds = (int) time % 60;
         return minute+":"+seconds;
+    }
+
+    public void callMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -30,6 +30,7 @@ public class Table : MonoBehaviour
             objHolding.transform.parent = body.transform;
             objHolding.GetComponentInChildren<Ingredient>().setValue(value);
             objHolding.GetComponentInChildren<Ingredient>().setState(ingredient.GetComponentInChildren<Ingredient>().getState());
+            objHolding.GetComponentInChildren<Ingredient>().setName(ingredient.GetComponentInChildren<Ingredient>().getName());
             objValue = value;
             // Debug.Log("place state:"+objHolding.GetComponentInChildren<Ingredient>().getState());
             return true;

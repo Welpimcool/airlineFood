@@ -66,6 +66,7 @@ extern void IngredientSpawner__ctor_m3719467FCEE9268E5AAE4805847B221126B65AE2 (v
 extern void LoseScreen_Start_mF8DDB0C7BD628C0703C87DDAE887C07B39F41F4B (void);
 extern void LoseScreen_Update_mDB838E96D2A924D0D53C75625A005ACD3C8E12D0 (void);
 extern void LoseScreen_timerFormat_m2F75613961A1ED53DA94E5D6942733DF3CFBC12F (void);
+extern void LoseScreen_callMenu_m043A01961A27AED66542A7B70C8BBB8B24681673 (void);
 extern void LoseScreen__ctor_m0249B175B3D1C8E56A2017C004BCF73CC653C06C (void);
 extern void MainMenu_PlayGame_mEC2DA4274CDD4D658AE27480E2C70C6049A496B5 (void);
 extern void MainMenu__ctor_m8209CEC1D907C87A96D777961F4D0536E6E948DD (void);
@@ -133,7 +134,7 @@ extern void WeatherShift_Update_mA8EB7C202D79BFC46FF4738D66ACD184E66F5BD4 (void)
 extern void WeatherShift__ctor_m69C9DA7315FFF843402E07C4F126D10E83D027C4 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
-static Il2CppMethodPointer s_methodPointers[121] = 
+static Il2CppMethodPointer s_methodPointers[122] = 
 {
 	AnnoyingPassenger_Start_mC6E26C50DEB203B6125165D37D07E46496870E1C,
 	AnnoyingPassenger_imWalkinEre_m07979E3BBEA479140F75F162A09C9C1184217D56,
@@ -189,6 +190,7 @@ static Il2CppMethodPointer s_methodPointers[121] =
 	LoseScreen_Start_mF8DDB0C7BD628C0703C87DDAE887C07B39F41F4B,
 	LoseScreen_Update_mDB838E96D2A924D0D53C75625A005ACD3C8E12D0,
 	LoseScreen_timerFormat_m2F75613961A1ED53DA94E5D6942733DF3CFBC12F,
+	LoseScreen_callMenu_m043A01961A27AED66542A7B70C8BBB8B24681673,
 	LoseScreen__ctor_m0249B175B3D1C8E56A2017C004BCF73CC653C06C,
 	MainMenu_PlayGame_mEC2DA4274CDD4D658AE27480E2C70C6049A496B5,
 	MainMenu__ctor_m8209CEC1D907C87A96D777961F4D0536E6E948DD,
@@ -257,7 +259,7 @@ static Il2CppMethodPointer s_methodPointers[121] =
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
 };
-static const int32_t s_InvokerIndices[121] = 
+static const int32_t s_InvokerIndices[122] = 
 {
 	4899,
 	4794,
@@ -313,6 +315,7 @@ static const int32_t s_InvokerIndices[121] =
 	4899,
 	4899,
 	3443,
+	4899,
 	4899,
 	4899,
 	4899,
@@ -385,7 +388,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	121,
+	122,
 	s_methodPointers,
 	0,
 	NULL,

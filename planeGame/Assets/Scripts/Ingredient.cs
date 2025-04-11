@@ -79,6 +79,7 @@ public class Ingredient : MonoBehaviour
         return ingredientName;
     }
     public void setName(string inp) {
+        Debug.Log("name set to "+inp+" from "+ingredientName);
         ingredientName = inp;
     }
     public void setCook(bool a) {

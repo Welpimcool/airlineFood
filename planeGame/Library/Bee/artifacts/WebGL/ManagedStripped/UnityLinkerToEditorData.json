@@ -422,6 +422,7 @@
           {
             "name": "Sprite",
             "scenes": [
+              "Assets/Scenes/LoseScreen.unity",
               "Assets/Scenes/MainMenu.unity",
               "Assets/Scenes/SampleScene.unity"
             ],

@@ -44,6 +44,9 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H)) {
             GameManager.lose();
         }
+        if (Input.GetKeyDown(KeyCode.B)) {
+            Debug.Log("held item name: "+GetComponentInChildren<Ingredient>().getName());
+        }
     }
 
     void FixedUpdate() 
@@ -105,6 +108,7 @@ public class Player : MonoBehaviour
 
             else if (hit.collider.GetComponent<Passenger>() != null) {
                 if (objHolding != null) {
+                    // Debug.Log(objHolding.ToString());
                     bool des = hit.collider.GetComponent<Passenger>().onInteraction(objHolding);
                     if (des) {
                         Destroy(objHolding);
