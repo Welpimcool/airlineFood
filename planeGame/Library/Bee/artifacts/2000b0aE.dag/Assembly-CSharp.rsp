@@ -360,6 +360,7 @@
 -analyzer:"/Applications/Unity/Hub/Editor/2022.3.43f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/Applications/Unity/Hub/Editor/2022.3.43f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/AnnoyingPassenger.cs"
+"Assets/Scripts/Background.cs"
 "Assets/Scripts/CameraFollow.cs"
 "Assets/Scripts/Fish.cs"
 "Assets/Scripts/Food.cs"
@@ -378,6 +379,7 @@
 "Assets/Scripts/Stove (old).cs"
 "Assets/Scripts/Stove.cs"
 "Assets/Scripts/Table.cs"
+"Assets/Scripts/UpgradeSlot.cs"
 "Assets/Scripts/WeatherShift.cs"
 -langversion:9.0
 /deterministic

@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
         }
         if (cooldown) {
             sprinting = false;
-            curStamina += Time.deltaTime;
+            curStamina += Time.deltaTime*0.75f;
             if (curStamina >= maxStamina) {
                 curStamina = maxStamina;
                 cooldown = false;
@@ -158,6 +158,9 @@ public class Player : MonoBehaviour
                     }
                 }
                 
+            }
+            if (hit.collider.GetComponent<UpgradeSlot>() != null) {//leave at the end so it is checked last to not block inputs
+                hit.collider.GetComponent<UpgradeSlot>().onInteraction();
             }
 
         } else {

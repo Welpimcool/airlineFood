@@ -13,6 +13,7 @@ public class PassengerManager : MonoBehaviour
     public static int ordersCompleted;
     public static int angryPassengers;
     private int ordersFinished;
+    private int baseOrderTime = 90; //was 1 min (60)
     
     public static float survivalTime;
     // Start is called before the first frame update
@@ -60,7 +61,7 @@ public class PassengerManager : MonoBehaviour
     }
     public float setOrderTime() 
     {
-        float i = 60 * Mathf.Pow((0.05f * Random.Range(18, 19)), (int) (ordersFinished/4));
+        float i = baseOrderTime * Mathf.Pow((0.05f * Random.Range(18, 19)), (int) (ordersFinished/4));
         return i;
     }
     // Update is called once per frame
