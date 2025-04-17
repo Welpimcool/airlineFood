@@ -13,13 +13,22 @@ public class Passenger : MonoBehaviour
     private float timeRemaining;
     private string orderedItem;
     [SerializeField] TextMeshProUGUI orderText;
-    Dictionary<string, int> foodList = new() //later change to make a refrence to the ingredient list
+    private Sprite displaySprite;
+    [SerializeField] SpriteRenderer SprRend;
+    [SerializeField] GameObject foodObject;
+    [SerializeField] GameObject chair;
+    
+    Dictionary<string, int> foodList = new() //same as food list but only orderable items
     {
-        ["Food"] = 0,
-        ["1Meat Plate"] = 1,
-        ["1Meat Bun"] = 2,
-        ["Bun Plate"] = 3,
-        ["1Meat Bun Plate"] = 4
+        // ["Food"] = 0,
+        // ["1Meat Plate"] = 1,
+        // ["1Meat Bun"] = 2,
+        // ["Bun Plate"] = 3,
+        ["1Meat Bun Plate"] = 4,
+        ["1Meat Bun 1Cheese Plate"] = 5,
+        // ["Bun 1Cheese Plate"] = 6,
+        // ["Bun 1Cheese"] = 7,
+        // ["1Meat Bun 1Cheese"] = 8,
     };
 
 
@@ -54,7 +63,8 @@ public class Passenger : MonoBehaviour
         //Prepares Meter
         GetComponentInChildren<Meter>().setMaxValue(orderTime);
         GetComponentInChildren<Canvas>().enabled = true;
-        orderText.text = orderedItem;
+        // orderText.text = orderedItem;
+        displayFood();
         while (isOrderActive &&timeRemaining > 0)
         {
 
@@ -65,7 +75,7 @@ public class Passenger : MonoBehaviour
             {
                 if (!angy) 
                 {
-                    GetComponentInParent<SpriteRenderer>().color = Color.yellow;
+                    // GetComponentInParent<SpriteRenderer>().color = Color.yellow;
                 }
                 annoyed = true; //maybe make it so they cannot be annoyed and angry?
             }
@@ -74,6 +84,7 @@ public class Passenger : MonoBehaviour
         }
        
         GetComponentInChildren<Canvas>().enabled = false;
+        SprRend.enabled = false;
         if(isOrderActive == false)
         {
             Debug.Log("Order Stopped");
@@ -90,7 +101,7 @@ public class Passenger : MonoBehaviour
             {
                 angy = true;
                 annoyed = false;
-                GetComponentInParent<SpriteRenderer>().color = Color.red;
+                // GetComponentInParent<SpriteRenderer>().color = Color.red;
                 isOrderActive = false;
 
             }
@@ -98,14 +109,21 @@ public class Passenger : MonoBehaviour
     }
     public string selectFood()
     {
-        string[] list = new string[5];
+        string[] list = new string[2];
         int j = 0;
         foreach (string i in foodList.Keys)
         {
             list[j] = i;
             j++;
         }
-        return list[Random.Range(1, 5)];
+        return list[Random.Range(0, 2)];
+    }
+    public void displayFood() {
+        orderedItem = selectFood();
+        Debug.Log("orderedItem:"+orderedItem);
+        displaySprite = foodObject.GetComponent<Food>().getSpriteImg(findSprite(orderedItem));
+        SprRend.sprite = displaySprite;
+        SprRend.enabled = true;
     }
 
     public bool onInteraction(GameObject item) { 
@@ -131,5 +149,35 @@ public class Passenger : MonoBehaviour
     public string getOrderedFood()
     {
         return orderedItem;
+    }
+    public int findSprite(string nm) {
+        // Debug.Log("finding spriteNum");
+        string temp,test;
+        // string nm = a[0] +" "+a[1];
+        Dictionary<string,int> sprite = Ingredient.getSpriteList();
+        foreach (string i in sprite.Keys) { //for each food
+            // Debug.Log("looking through string:"+nm);
+            temp = nm;
+            foreach(string j in i.Split(" ")) {
+                if (temp.Replace(" ","").Equals("")) {
+                    // Debug.Log("EARLY STOP");
+                    temp = "food"; //should stop it from triggering
+                }
+                // Debug.Log("removing instances of "+j);
+                test = temp;
+                temp = temp.Replace(j,""); //remove instances of the food ingredients from the name
+                if (temp.Equals(test)) {
+                    // Debug.Log("ingredient not found");
+                    temp = "food"; //should stop it from triggering
+                }
+                // Debug.Log("new string: "+temp);
+            }
+            temp = temp.Replace(" ","");
+            // Debug.Log("turned string: "+nm+" into string: "+temp);
+            if (temp.Equals("")) {
+                return sprite[i];
+            }  
+        }
+        return 0;
     }
 }

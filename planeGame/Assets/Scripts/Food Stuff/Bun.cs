@@ -17,7 +17,7 @@ public class Bun : Ingredient
         setCook(false);
         setCut(false);
         setName("Bun");
-        setList(new string[] {"Plate","1Meat","1Meat Plate"});
+        setList(new string[] {"Plate","1Meat","1Meat Plate","1Meat 1Cheese Plate","1Cheese Plate","1Cheese","1Meat 1Cheese"});
         // setStateSprite(stateSprites);
         } else {
             GetComponentInChildren<Meter>().hide();

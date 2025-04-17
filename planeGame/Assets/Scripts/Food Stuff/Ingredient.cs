@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UIElements;
 
 public class Ingredient : MonoBehaviour
@@ -19,13 +20,17 @@ public class Ingredient : MonoBehaviour
     public float scale;
     private bool canCut = false;
     public Sprite[] stateSprite;
-    Dictionary<String, int> spriteDict = new()
+    public static Dictionary<String, int> spriteDict = new()
     {
         ["Food"] = 0,
         ["1Meat Plate"] = 1,
         ["1Meat Bun"] = 2,
         ["Bun Plate"] = 3,
-        ["1Meat Bun Plate"] = 4
+        ["1Meat Bun Plate"] = 4,
+        ["1Meat Bun 1Cheese Plate"] = 5,
+        ["Bun 1Cheese Plate"] = 6,
+        ["Bun 1Cheese"] = 7,
+        ["1Meat Bun 1Cheese"] = 8,
     };
     // Start is called before the first frame update
     void Start()
@@ -95,7 +100,7 @@ public class Ingredient : MonoBehaviour
     public bool getCut() {
         return canCut;
     }
-    public Dictionary<string, int> getSpriteList() {
+    public static Dictionary<string, int> getSpriteList() {
         return spriteDict;
     }
     public float getScale() {
@@ -130,14 +135,13 @@ public class Ingredient : MonoBehaviour
     private bool canCombine(GameObject ingredient) {//change to not need exact orders (meat plate vs plate meat)
         string nm = ingredient.GetComponent<Ingredient>().getName() +" "+ this.getName();
         string temp;
-        
         foreach (string i in spriteDict.Keys) { //for each food
-            Debug.Log("looking through string:"+nm);
+            // Debug.Log("looking through string:"+nm);
             temp = nm;
             foreach(string j in i.Split(" ")) {
-                Debug.Log("removing instances of "+j);
+                // Debug.Log("removing instances of "+j);
                 temp = temp.Replace(j,""); //remove instances of the food ingredients from the name
-                Debug.Log("new string: "+temp);
+                // Debug.Log("new string: "+temp);
             }
             temp = temp.Replace(" ","");
             Debug.Log("turned string: "+nm+" into string: "+temp);

@@ -11,15 +11,16 @@ public class Cheese : Ingredient
     void Start()
     {
         if (!prop) {
-        setMaxValue(5);
+        setMaxValue(3);
+        setMaxState(1);
         setScale(1);
         GetComponentInChildren<Meter>().setMaxValue(getMaxValue());
         setState(0);
         setValue(0);
         setCook(false);
         setCut(true);
-        setName("0Cheese");
-        // setList(new string[] {"Plate","1Meat","1Meat Plate"});
+        setName(getState()+"Cheese");
+        setList(new string[] {"1Meat Bun Plate","1Meat Bun","Bun","Bun Plate"});
         } else {
             GetComponentInChildren<Meter>().hide();
         }
@@ -31,14 +32,18 @@ public class Cheese : Ingredient
         if (!prop)
         {
             GetComponentInChildren<Meter>().setValue(getValue());
-            Debug.Log("Value: "+getValue());
+            // Debug.Log("Value: "+getValue());
             if (getValue() >= getMaxValue())
             {
                 setValue(0);
                 setState(getState() + 1);
                 Debug.Log("state increased:" + getState());
                 setName(getState()+"Cheese");
-                GetComponent<SpriteRenderer>().sprite = getStateSprite(getState());
+                Debug.Log("new name: "+getName());
+                if (getState() <= getMaxState()) {
+                    GetComponent<SpriteRenderer>().sprite = getStateSprite(getState());
+                }
+                
             }
         }
     }

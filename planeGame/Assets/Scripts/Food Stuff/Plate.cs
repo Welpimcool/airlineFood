@@ -14,7 +14,7 @@ public class Plate : Ingredient
         setCook(false);
         setCut(false);
         setName("Plate");
-        setList(new string[] {"1Meat","Bun","1Meat Bun"});
+        setList(new string[] {"1Meat","Bun","1Meat Bun","1Meat Bun 1Cheese","Bun 1Cheese"});
         }
     }
 

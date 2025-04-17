@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     bool sprinting = false;
     bool cooldown = false;
     [SerializeField] GameObject staminaWheel;
+    [SerializeField] GameObject objPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -176,9 +177,9 @@ public class Player : MonoBehaviour
     void holdItem(GameObject item) {
         objScale = objHolding.GetComponent<Ingredient>().getScale();
 
-        item.transform.position = body.transform.position;
-        item.transform.position = new Vector3(item.transform.position.x+inpDirection.x,item.transform.position.y+inpDirection.y,0);
-        item.transform.parent = body.transform;
+        item.transform.position = objPos.transform.position;
+        // item.transform.position = new Vector3(item.transform.position.x+inpDirection.x,item.transform.position.y+inpDirection.y,0);
+        item.transform.parent = objPos.transform;
         item.transform.localScale = new Vector3(objScale,objScale,0);
         item.transform.rotation = body.transform.rotation;
     }
@@ -187,9 +188,16 @@ public class Player : MonoBehaviour
         Debug.DrawRay(body.position,inpDirection*3f,Color.red);
         if (hit) {
             if (hit.collider.GetComponent<CuttingBoard>() != null) {
-                if (objHolding.GetComponent<Ingredient>().getCut()) {
-                    objHolding.GetComponent<Ingredient>().addValue(Time.deltaTime*CuttingBoard.getSpeed());
+                if (objHolding != null) {
+                    if (objHolding.GetComponent<Ingredient>().getCut()) {
+                        objHolding.GetComponent<Ingredient>().addValue(Time.deltaTime*CuttingBoard.getSpeed());
+                        if (objHolding.GetComponent<Ingredient>().getState() > objHolding.GetComponent<Ingredient>().getMaxState()) {
+                            Destroy(objHolding);
+                            // objHolding = null;
+                        }
+                    }
                 }
+                
             }
         }
     }
