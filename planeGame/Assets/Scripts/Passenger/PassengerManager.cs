@@ -30,14 +30,14 @@ public class PassengerManager : MonoBehaviour
     public void SelectPassenger()
     {
         selectedPassenger = PassengerList[Random.Range(0, PassengerList.Length)];
-        if (selectedPassenger.GetComponent<Passenger>().getIsOrderActive() == false)
+        if (selectedPassenger.GetComponent<Passenger>().getIsOrderActive() && !selectedPassenger.GetComponent<Passenger>().getIsOnCooldown())
         {
             selectedPassenger.GetComponent<Passenger>().StartCoroutine(selectedPassenger.GetComponent<Passenger>().Order(setOrderTime()));
-            // Debug.Log(selectedPassenger);
+            Debug.Log(selectedPassenger);
         }
         else
         {
-            // Debug.Log("reroll");
+            Debug.Log("reroll");
             SelectPassenger();
         }
     }
@@ -74,7 +74,7 @@ public class PassengerManager : MonoBehaviour
         survivalTime += Time.deltaTime;
     }
     private IEnumerator passOnStart() {
-        for(int i = 0; i < 4; i++)
+        for(int i = 0; i < 2; i++)
         {
             SelectPassenger();
             yield return new WaitForSeconds(Random.Range(0,8));

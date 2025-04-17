@@ -10,6 +10,9 @@ public class Passenger : MonoBehaviour
     private bool annoyed = false;
     private bool angy = false;
     private bool isOrderActive = false;
+    private bool isOnCooldown = false;
+    private float coolDown;
+    private float maxCoolDown = 10f;
     private float timeRemaining;
     private string orderedItem;
     [SerializeField] TextMeshProUGUI orderText;
@@ -37,6 +40,15 @@ public class Passenger : MonoBehaviour
         GetComponentInChildren<Canvas>().enabled = false;
     }
 
+    void Update()
+    {
+        if (isOnCooldown) {
+            coolDown += Time.deltaTime;
+            if (coolDown >= maxCoolDown) {
+                isOnCooldown = false;
+            }
+        }
+    }
     public float getTimeRemaining() //Gets time remaining in order
     {
         return timeRemaining;
@@ -45,6 +57,10 @@ public class Passenger : MonoBehaviour
     public bool getIsOrderActive() //Gets whether the passenger has already ordered
     {
         return isOrderActive;
+    }
+    public bool getIsOnCooldown() //Gets whether the passenger has finished an order recently
+    {
+        return isOnCooldown;
     }
     
     public IEnumerator Order(float orderTime) //Processes the actual order
@@ -75,7 +91,7 @@ public class Passenger : MonoBehaviour
             {
                 if (!angy) 
                 {
-                    // GetComponentInParent<SpriteRenderer>().color = Color.yellow;
+                    chair.GetComponent<SpriteRenderer>().color = Color.yellow;
                 }
                 annoyed = true; //maybe make it so they cannot be annoyed and angry?
             }
@@ -101,11 +117,12 @@ public class Passenger : MonoBehaviour
             {
                 angy = true;
                 annoyed = false;
-                // GetComponentInParent<SpriteRenderer>().color = Color.red;
+                chair.GetComponent<SpriteRenderer>().color = Color.red;
                 isOrderActive = false;
 
             }
         }
+        isOnCooldown = true;
     }
     public string selectFood()
     {

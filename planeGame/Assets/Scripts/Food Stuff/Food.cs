@@ -30,7 +30,7 @@ public class Food : Ingredient
     }
 
     public string findSprite(string[] a) {
-        Debug.Log("finding spriteNum");
+        // Debug.Log("finding spriteNum");
         string temp,test;
         string nm = a[0] +" "+a[1];
         Dictionary<string,int> sprite = getSpriteList();
@@ -52,7 +52,7 @@ public class Food : Ingredient
                 // Debug.Log("new string: "+temp);
             }
             temp = temp.Replace(" ","");
-            Debug.Log("turned string: "+nm+" into string: "+temp);
+            // Debug.Log("turned string: "+nm+" into string: "+temp);
             if (temp.Equals("")) {
                 spriteNum = sprite[i];
                 spriteRenderer.sprite = sprites[spriteNum];

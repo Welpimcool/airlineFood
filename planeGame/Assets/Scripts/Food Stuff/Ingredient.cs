@@ -134,19 +134,47 @@ public class Ingredient : MonoBehaviour
     }
     private bool canCombine(GameObject ingredient) {//change to not need exact orders (meat plate vs plate meat)
         string nm = ingredient.GetComponent<Ingredient>().getName() +" "+ this.getName();
-        string temp;
-        foreach (string i in spriteDict.Keys) { //for each food
+        // string temp;
+        // foreach (string i in spriteDict.Keys) { //for each food
+        //     // Debug.Log("looking through string:"+nm);
+        //     temp = nm;
+        //     foreach(string j in i.Split(" ")) {
+        //         // Debug.Log("removing instances of "+j);
+        //         temp = temp.Replace(j,""); //remove instances of the food ingredients from the name
+        //         // Debug.Log("new string: "+temp);
+        //     }
+        //     temp = temp.Replace(" ","");
+        //     // Debug.Log("turned string: "+nm+" into string: "+temp);
+        //      if (temp.Equals("")) {
+        //     return true;
+        //     }  
+        // }
+        // return false;
+        // Debug.Log("finding spriteNum");
+        string temp,test;
+        // string nm = a[0] +" "+a[1];
+        Dictionary<string,int> sprite = getSpriteList();
+        foreach (string i in sprite.Keys) { //for each food
             // Debug.Log("looking through string:"+nm);
             temp = nm;
             foreach(string j in i.Split(" ")) {
+                if (temp.Replace(" ","").Equals("")) {
+                    // Debug.Log("EARLY STOP");
+                    temp = "food"; //should stop it from triggering
+                }
                 // Debug.Log("removing instances of "+j);
+                test = temp;
                 temp = temp.Replace(j,""); //remove instances of the food ingredients from the name
+                if (temp.Equals(test)) {
+                    // Debug.Log("ingredient not found");
+                    temp = "food"; //should stop it from triggering
+                }
                 // Debug.Log("new string: "+temp);
             }
             temp = temp.Replace(" ","");
-            Debug.Log("turned string: "+nm+" into string: "+temp);
-             if (temp.Equals("")) {
-            return true;
+            // Debug.Log("turned string: "+nm+" into string: "+temp);
+            if (temp.Equals("")) {
+                return true;
             }  
         }
         return false;

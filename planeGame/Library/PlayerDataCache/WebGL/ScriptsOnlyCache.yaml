@@ -2,8 +2,11 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - AnnoyingPassenger
+    - Background
+    - Bun
     - CameraFollow
-    - Fish
+    - Cheese
+    - CuttingBoard
     - Food
     - IngredientSpawner
     - LoseScreen
@@ -16,6 +19,7 @@ ScriptsOnlyBuild:
     - Player
     - Stove
     - Table
+    - UpgradeSlot
     - WeatherShift
     NavMeshPlus.dll:
     - NavMeshPlus.Components.NavMeshModifier
@@ -159,19 +163,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1640}
     - Class: 114
-      Script: {instanceID: 2942}
+      Script: {instanceID: 2944}
     - Class: 114
-      Script: {instanceID: 3212}
+      Script: {instanceID: 3214}
     - Class: 114
-      Script: {instanceID: 3576}
+      Script: {instanceID: 3578}
     - Class: 114
-      Script: {instanceID: 6128}
+      Script: {instanceID: 6136}
     - Class: 114
-      Script: {instanceID: 7104}
+      Script: {instanceID: 7112}
     - Class: 114
-      Script: {instanceID: 7528}
+      Script: {instanceID: 7536}
     - Class: 114
-      Script: {instanceID: 9174}
+      Script: {instanceID: 9182}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -214,23 +218,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2384}
     - Class: 114
-      Script: {instanceID: 2942}
+      Script: {instanceID: 2944}
     - Class: 114
-      Script: {instanceID: 3212}
+      Script: {instanceID: 3214}
     - Class: 114
-      Script: {instanceID: 3576}
+      Script: {instanceID: 3578}
     - Class: 114
-      Script: {instanceID: 4860}
+      Script: {instanceID: 4864}
     - Class: 114
-      Script: {instanceID: 5186}
+      Script: {instanceID: 5192}
     - Class: 114
-      Script: {instanceID: 6128}
+      Script: {instanceID: 6136}
     - Class: 114
-      Script: {instanceID: 6474}
+      Script: {instanceID: 6482}
     - Class: 114
-      Script: {instanceID: 7104}
+      Script: {instanceID: 7112}
     - Class: 114
-      Script: {instanceID: 7528}
+      Script: {instanceID: 7536}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -285,43 +289,51 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2684}
     - Class: 114
-      Script: {instanceID: 2866}
+      Script: {instanceID: 2884}
     - Class: 114
-      Script: {instanceID: 2942}
+      Script: {instanceID: 2944}
     - Class: 114
-      Script: {instanceID: 3112}
+      Script: {instanceID: 3114}
     - Class: 114
-      Script: {instanceID: 3212}
+      Script: {instanceID: 3214}
     - Class: 114
-      Script: {instanceID: 4670}
+      Script: {instanceID: 4502}
     - Class: 114
-      Script: {instanceID: 6034}
+      Script: {instanceID: 4674}
     - Class: 114
-      Script: {instanceID: 6128}
+      Script: {instanceID: 5006}
     - Class: 114
-      Script: {instanceID: 6282}
+      Script: {instanceID: 5704}
     - Class: 114
-      Script: {instanceID: 6432}
+      Script: {instanceID: 6042}
     - Class: 114
-      Script: {instanceID: 6768}
+      Script: {instanceID: 6136}
     - Class: 114
-      Script: {instanceID: 7104}
+      Script: {instanceID: 6290}
     - Class: 114
-      Script: {instanceID: 7204}
+      Script: {instanceID: 6440}
     - Class: 114
-      Script: {instanceID: 7316}
+      Script: {instanceID: 6776}
     - Class: 114
-      Script: {instanceID: 7338}
+      Script: {instanceID: 7112}
     - Class: 114
-      Script: {instanceID: 7528}
+      Script: {instanceID: 7212}
     - Class: 114
-      Script: {instanceID: 8338}
+      Script: {instanceID: 7324}
     - Class: 114
-      Script: {instanceID: 9034}
+      Script: {instanceID: 7346}
     - Class: 114
-      Script: {instanceID: 9500}
+      Script: {instanceID: 7536}
     - Class: 114
-      Script: {instanceID: 9692}
+      Script: {instanceID: 8346}
+    - Class: 114
+      Script: {instanceID: 9042}
+    - Class: 114
+      Script: {instanceID: 9502}
+    - Class: 114
+      Script: {instanceID: 9510}
+    - Class: 114
+      Script: {instanceID: 9702}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -407,7 +419,7 @@ ScriptsOnlyBuild:
     className: LayoutElement
   - hash:
       serializedVersion: 2
-      Hash: 3bb1d797d7f81df232190eb1ab543746
+      Hash: 833d2255ad4de332ff48e8d579e570c5
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Meat
@@ -485,7 +497,7 @@ ScriptsOnlyBuild:
     className: UnityOnJointBreakMessageListener
   - hash:
       serializedVersion: 2
-      Hash: a579b333765783cf1ee1558eee68a3eb
+      Hash: 3941091b5e647875108f9d74e45d5856
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Player
@@ -527,10 +539,16 @@ ScriptsOnlyBuild:
     className: UnityOnBecameVisibleMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 76ce90a44e51051f7d72d9f4cac86380
+      Hash: c784b4b43601fe77d92931b57eed5462
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Fish
+  - hash:
+      serializedVersion: 2
+      Hash: 4ba262ceb37c8d740b3ca1883ec1e0c7
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Bun
   - hash:
       serializedVersion: 2
       Hash: e987953190eb4c12cf19df790566dc2c
@@ -575,7 +593,7 @@ ScriptsOnlyBuild:
     className: RuleOverrideTile
   - hash:
       serializedVersion: 2
-      Hash: 2b2d3b4139a2b25466741021b2a7babb
+      Hash: 969d7e05d2ab0d957f5cf86bb4f4179d
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Stove
@@ -791,6 +809,12 @@ ScriptsOnlyBuild:
     className: UnityOnPointerExitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 6a4d741a024a68b8a3cb006b180d839d
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: CuttingBoard
+  - hash:
+      serializedVersion: 2
       Hash: b747f5d40674055dd70e18552f1b0447
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -803,7 +827,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeGeometryCache
   - hash:
       serializedVersion: 2
-      Hash: c94cfd8b468906561eb7d9befe7022ad
+      Hash: 7064426e86308e074f3233ed8d27d504
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Food
@@ -867,6 +891,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: DictionaryAsset
+  - hash:
+      serializedVersion: 2
+      Hash: f36e9846738765d8ccef45840185e5f5
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Background
   - hash:
       serializedVersion: 2
       Hash: e7e95903ca66d58e1a7cbd71f824e16d
@@ -933,6 +963,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: GridLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 9d556b4208b825a5b44b632d8e20a70d
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Cheese
   - hash:
       serializedVersion: 2
       Hash: 7e8463d999efe373f67354282dd55fc3
@@ -1421,13 +1457,13 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: cb814df0e1885939f5f0776454bd96de
+      Hash: 03c07077a7701a02769b009933823a54
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Passenger
   - hash:
       serializedVersion: 2
-      Hash: 5882f3ee702f24c55a2246985a17feee
+      Hash: b740bfad6f3f1f0360144291b2e33290
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Ingredient
@@ -1499,7 +1535,13 @@ ScriptsOnlyBuild:
     className: SpriteLibrarySourceAsset
   - hash:
       serializedVersion: 2
-      Hash: 97f78da93290705ebf19741f2f670f59
+      Hash: fa14d4630396ff675ba5e9728d580c82
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: UpgradeSlot
+  - hash:
+      serializedVersion: 2
+      Hash: 0a9c966fad2ecc23090ffda07e21db2e
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Table
@@ -1511,7 +1553,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: c655794233550b560ef596d7ae5dd24a
+      Hash: c30ceb0405062af12dc0d6baa2a2acfc
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Plate
@@ -1562,4 +1604,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/LoseScreen.unity
-  playerPath: /Users/indy/Desktop/WebGL_Airline1.0.1
+  playerPath: /Users/indy/Desktop/Airplane0.2.3

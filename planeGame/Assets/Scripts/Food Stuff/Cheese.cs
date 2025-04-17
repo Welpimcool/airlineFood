@@ -15,8 +15,8 @@ public class Cheese : Ingredient
         setMaxState(1);
         setScale(1);
         GetComponentInChildren<Meter>().setMaxValue(getMaxValue());
-        setState(0);
-        setValue(0);
+        // setState(0);
+        // setValue(0);
         setCook(false);
         setCut(true);
         setName(getState()+"Cheese");
