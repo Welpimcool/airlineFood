@@ -30,7 +30,7 @@ public class PassengerManager : MonoBehaviour
     public void SelectPassenger()
     {
         selectedPassenger = PassengerList[Random.Range(0, PassengerList.Length)];
-        if (selectedPassenger.GetComponent<Passenger>().getIsOrderActive() && !selectedPassenger.GetComponent<Passenger>().getIsOnCooldown())
+        if (!selectedPassenger.GetComponent<Passenger>().getIsOrderActive() && !selectedPassenger.GetComponent<Passenger>().getIsOnCooldown())
         {
             selectedPassenger.GetComponent<Passenger>().StartCoroutine(selectedPassenger.GetComponent<Passenger>().Order(setOrderTime()));
             Debug.Log(selectedPassenger);
