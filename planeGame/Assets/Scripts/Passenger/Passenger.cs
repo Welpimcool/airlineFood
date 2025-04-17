@@ -119,10 +119,11 @@ public class Passenger : MonoBehaviour
                 annoyed = false;
                 chair.GetComponent<SpriteRenderer>().color = Color.red;
                 isOrderActive = false;
+                isOnCooldown = true;
 
             }
         }
-        isOnCooldown = true;
+        
     }
     public string selectFood()
     {
@@ -150,6 +151,7 @@ public class Passenger : MonoBehaviour
             if (item.GetComponentInChildren<Ingredient>().getName().Equals(orderedItem)) {
                 //mark order as complete
                 isOrderActive = false;
+                isOnCooldown = true;
                 GetComponentInParent<PassengerManager>().OrderComplete();
 
 

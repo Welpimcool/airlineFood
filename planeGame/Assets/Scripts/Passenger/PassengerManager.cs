@@ -13,7 +13,7 @@ public class PassengerManager : MonoBehaviour
     public static int ordersCompleted;
     public static int angryPassengers;
     private int ordersFinished;
-    private int baseOrderTime = 90; //was 1 min (60)
+    private int baseOrderTime = 100; //was 1.5 min (90)
     
     public static float survivalTime;
     // Start is called before the first frame update
@@ -74,10 +74,10 @@ public class PassengerManager : MonoBehaviour
         survivalTime += Time.deltaTime;
     }
     private IEnumerator passOnStart() {
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < 3; i++)
         {
             SelectPassenger();
-            yield return new WaitForSeconds(Random.Range(0,8));
+            yield return new WaitForSeconds(Random.Range(0,1)); //was 8
         }
         
     }
