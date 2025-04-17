@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stove : Table
 {
-    public static float speed = 1;
+    public static float speed = 1.5f;
     // Start is called before the first frame update
     void Start()
     {

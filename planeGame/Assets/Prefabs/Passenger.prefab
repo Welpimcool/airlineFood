@@ -268,6 +268,7 @@ MonoBehaviour:
   orderText: {fileID: 7410124312915907567}
   SprRend: {fileID: 5067527522730752820}
   foodObject: {fileID: 112150227504496519, guid: 6f8c1b5e69f6d4bca8893bc72366b7b6, type: 3}
+  chair: {fileID: 0}
 --- !u!61 &4500578828696559467
 BoxCollider2D:
   m_ObjectHideFlags: 0
