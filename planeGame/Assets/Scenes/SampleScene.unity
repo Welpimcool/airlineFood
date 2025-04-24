@@ -11884,6 +11884,7 @@ GameObject:
   m_Component:
   - component: {fileID: 892750668}
   - component: {fileID: 892750669}
+  - component: {fileID: 892750670}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -11920,6 +11921,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orderSheet: {fileID: 8818412267421848213, guid: e63568769baf648d8bd1c3a4a8f06977, type: 3}
+--- !u!114 &892750670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892750667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3adeb5894c0279c41a06b5c96a01e111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sky: {fileID: 853199337}
+  rain: {fileID: 2109866078}
+  snow: {fileID: 764080712}
+  powerOut: {fileID: 548466489}
+  time: 0
+  eventsToday: 0
 --- !u!4 &902556304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9106164460771458735, guid: 11cf635b682764bb58ae79304cec76c6, type: 3}
@@ -14274,7 +14293,6 @@ GameObject:
   - component: {fileID: 1464051356}
   - component: {fileID: 1464051355}
   - component: {fileID: 1464051359}
-  - component: {fileID: 1464051360}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -14436,22 +14454,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &1464051360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464051354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3adeb5894c0279c41a06b5c96a01e111, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sky: {fileID: 853199337}
-  rain: {fileID: 2109866078}
-  snow: {fileID: 764080712}
-  powerOut: {fileID: 548466489}
 --- !u!1001 &1464818384
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject orderSheet;
+    public static int day;
+    public static bool isEndless;
     private List<GameObject> sheets;
     private float offset = 1;
     private List<GameObject> orderList;
@@ -17,7 +19,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-
+        day = 1;
+        isEndless = true;
     }
 
     // Update is called once per frame
