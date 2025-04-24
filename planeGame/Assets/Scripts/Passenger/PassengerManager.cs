@@ -14,6 +14,8 @@ public class PassengerManager : MonoBehaviour
     public static int angryPassengers;
     private int ordersFinished;
     private int baseOrderTime = 100; //was 1.5 min (90)
+    public static int numOrders = 3;
+    public static List<GameObject> orderList = new List<GameObject> {};
     
     public static float survivalTime;
     // Start is called before the first frame update
@@ -33,6 +35,7 @@ public class PassengerManager : MonoBehaviour
         if (!selectedPassenger.GetComponent<Passenger>().getIsOrderActive() && !selectedPassenger.GetComponent<Passenger>().getIsOnCooldown())
         {
             selectedPassenger.GetComponent<Passenger>().StartCoroutine(selectedPassenger.GetComponent<Passenger>().Order(setOrderTime()));
+            orderList.Add(selectedPassenger);
             Debug.Log(selectedPassenger);
         }
         else
@@ -50,6 +53,7 @@ public class PassengerManager : MonoBehaviour
     public void OrderComplete()
     {
         ordersFinished++;
+        orderList.RemoveAt(0);
         SelectPassenger();
         ordersCompleted++;
 
@@ -57,6 +61,7 @@ public class PassengerManager : MonoBehaviour
     public void OrderFailed()
     {
         ordersFinished++;
+        orderList.RemoveAt(0);
         SelectPassenger();
     }
     public float setOrderTime() 
@@ -74,10 +79,10 @@ public class PassengerManager : MonoBehaviour
         survivalTime += Time.deltaTime;
     }
     private IEnumerator passOnStart() {
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < numOrders; i++)
         {
             SelectPassenger();
-            yield return new WaitForSeconds(Random.Range(0,1)); //was 8
+            yield return new WaitForSeconds(Random.Range(0,8));
         }
         
     }
