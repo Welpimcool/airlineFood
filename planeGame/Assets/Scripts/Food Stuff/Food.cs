@@ -6,6 +6,7 @@ public class Food : Ingredient
 {
     private int spriteNum;
     [SerializeField] public Sprite[] sprites;
+    public static Sprite[] share;
     public SpriteRenderer spriteRenderer;
     
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class Food : Ingredient
         this.setList(new string[] {""});
         }
         spriteNum = 0;
+        share = sprites;
     }
 
     // Update is called once per frame

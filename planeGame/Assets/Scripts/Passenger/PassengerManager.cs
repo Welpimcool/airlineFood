@@ -82,7 +82,7 @@ public class PassengerManager : MonoBehaviour
         for(int i = 0; i < numOrders; i++)
         {
             SelectPassenger();
-            yield return new WaitForSeconds(Random.Range(0,8));
+            yield return new WaitForSeconds(Random.Range(2,8));
         }
         
     }
