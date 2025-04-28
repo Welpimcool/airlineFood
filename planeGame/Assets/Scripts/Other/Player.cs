@@ -129,8 +129,11 @@ public class Player : MonoBehaviour
                     Destroy(objHolding);
                 } else {
                     objHolding = hit.collider.GetComponent<IngredientSpawner>().onInteraction();
-                    objHolding = Instantiate(objHolding, body.transform.position, body.transform.rotation);
-                    holdItem(objHolding);
+                    if (objHolding != null) {
+                        objHolding = Instantiate(objHolding, body.transform.position, body.transform.rotation);
+                        holdItem(objHolding);
+                    }
+                    
                 }
             }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PassengerManager : MonoBehaviour
 {
@@ -21,11 +22,13 @@ public class PassengerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {  
-        survivalTime = 0;
-        AnnoyingPassenger.target = target;
-        AnnoyingPassenger.bathroom = bathroom;
-        SelectAnnoyingPassenger();
-        StartCoroutine("passOnStart");
+        if (SceneManager.GetActiveScene().buildIndex != 3) {
+            survivalTime = 0;
+            AnnoyingPassenger.target = target;
+            AnnoyingPassenger.bathroom = bathroom;
+            SelectAnnoyingPassenger();
+            StartCoroutine("passOnStart");
+        }
         
     }
     //Picks a random passenger to place an order, only picks one that isnt already chosen
