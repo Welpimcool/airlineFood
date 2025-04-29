@@ -31,88 +31,96 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction.x = Input.GetAxisRaw("Horizontal");
-        direction.y = Input.GetAxisRaw("Vertical");
-        direction.Normalize();
+        if (!GameManager.isPaused) {
 
-        if (direction != Vector2.zero) {
-            inpDirection = direction;
-        }
-        
-        if (Input.GetKeyDown(KeyCode.E)) {
-            pickup();
-        }
-        if (Input.GetKey(KeyCode.E)) {
-            cutCheck();
-        }
+            direction.x = Input.GetAxisRaw("Horizontal");
+            direction.y = Input.GetAxisRaw("Vertical");
+            direction.Normalize();
 
-        if (Input.GetKeyDown(KeyCode.M)) {
-            GetComponentInChildren<Ingredient>().addValue(1);
-        }
-        if (Input.GetKeyDown(KeyCode.N)) {
-            GetComponentInChildren<Ingredient>().addValue(-1);
-        }
-        if (Input.GetKeyDown(KeyCode.H)) {
-            GameManager.lose();
-        }
-        if (Input.GetKeyDown(KeyCode.B)) {
-            Debug.Log("held item name: "+GetComponentInChildren<Ingredient>().getName());
-        }
-        if (Input.GetKey(KeyCode.LeftShift)) {
-            if (curStamina > 0 && cooldown == false){ //sprinting
-                sprinting = true;
-                curStamina -= Time.deltaTime;
-            } else {
-                cooldown = true;
+            if (direction != Vector2.zero) {
+                inpDirection = direction;
             }
-        } else { //not holding shift
-            sprinting = false;
-            if (!cooldown) {
-                curStamina += Time.deltaTime;
-                if (curStamina >= maxStamina) {
-                    curStamina = maxStamina;
+            
+            if (Input.GetKeyDown(KeyCode.E)) {
+                pickup();
+            }
+            if (Input.GetKey(KeyCode.E)) {
+                cutCheck();
+            }
+
+            //debug commands
+            if (Input.GetKeyDown(KeyCode.M)) {
+                GetComponentInChildren<Ingredient>().addValue(1);
+            }
+            if (Input.GetKeyDown(KeyCode.N)) {
+                GetComponentInChildren<Ingredient>().addValue(-1);
+            }
+            if (Input.GetKeyDown(KeyCode.H)) {
+                GameManager.lose();
+            }
+            if (Input.GetKeyDown(KeyCode.B)) {
+                Debug.Log("held item name: "+GetComponentInChildren<Ingredient>().getName());
+            }
+            //sprinting
+            if (Input.GetKey(KeyCode.LeftShift)) {
+                if (curStamina > 0 && cooldown == false){ //sprinting
+                    sprinting = true;
+                    curStamina -= Time.deltaTime;
+                } else {
+                    cooldown = true;
+                }
+            } else { //not holding shift
+                sprinting = false;
+                if (!cooldown) {
+                    curStamina += Time.deltaTime;
+                    if (curStamina >= maxStamina) {
+                        curStamina = maxStamina;
+                    }
                 }
             }
-        }
-        if (cooldown) {
-            sprinting = false;
-            curStamina += Time.deltaTime*0.75f;
-            if (curStamina >= maxStamina) {
-                curStamina = maxStamina;
-                cooldown = false;
+            if (cooldown) {
+                sprinting = false;
+                curStamina += Time.deltaTime*0.75f;
+                if (curStamina >= maxStamina) {
+                    curStamina = maxStamina;
+                    cooldown = false;
+                }
             }
-        }
 
-        staminaWheel.transform.localScale = new Vector3(curStamina/maxStamina,curStamina/maxStamina,0);
-        if (cooldown) {
-            staminaWheel.GetComponent<SpriteRenderer>().color = Color.red;
-        } else {
-            staminaWheel.GetComponent<SpriteRenderer>().color = Color.green;
+            staminaWheel.transform.localScale = new Vector3(curStamina/maxStamina,curStamina/maxStamina,0);
+            if (cooldown) {
+                staminaWheel.GetComponent<SpriteRenderer>().color = Color.red;
+            } else {
+                staminaWheel.GetComponent<SpriteRenderer>().color = Color.green;
+            }
         }
     }
 
     void FixedUpdate() 
     {
-        if (sprinting == false) {
-            body.velocity = direction * walkSpeed;
-        } else {
-            body.velocity = direction * sprintSpeed;
-        }
-        
-        if (direction != Vector2.zero) {
-            if (Input.GetAxisRaw("Horizontal") < 0) {
-                body.rotation = Vector2.Angle(Vector2.up, inpDirection);
-            } else if (Input.GetAxisRaw("Horizontal") > 0) {
-                body.rotation = Vector2.Angle(Vector2.up, inpDirection) * -1;
+        if (!GameManager.isPaused) {
+            if (sprinting == false) {
+                body.velocity = direction * walkSpeed;
             } else {
-                if (Input.GetAxisRaw("Vertical") > 0) {
-                    body.rotation = 0;
-                } else if (Input.GetAxisRaw("Vertical") < 0) {
-                    body.rotation = 180;
-                }
+                body.velocity = direction * sprintSpeed;
             }
             
+            if (direction != Vector2.zero) {
+                if (Input.GetAxisRaw("Horizontal") < 0) {
+                    body.rotation = Vector2.Angle(Vector2.up, inpDirection);
+                } else if (Input.GetAxisRaw("Horizontal") > 0) {
+                    body.rotation = Vector2.Angle(Vector2.up, inpDirection) * -1;
+                } else {
+                    if (Input.GetAxisRaw("Vertical") > 0) {
+                        body.rotation = 0;
+                    } else if (Input.GetAxisRaw("Vertical") < 0) {
+                        body.rotation = 180;
+                    }
+                }
+                
+            }
         }
+        
         
     }
     void pickup() {

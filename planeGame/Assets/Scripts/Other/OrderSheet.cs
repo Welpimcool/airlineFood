@@ -16,7 +16,9 @@ public class OrderSheet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.isPaused) {
+            DispSprite("");
+        }
     }
 
     public void DispSprite(string str) {

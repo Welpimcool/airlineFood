@@ -385,6 +385,7 @@
 "Assets/Scripts/screens/CameraFollow.cs"
 "Assets/Scripts/screens/LoseScreen.cs"
 "Assets/Scripts/screens/MainMenu.cs"
+"Assets/Scripts/screens/Transition.cs"
 -langversion:9.0
 /deterministic
 /optimize+

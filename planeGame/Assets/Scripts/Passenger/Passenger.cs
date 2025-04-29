@@ -20,7 +20,7 @@ public class Passenger : MonoBehaviour
     [SerializeField] SpriteRenderer SprRend;
     [SerializeField] GameObject foodObject;
     [SerializeField] GameObject chair;
-    
+    [SerializeField] GameObject angerIcon;
     Dictionary<string, int> foodList = new() //same as food list but only orderable items
     {
         // ["Food"] = 0,
@@ -38,6 +38,7 @@ public class Passenger : MonoBehaviour
     void Start()
     { 
         GetComponentInChildren<Canvas>().enabled = false;
+        angerIcon.SetActive(false);
     }
 
     void Update()
@@ -47,6 +48,11 @@ public class Passenger : MonoBehaviour
             if (coolDown >= maxCoolDown) {
                 isOnCooldown = false;
             }
+        }
+        if (angy) {
+            angerIcon.SetActive(true);
+            float temp = 0.5f*Mathf.Sin(GameManager.currentDayTime*0.5f)+0.25f;
+            angerIcon.transform.localScale = new Vector3(temp,temp,0);
         }
     }
     public float getTimeRemaining() //Gets time remaining in order
@@ -117,7 +123,7 @@ public class Passenger : MonoBehaviour
             {
                 angy = true;
                 annoyed = false;
-                chair.GetComponent<SpriteRenderer>().color = Color.red;
+                // chair.GetComponent<SpriteRenderer>().color = Color.red;
                 isOrderActive = false;
                 isOnCooldown = true;
 

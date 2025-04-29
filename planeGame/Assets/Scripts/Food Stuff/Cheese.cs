@@ -11,7 +11,7 @@ public class Cheese : Ingredient
     void Start()
     {
         if (!prop) {
-        setMaxValue(3);
+        setMaxValue(1.75f);
         setMaxState(1);
         setScale(1);
         GetComponentInChildren<Meter>().setMaxValue(getMaxValue());
