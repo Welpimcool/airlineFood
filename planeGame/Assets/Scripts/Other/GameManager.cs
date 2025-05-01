@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject canvas;
     [SerializeField] GameObject dayMeter;
     [SerializeField] GameObject menu;
-    
+    [SerializeField] GameObject player;    
     public static int day = 1;
     public static bool isEndless;
     private List<GameObject> orderList;
@@ -111,5 +111,9 @@ public class GameManager : MonoBehaviour
     }
     public void QuitToMenu() {
         SceneManager.LoadScene(0);
+    }
+    public void Stuck() {
+        player.transform.position = new Vector3(0,-15,0);
+        Unpause();
     }
 }
