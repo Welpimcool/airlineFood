@@ -28,4 +28,10 @@ public class Meter : MonoBehaviour
         fill.enabled = true;
         border.enabled = true;
     }
+    public float getValue() {
+        return Slider.value;
+    }
+    public float getMaxValue() {
+        return Slider.maxValue;
+    }
 }

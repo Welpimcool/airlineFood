@@ -46,6 +46,10 @@ public class Player : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.E)) {
                 cutCheck();
+            } else {
+                if (objHolding != null) {
+                    holdItem(objHolding);
+                }
             }
 
             //debug commands
@@ -203,12 +207,20 @@ public class Player : MonoBehaviour
                     if (objHolding.GetComponent<Ingredient>().getCut()) {
                         objHolding.GetComponent<Ingredient>().addValue(Time.deltaTime*CuttingBoard.getSpeed());
                         hit.collider.GetComponent<CuttingBoard>().setAnimation(true);
+                        hit.collider.GetComponent<CuttingBoard>().toPos(objHolding);
                         if (objHolding.GetComponent<Ingredient>().getState() > objHolding.GetComponent<Ingredient>().getMaxState()) {
                             Destroy(objHolding);
                         }
                     }
                 }
-                
+            } else {
+                if (objHolding != null) {
+                    holdItem(objHolding);
+                }
+            }
+        } else {
+            if (objHolding != null) {
+                holdItem(objHolding);
             }
         }
     }

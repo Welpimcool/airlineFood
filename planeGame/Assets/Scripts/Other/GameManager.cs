@@ -54,10 +54,8 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (isPaused) {
                 Unpause();
-                menu.SetActive(false);
             } else {
                 Pause();
-                menu.SetActive(true);
             }
         }
 
@@ -78,8 +76,13 @@ public class GameManager : MonoBehaviour
                         if (orderList.Count > i) {
                             if (orderList[i].GetComponent<Passenger>().getOrderedFood() != "") {
                                 orderSheets[i].GetComponent<OrderSheet>().DispSprite(orderList[i].GetComponent<Passenger>().getOrderedFood());
+                                orderSheets[i].GetComponent<OrderSheet>().setMeterRefrence(orderList[i]);
                                 orderSheets[i].SetActive(true);
+                            } else {
+                                orderSheets[i].SetActive(false);
                             }
+                        } else {
+                            orderSheets[i].SetActive(false);
                         }
                     }
                 } else { //day ended
@@ -96,12 +99,17 @@ public class GameManager : MonoBehaviour
         
        
     }
-    public static void Pause() {
+    public void Pause() {
         isPaused = true;
         Time.timeScale = 0;
+        menu.SetActive(true);
     }
-    public static void Unpause() {
+    public void Unpause() {
         isPaused = false;
         Time.timeScale = 1;
+        menu.SetActive(false);
+    }
+    public void QuitToMenu() {
+        SceneManager.LoadScene(0);
     }
 }

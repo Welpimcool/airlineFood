@@ -51,7 +51,7 @@ public class Passenger : MonoBehaviour
         }
         if (angy) {
             angerIcon.SetActive(true);
-            float temp = 0.5f*Mathf.Sin(GameManager.currentDayTime*0.5f)+0.25f;
+            float temp = 0.15f*Mathf.Sin(GameManager.currentDayTime)+0.25f;
             angerIcon.transform.localScale = new Vector3(temp,temp,0);
         }
     }
@@ -98,8 +98,9 @@ public class Passenger : MonoBehaviour
                 if (!angy) 
                 {
                     chair.GetComponent<SpriteRenderer>().color = Color.yellow;
+                    annoyed = true;
                 }
-                annoyed = true; //maybe make it so they cannot be annoyed and angry?
+                
             }
             //idk why this is needed but it is
             yield return null;
@@ -114,7 +115,7 @@ public class Passenger : MonoBehaviour
         else
         {
             Debug.Log("Order Failed");
-            GetComponentInParent<PassengerManager>().OrderFailed();
+            GetComponentInParent<PassengerManager>().OrderFailed(this.gameObject);
             if (angy)
             {
                 GameManager.lose();
@@ -123,7 +124,7 @@ public class Passenger : MonoBehaviour
             {
                 angy = true;
                 annoyed = false;
-                // chair.GetComponent<SpriteRenderer>().color = Color.red;
+                chair.GetComponent<SpriteRenderer>().color = Color.white;
                 isOrderActive = false;
                 isOnCooldown = true;
 
@@ -143,7 +144,7 @@ public class Passenger : MonoBehaviour
         return list[Random.Range(0, 2)];
     }
     public void displayFood() {
-        orderedItem = selectFood();
+        // orderedItem = selectFood();
         Debug.Log("orderedItem:"+orderedItem);
         displaySprite = foodObject.GetComponent<Food>().getSpriteImg(findSprite(orderedItem));
         SprRend.sprite = displaySprite;
@@ -158,7 +159,7 @@ public class Passenger : MonoBehaviour
                 //mark order as complete
                 isOrderActive = false;
                 isOnCooldown = true;
-                GetComponentInParent<PassengerManager>().OrderComplete();
+                GetComponentInParent<PassengerManager>().OrderComplete(this.gameObject);
 
 
                 Debug.Log("order filled");

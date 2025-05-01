@@ -6,6 +6,7 @@ using UnityEngine;
 public class CuttingBoard : MonoBehaviour
 {
     [SerializeField] GameObject Knife;
+    [SerializeField] GameObject pos;
     public static float speed = 1f;
     public bool isMoving = false;
     // Start is called before the first frame update
@@ -19,7 +20,7 @@ public class CuttingBoard : MonoBehaviour
     {
         if (isMoving) {
             var r = Knife.transform.eulerAngles;
-            Knife.transform.rotation = UnityEngine.Quaternion.Euler(r.x, r.y, 45*Mathf.Sin(GameManager.currentDayTime)+45);
+            Knife.transform.rotation = UnityEngine.Quaternion.Euler(r.x, r.y, 45*Mathf.Sin(5*GameManager.currentDayTime)-45);
         } else {
             Knife.transform.rotation = UnityEngine.Quaternion.Euler(0,0,0);
         }
@@ -40,5 +41,9 @@ public class CuttingBoard : MonoBehaviour
     // }
     public void setAnimation(bool a) {
         isMoving = a;
+    }
+    public void toPos(GameObject item) {
+        item.transform.position = pos.transform.position;
+        item.transform.rotation = pos.transform.rotation;
     }
 }

@@ -5,12 +5,14 @@ using UnityEngine;
 public class OrderSheet : MonoBehaviour
 {
     [SerializeField] GameObject foodObject;
+    [SerializeField] GameObject meter;
+    private GameObject meterRefrence;
     private Sprite displaySprite;
     [SerializeField] SpriteRenderer SprRend;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -19,9 +21,18 @@ public class OrderSheet : MonoBehaviour
         if (GameManager.isPaused) {
             DispSprite("");
         }
+        if (meter != null) {
+            if (meterRefrence != null) {
+                meter.GetComponent<Meter>().setMaxValue(meterRefrence.GetComponentInChildren<Meter>().getMaxValue());
+                meter.GetComponent<Meter>().setValue(meterRefrence.GetComponentInChildren<Meter>().getValue());
+                // Debug.Log("set meter to a value of "+meterRefrence.GetComponentInChildren<Meter>().getValue());
+            }
+            
+        }
     }
 
     public void DispSprite(string str) {
+        // Debug.Log("displaying sprite: "+str);
         if (str != "") {
             displaySprite = foodObject.GetComponent<Food>().getSpriteImg(findSprite(str));
             SprRend.sprite = displaySprite;
@@ -60,5 +71,8 @@ public class OrderSheet : MonoBehaviour
             }  
         }
         return 0;
+    }
+    public void setMeterRefrence(GameObject refr) {
+        meterRefrence = refr;
     }
 }

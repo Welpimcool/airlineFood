@@ -55,26 +55,31 @@ public class PassengerManager : MonoBehaviour
     public void SelectAnnoyingPassenger()
     {
         selectedPassenger = annoyingPassengerList[Random.Range(0, annoyingPassengerList.Length)];
-        selectedPassenger.GetComponent<AnnoyingPassenger>().StartCoroutine(selectedPassenger.GetComponent<AnnoyingPassenger>().imWalkinEre());
+        if (selectedPassenger != null) {
+            selectedPassenger.GetComponent<AnnoyingPassenger>().StartCoroutine(selectedPassenger.GetComponent<AnnoyingPassenger>().imWalkinEre());
+        } else {
+            Debug.Log("ANNOYING PASSENGER IS DISABLED/EMPTY");
+        }
+        
         // Debug.Log(selectedPassenger);
     }
-    public void OrderComplete()
+    public void OrderComplete(GameObject pass)
     {
         ordersFinished++;
-        orderList.RemoveAt(0);
-        SelectPassenger();
+        orderList.Remove(pass);
         ordersCompleted++;
+        StartCoroutine("waitForNewPass");
 
     }
-    public void OrderFailed()
+    public void OrderFailed(GameObject pass)
     {
         ordersFinished++;
-        orderList.RemoveAt(0);
-        SelectPassenger();
+        orderList.Remove(pass);
+        StartCoroutine("waitForNewPass");
     }
     public float setOrderTime() 
     {
-        float i = baseOrderTime * Mathf.Pow((0.05f * Random.Range(18, 19)), (int) (ordersFinished/4));
+        float i = baseOrderTime * Mathf.Pow(0.05f * Random.Range(18, 19),ordersFinished/4);
         return i;
     }
     // Update is called once per frame
@@ -87,11 +92,15 @@ public class PassengerManager : MonoBehaviour
         survivalTime += Time.deltaTime;
     }
     private IEnumerator passOnStart() {
+        yield return new WaitForSeconds(Random.Range(5,15));
         for(int i = 0; i < numOrders; i++)
         {
             SelectPassenger();
             yield return new WaitForSeconds(Random.Range(2,8));
         }
-        
+    }
+    private IEnumerator waitForNewPass() {
+        yield return new WaitForSeconds(Random.Range(2,8));
+        SelectPassenger();
     }
 }
