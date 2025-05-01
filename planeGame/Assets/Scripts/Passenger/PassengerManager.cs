@@ -22,12 +22,17 @@ public class PassengerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {  
-        if (SceneManager.GetActiveScene().buildIndex != 3) {
+        if (SceneManager.GetActiveScene().buildIndex == 1) {
             survivalTime = 0;
             AnnoyingPassenger.target = target;
             AnnoyingPassenger.bathroom = bathroom;
             SelectAnnoyingPassenger();
             StartCoroutine("passOnStart");
+        } else {
+            foreach(GameObject i in PassengerList) {
+                i.GetComponent<Passenger>().disable();
+                // i.SetActive(false);
+            }
         }
         
     }

@@ -205,4 +205,11 @@ public class Passenger : MonoBehaviour
         }
         return 0;
     }
+
+    public void disable() //disable all visual elements and if needed function ones (if not called by other scripts)
+    {
+        GetComponentInChildren<Canvas>().enabled = false;
+        angerIcon.SetActive(false);
+        SprRend.enabled = false;
+    }
 }

@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
             if (!isEndless) {
             dayMeter.GetComponent<Meter>().setMaxValue(dayTime);
             }
+        } else {
+            dayMeter.SetActive(false);
         }
         
         
