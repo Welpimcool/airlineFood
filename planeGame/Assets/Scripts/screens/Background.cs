@@ -32,4 +32,31 @@ public class Background : MonoBehaviour
         //     }
         // }
     }
+
+    public void Flash(float lasting, float returnFrames, Color flashColor)
+    {
+        StartCoroutine(DoFlash(lasting, returnFrames, flashColor));
+    }
+
+    private IEnumerator DoFlash(float lasting, float returnFrames, Color flashColor)
+    {
+        Color initialColor = transform.GetChild(0).GetComponent<SpriteRenderer>().color;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).GetComponent<SpriteRenderer>().color = flashColor;
+        }
+
+        yield return new WaitForSeconds(lasting);
+
+        for (float i = 0; i < returnFrames; i++)
+        {
+            yield return new WaitForEndOfFrame();
+            for (int o = 0; o < transform.childCount; o++)
+            {
+                transform.GetChild(o).GetComponent<SpriteRenderer>().color = Color.Lerp(
+                    transform.GetChild(o).GetComponent<SpriteRenderer>().color,
+                    initialColor, i / returnFrames);
+            }
+        }
+    }
 }

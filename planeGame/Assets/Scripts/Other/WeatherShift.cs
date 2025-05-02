@@ -17,11 +17,27 @@ public class WeatherShift : MonoBehaviour
     public int eventsToday;
     public static bool thunderstorm;
     public static bool strongWind;
+    public Background backgroundScript;
+    public Color thunderstormFlashColor;
 
     public void Start()
     {
- 
+        StartCoroutine(LightningTest());
     }
+
+    //delete this method later
+    private IEnumerator LightningTest()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(8f);
+            backgroundScript.Flash(.2f, 1400f, thunderstormFlashColor);
+
+            print("Flash");
+        }
+        
+    }
+
     void Update()
     {
         time += Time.deltaTime;
@@ -60,8 +76,8 @@ public class WeatherShift : MonoBehaviour
         }
         else
         {
-            sky.SetActive(false);
-            rain.SetActive(false);
+            //sky.SetActive(false);
+            //rain.SetActive(false);
         }
     }
     public void selectWeatherEvent()
@@ -97,6 +113,8 @@ public class WeatherShift : MonoBehaviour
         sky.SetActive(true);
         rain.SetActive(true);
     }
+
+    //blizzard particles done
     public void blizzard()
     {
         snow.SetActive(true);
