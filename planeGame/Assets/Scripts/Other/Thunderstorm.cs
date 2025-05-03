@@ -16,7 +16,7 @@ public class Thunderstorm : MonoBehaviour
 
     private void OnDisable()
     {
-        backgroundScript.Lighten(1200f);
+        backgroundScript.Lighten(1400f);
         StopCoroutine(Cycle());
     }
 

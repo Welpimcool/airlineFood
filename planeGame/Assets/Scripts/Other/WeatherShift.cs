@@ -31,9 +31,15 @@ public class WeatherShift : MonoBehaviour
             selectWeatherEvent();
         }
         
-        if (eventsToday == 1 && time > 40)
+        if (eventsToday == 1 && time > 40 && time < 50)
         {
             stopWeatherEvent();
+        }
+
+        if (time >= 50)
+        {
+            time = 0;
+            eventsToday = 0;
         }
     }
 
