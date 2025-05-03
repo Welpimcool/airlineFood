@@ -11,6 +11,7 @@ public class WeatherShift : MonoBehaviour
     [SerializeField] public GameObject sky;
     [SerializeField] public GameObject rain;
     [SerializeField] public GameObject snow;
+    [SerializeField] public GameObject thunder;
     [SerializeField] public GameObject powerOut;
     public static int weather = 0;
     public float time;
@@ -19,99 +20,55 @@ public class WeatherShift : MonoBehaviour
     public static bool strongWind;
     public Background backgroundScript;
     public Color thunderstormFlashColor;
-
-    public void Start()
-    {
-        StartCoroutine(LightningTest());
-    }
-
-    //delete this method later
-    private IEnumerator LightningTest()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(8f);
-            backgroundScript.Flash(.2f, 1400f, thunderstormFlashColor);
-
-            print("Flash");
-        }
-        
-    }
+    public ParticleSystem thunderstormParticles;
 
     void Update()
     {
         time += Time.deltaTime;
-        if (time > 60 && (eventsToday < 1||GameManager.isEndless == true))
+        if (time > 10 && (eventsToday < 1||GameManager.isEndless == true))
         {
-            
+            eventsToday += 1;
+            selectWeatherEvent();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        
+        if (eventsToday == 1 && time > 40)
         {
-            
-            powerOut.SetActive(false);
-            weather = 1;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-           
-            powerOut.SetActive(false);
-            weather = 0;
-            snow.SetActive(false);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-
-            
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            snow.SetActive(true);
-            weather = 3;
-
-        }
-        if (weather == 1)
-        {
-            sky.SetActive(true);
-            rain.SetActive(true);
-        }
-        else
-        {
-            //sky.SetActive(false);
-            //rain.SetActive(false);
+            stopWeatherEvent();
         }
     }
+
     public void selectWeatherEvent()
     {
-        int events = UnityEngine.Random.Range(1, 7);
+        int events = UnityEngine.Random.Range(1, 3);
         if (events == 1)
         {
-            
+            weather = 1;
+            thunderStorm();
         }
         if (events == 2)
         {
-
-        }
-        if (events == 3)
-        {
-
-        }
-        if (events == 4)
-        {
-
-        }
-        if (events == 5)
-        {
-
-        }
-        if (events == 6)
-        {
-
+            weather = 2;
+            blizzard();
         }
     }
+
+    public void stopWeatherEvent()
+    {
+        if (weather == 1)
+        {
+            rain.SetActive(false);
+            thunder.SetActive(false);
+        }
+        if (weather == 2)
+        {
+            snow.SetActive(false);
+        }
+    }
+
     public void thunderStorm()
     {
-        sky.SetActive(true);
         rain.SetActive(true);
+        thunder.SetActive(true);
     }
 
     //blizzard particles done

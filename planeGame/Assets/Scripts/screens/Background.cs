@@ -8,10 +8,12 @@ public class Background : MonoBehaviour
     private float[] pos;
     private float max = -50f;
     private float speed = 2f;
+    private Color startColor;
     // Start is called before the first frame update
     void Start()
     {
         pos = new float[] {-23.85f,0f,23.85f,47.7f};
+        startColor = transform.GetChild(0).GetComponent<SpriteRenderer>().color;
     }
 
     // Update is called once per frame
@@ -33,14 +35,13 @@ public class Background : MonoBehaviour
         // }
     }
 
-    public void Flash(float lasting, float returnFrames, Color flashColor)
+    public void Flash(float lasting, float returnFrames, Color flashColor, Color dimColor)
     {
-        StartCoroutine(DoFlash(lasting, returnFrames, flashColor));
+        StartCoroutine(DoFlash(lasting, returnFrames, flashColor, dimColor));
     }
 
-    private IEnumerator DoFlash(float lasting, float returnFrames, Color flashColor)
+    private IEnumerator DoFlash(float lasting, float returnFrames, Color flashColor, Color dimColor)
     {
-        Color initialColor = transform.GetChild(0).GetComponent<SpriteRenderer>().color;
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).GetComponent<SpriteRenderer>().color = flashColor;
@@ -48,14 +49,61 @@ public class Background : MonoBehaviour
 
         yield return new WaitForSeconds(lasting);
 
-        for (float i = 0; i < returnFrames; i++)
+        for (float i = 0; i < returnFrames/2; i++)
         {
             yield return new WaitForEndOfFrame();
             for (int o = 0; o < transform.childCount; o++)
             {
                 transform.GetChild(o).GetComponent<SpriteRenderer>().color = Color.Lerp(
                     transform.GetChild(o).GetComponent<SpriteRenderer>().color,
-                    initialColor, i / returnFrames);
+                    dimColor, i / returnFrames);
+            }
+        }
+
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).GetComponent<SpriteRenderer>().color = dimColor;
+        }
+
+
+        print("done flashing");
+    }
+
+    public void Dim(float dimFrames, Color endColor)
+    {
+        StartCoroutine(DoDim(dimFrames, endColor));
+    }
+
+    private IEnumerator DoDim(float dimFrames, Color endColor)
+    {
+        for (float i = 0; i < dimFrames; i++)
+        {
+            yield return new WaitForEndOfFrame();
+            for (int o = 0; o < transform.childCount; o++)
+            {
+                transform.GetChild(o).GetComponent<SpriteRenderer>().color = Color.Lerp(
+                    transform.GetChild(o).GetComponent<SpriteRenderer>().color,
+                    endColor, i / dimFrames);
+            }
+        }
+    }
+
+    public void Lighten(float lightenFrames)
+    {
+        StartCoroutine(DoLighten(lightenFrames));
+    }
+
+    private IEnumerator DoLighten(float lightenFrames)
+    {
+        for (float i = 0; i < lightenFrames; i++)
+        {
+            yield return new WaitForEndOfFrame();
+            for (int o = 0; o < transform.childCount; o++)
+            {
+                transform.GetChild(o).GetComponent<SpriteRenderer>().color = Color.Lerp(
+                    transform.GetChild(o).GetComponent<SpriteRenderer>().color,
+                    startColor, i / lightenFrames);
             }
         }
     }
