@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -13,34 +14,54 @@ public class WeatherShift : MonoBehaviour
     [SerializeField] public GameObject snow;
     [SerializeField] public GameObject thunder;
     [SerializeField] public GameObject powerOut;
+    [SerializeField] public GameObject eventMeter;
+    private Vector3 meterPos;
     public static int weather = 0;
-    public float time;
-    public int eventsToday;
+    public int eventStatus; //0 is no event, 1 is ongoing, 2 is ended
+    public float weatherEndTime;// a varible of at what current day time to end the weather event
+    public float weatherDuration = 30f; //weather lasts for 30 seconds
     public static bool thunderstorm;
     public static bool strongWind;
     public Background backgroundScript;
     public Color thunderstormFlashColor;
     public ParticleSystem thunderstormParticles;
 
+    void Start()
+    {
+        meterPos = eventMeter.transform.localPosition;
+        eventMeter.SetActive(false);
+        eventStatus = 0;
+    }
     void Update()
     {
-        time += Time.deltaTime;
-        if (time > 10 && (eventsToday < 1||GameManager.isEndless == true))
+        if (GameManager.currentDayTime > 30 && (eventStatus == 0 || GameManager.isEndless == true))
         {
-            eventsToday += 1;
+            eventStatus = 1;
             selectWeatherEvent();
+            weatherEndTime = GameManager.currentDayTime + weatherDuration;
+            eventMeter.SetActive(true);
+            eventMeter.GetComponent<Meter>().setMaxValue(weatherDuration);
         }
         
-        if (eventsToday == 1 && time > 40 && time < 50)
+        if (eventStatus == 1 && GameManager.currentDayTime > weatherEndTime)
         {
             stopWeatherEvent();
+            eventMeter.SetActive(false);
+            eventStatus = 2;
         }
 
-        if (time >= 50)
-        {
-            time = 0;
-            eventsToday = 0;
+        if (eventStatus == 1) {
+            eventMeter.GetComponent<Meter>().setValue(weatherEndTime - GameManager.currentDayTime);
+            float temp = 5f*Mathf.Sin(2*GameManager.currentDayTime);
+            eventMeter.transform.localPosition = meterPos + new Vector3(0,temp,0);
         }
+
+
+        // if (time >= 50) //not needed due to already reseting days
+        // {
+        //     time = 0;
+        //     eventsToday = 0;
+        // }
     }
 
     public void selectWeatherEvent()
@@ -58,7 +79,7 @@ public class WeatherShift : MonoBehaviour
         }
     }
 
-    public void stopWeatherEvent()
+    public void stopWeatherEvent() //maybe make stopWeatherEvent stop all weather no matter what like previous clear method, and removes the need or the weather varible
     {
         if (weather == 1)
         {
