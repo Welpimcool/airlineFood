@@ -49,6 +49,7 @@ public class Passenger : MonoBehaviour
             coolDown += Time.deltaTime;
             if (coolDown >= maxCoolDown) {
                 isOnCooldown = false;
+                coolDown = 0;
             }
         }
         if (angy) {
@@ -223,5 +224,8 @@ public class Passenger : MonoBehaviour
     }
     public void setIsWalking(bool a) {
         isWalking = a;
+    }
+    public void setIsOnCooldown(bool a) {
+        isOnCooldown = a;
     }
 }

@@ -18,7 +18,7 @@ public class AnnoyingPassenger : MonoBehaviour
     {
 
     }
-    public IEnumerator imWalkinEre() 
+    public IEnumerator imWalkinEre(PassengerManager man) 
     {
 //Waits to make sure every thing else is initialized, sets origin, initializes agent
         yield return new WaitForSeconds(1f);
@@ -65,8 +65,9 @@ public class AnnoyingPassenger : MonoBehaviour
                                 agent.enabled = false;
                                 transform.position = origin;
                                 GetComponentInParent<Passenger>().setIsWalking(false);
+                                GetComponentInParent<Passenger>().setIsOnCooldown(true);
                                 yield return new WaitForSeconds(Random.Range(0,5));
-                                GetComponentInParent<PassengerManager>().SelectAnnoyingPassenger();
+                                man.SelectAnnoyingPassenger();
                                 yield break;
                             }
                         }

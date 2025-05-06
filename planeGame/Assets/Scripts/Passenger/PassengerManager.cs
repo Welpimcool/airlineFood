@@ -57,7 +57,7 @@ public class PassengerManager : MonoBehaviour
         selectedPassenger = PassengerList[Random.Range(0, PassengerList.Length)]; //.GetComponent<Passenger>().getAnnoyingPassenger()
         if (!(selectedPassenger.GetComponent<Passenger>().getIsWalking() || selectedPassenger.GetComponent<Passenger>().getIsOnCooldown() || selectedPassenger.GetComponent<Passenger>().getIsOrderActive())) { //if they are not walking or ordering or on cooldown
             selectedPassenger.GetComponent<Passenger>().setIsWalking(true);
-            selectedPassenger.GetComponent<Passenger>().getAnnoyingPassenger().GetComponent<AnnoyingPassenger>().StartCoroutine(selectedPassenger.GetComponent<Passenger>().getAnnoyingPassenger().GetComponent<AnnoyingPassenger>().imWalkinEre());
+            selectedPassenger.GetComponent<Passenger>().getAnnoyingPassenger().GetComponent<AnnoyingPassenger>().StartCoroutine(selectedPassenger.GetComponent<Passenger>().getAnnoyingPassenger().GetComponent<AnnoyingPassenger>().imWalkinEre(this));
         }
         
         
