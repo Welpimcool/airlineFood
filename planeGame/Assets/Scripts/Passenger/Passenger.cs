@@ -11,6 +11,7 @@ public class Passenger : MonoBehaviour
     private bool angy = false;
     private bool isOrderActive = false;
     private bool isOnCooldown = false;
+    public bool isWalking = false;
     private float coolDown;
     private float maxCoolDown = 10f;
     private float timeRemaining;
@@ -21,6 +22,7 @@ public class Passenger : MonoBehaviour
     [SerializeField] GameObject foodObject;
     [SerializeField] GameObject chair;
     [SerializeField] GameObject angerIcon;
+    [SerializeField] GameObject AnnoyingPassanger;
     Dictionary<string, int> foodList = new() //same as food list but only orderable items
     {
         // ["Food"] = 0,
@@ -212,5 +214,14 @@ public class Passenger : MonoBehaviour
         GetComponentInChildren<Canvas>().enabled = false;
         angerIcon.SetActive(false);
         SprRend.enabled = false;
+    }
+    public GameObject getAnnoyingPassenger() {
+        return AnnoyingPassanger;
+    }
+    public bool getIsWalking() {
+        return isWalking;
+    }
+    public void setIsWalking(bool a) {
+        isWalking = a;
     }
 }

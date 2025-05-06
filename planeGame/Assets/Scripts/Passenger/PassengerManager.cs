@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PassengerManager : MonoBehaviour
 {
     [SerializeField] GameObject[] PassengerList;
-    [SerializeField] GameObject[] annoyingPassengerList;
+    // [SerializeField] GameObject[] annoyingPassengerList;
     [SerializeField] Transform target;
     [SerializeField] Transform bathroom;
     GameObject selectedPassenger;
@@ -54,12 +54,14 @@ public class PassengerManager : MonoBehaviour
     }
     public void SelectAnnoyingPassenger()
     {
-        selectedPassenger = annoyingPassengerList[Random.Range(0, annoyingPassengerList.Length)];
-        if (selectedPassenger != null) {
-            selectedPassenger.GetComponent<AnnoyingPassenger>().StartCoroutine(selectedPassenger.GetComponent<AnnoyingPassenger>().imWalkinEre());
-        } else {
-            Debug.Log("ANNOYING PASSENGER IS DISABLED/EMPTY");
+        selectedPassenger = PassengerList[Random.Range(0, PassengerList.Length)]; //.GetComponent<Passenger>().getAnnoyingPassenger()
+        if (!(selectedPassenger.GetComponent<Passenger>().getIsWalking() || selectedPassenger.GetComponent<Passenger>().getIsOnCooldown() || selectedPassenger.GetComponent<Passenger>().getIsOrderActive())) { //if they are not walking or ordering or on cooldown
+            selectedPassenger.GetComponent<Passenger>().setIsWalking(true);
+            selectedPassenger.GetComponent<Passenger>().getAnnoyingPassenger().GetComponent<AnnoyingPassenger>().StartCoroutine(selectedPassenger.GetComponent<Passenger>().getAnnoyingPassenger().GetComponent<AnnoyingPassenger>().imWalkinEre());
         }
+        
+        
+        
         
         // Debug.Log(selectedPassenger);
     }

@@ -64,6 +64,7 @@ public class AnnoyingPassenger : MonoBehaviour
                             {
                                 agent.enabled = false;
                                 transform.position = origin;
+                                GetComponentInParent<Passenger>().setIsWalking(false);
                                 yield return new WaitForSeconds(Random.Range(0,5));
                                 GetComponentInParent<PassengerManager>().SelectAnnoyingPassenger();
                                 yield break;
