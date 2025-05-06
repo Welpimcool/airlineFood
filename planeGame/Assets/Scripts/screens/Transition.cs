@@ -18,11 +18,7 @@ public class Transition : MonoBehaviour
 
     private void playAnimation()
     {
-        if (isLanding) { //play landing animation
-
-        } else { //play taking off animation
-
-        }
+        //play landing animation (if no time for animation make a basic day end screen)
         throw new NotImplementedException();
     }
 
@@ -31,12 +27,8 @@ public class Transition : MonoBehaviour
     {
         if (isTransition) {
             transTimer += Time.deltaTime;
-            if (transTimer >= 1f || Input.GetKeyDown(KeyCode.Escape)) { //change timer to fit with animation (maybe make if isLanding if animations take diff times)
-                if (isLanding) { //go to after day scene
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                } else { //go to Day scene
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-                }
+            if (transTimer >= 1f || Input.GetKeyDown(KeyCode.Escape)) { //change timer to fit with animation
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
                 
             }
         }
