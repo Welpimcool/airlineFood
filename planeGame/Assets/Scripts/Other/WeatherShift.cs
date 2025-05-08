@@ -15,6 +15,7 @@ public class WeatherShift : MonoBehaviour
     [SerializeField] public GameObject thunder;
     [SerializeField] public GameObject powerOut;
     [SerializeField] public GameObject eventMeter;
+    [SerializeField] public MusicManager music;
     private Vector3 meterPos;
     public static int weather = 0;
     public int eventStatus; //0 is no event, 1 is ongoing, 2 is ended
@@ -41,6 +42,7 @@ public class WeatherShift : MonoBehaviour
             weatherEndTime = GameManager.currentDayTime + weatherDuration;
             eventMeter.SetActive(true);
             eventMeter.GetComponent<Meter>().setMaxValue(weatherDuration);
+            music.PlayWeatherMusic();
         }
         
         if (eventStatus == 1 && GameManager.currentDayTime > weatherEndTime)
@@ -48,6 +50,7 @@ public class WeatherShift : MonoBehaviour
             stopWeatherEvent();
             eventMeter.SetActive(false);
             eventStatus = 2;
+            music.PlayNormalMusic();
         }
 
         if (eventStatus == 1) {
