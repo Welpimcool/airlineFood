@@ -9,6 +9,7 @@ public class CuttingBoard : MonoBehaviour
     [SerializeField] GameObject pos;
     public static float speed = 1f;
     public bool isMoving = false;
+    public ParticleSystem cuttingBoardParticles;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +22,12 @@ public class CuttingBoard : MonoBehaviour
         if (isMoving) {
             var r = Knife.transform.eulerAngles;
             Knife.transform.rotation = UnityEngine.Quaternion.Euler(r.x, r.y, 45*Mathf.Sin(5*GameManager.currentDayTime)-45);
+            var emission = cuttingBoardParticles.emission;
+            emission.enabled = true;
         } else {
             Knife.transform.rotation = UnityEngine.Quaternion.Euler(0,0,0);
+            var emission = cuttingBoardParticles.emission;
+            emission.enabled = false;
         }
         isMoving = false;
     }

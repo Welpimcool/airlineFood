@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Stove : Table
 {
+    public ParticleSystem stoveParticleSystem;
     public static float speed = 1.5f;
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,8 @@ public class Stove : Table
     void Update()
     {
         if (getHolding() != null) {
+            var emissionModule = stoveParticleSystem.emission;
+            emissionModule.enabled = true;
             if (getHolding().GetComponent<Ingredient>().getCook()) {
                 getHolding().GetComponentInChildren<Ingredient>().addValue(Time.deltaTime*speed);
             }
@@ -23,6 +26,11 @@ public class Stove : Table
                 kill();
                 Debug.Log("burned food, state:"+GetComponentInChildren<Ingredient>().getState());
             }
+        }
+        else
+        {
+            var emissionModule = stoveParticleSystem.emission;
+            emissionModule.enabled = false;
         }
     }
     public static void upgradeSpeed(float spd) {
