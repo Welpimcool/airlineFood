@@ -216,7 +216,7 @@ public class Player : MonoBehaviour
                     if (objHolding.GetComponent<Ingredient>().getCut()) {
                         objHolding.GetComponent<Ingredient>().addValue(Time.deltaTime*CuttingBoard.getSpeed());
                         hit.collider.GetComponent<CuttingBoard>().setAnimation(true);
-                        hit.collider.GetComponent<CuttingBoard>().toPos(objHolding);
+                        hit.collider.GetComponent<CuttingBoard>().toPos(objHolding,objScale);
                         if (objHolding.GetComponent<Ingredient>().getState() > objHolding.GetComponent<Ingredient>().getMaxState()) {
                             Destroy(objHolding);
                         }

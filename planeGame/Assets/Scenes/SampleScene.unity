@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 237218465}
   - component: {fileID: 237218464}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Nav Block2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,7 +436,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.5, y: -1, z: 1}
-  m_LocalScale: {x: 3.5, y: 22, z: 0}
+  m_LocalScale: {x: 4, y: 22, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7839920}
@@ -6260,7 +6260,7 @@ GameObject:
   - component: {fileID: 798427596}
   - component: {fileID: 798427595}
   m_Layer: 0
-  m_Name: Square (4)
+  m_Name: Nav Block1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6406,7 +6406,7 @@ GameObject:
   - component: {fileID: 810205573}
   - component: {fileID: 810205572}
   m_Layer: 0
-  m_Name: Square (3)
+  m_Name: Nav Block3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6584,7 +6584,7 @@ GameObject:
   - component: {fileID: 944876328}
   - component: {fileID: 944876327}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Nav Block4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6599,8 +6599,8 @@ Transform:
   m_GameObject: {fileID: 944876325}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 1, z: 1}
-  m_LocalScale: {x: 3.5, y: 22, z: 0}
+  m_LocalPosition: {x: -3.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 4, y: 22, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7839920}
@@ -6903,7 +6903,7 @@ GameObject:
   - component: {fileID: 1449890051}
   - component: {fileID: 1449890050}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: Nav Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

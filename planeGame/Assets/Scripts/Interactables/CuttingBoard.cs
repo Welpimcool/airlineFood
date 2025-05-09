@@ -42,8 +42,9 @@ public class CuttingBoard : MonoBehaviour
     public void setAnimation(bool a) {
         isMoving = a;
     }
-    public void toPos(GameObject item) {
+    public void toPos(GameObject item,float scale) {
         item.transform.position = pos.transform.position;
         item.transform.rotation = pos.transform.rotation;
+        item.transform.localScale = new UnityEngine.Vector3(scale*75,scale*75,1);
     }
 }
