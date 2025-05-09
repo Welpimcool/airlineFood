@@ -13,7 +13,7 @@ public class PowerOut : MonoBehaviour
 
     private void Start()
     {
-        initialColor = globalLight.color;
+        // initialColor = globalLight.color;
     }
 
     // Update is called once per frame

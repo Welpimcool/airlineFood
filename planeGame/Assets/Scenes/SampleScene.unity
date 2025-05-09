@@ -1328,7 +1328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 357c3d60deb31954289cc211ae55e985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalLight: {fileID: 900355858}
+  globalLight: {fileID: 0}
   lightRays: {fileID: 243628381}
   lightColor: {r: 1, g: 0.6627451, b: 0.49803922, a: 1}
   initialColor: {r: 0, g: 0, b: 0, a: 1}
@@ -11811,7 +11811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412f40dcae2b0da4aa5b91e0a7c5d775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalLight: {fileID: 900355858}
+  globalLight: {fileID: 0}
   initialColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &944876325
 GameObject:
@@ -28114,6 +28114,22 @@ PrefabInstance:
     - target: {fileID: 8983204431664687615, guid: 69b724c17df3e458ca5813ed4b0cc440, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065770482128509153, guid: 69b724c17df3e458ca5813ed4b0cc440, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.0273526
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065770482128509153, guid: 69b724c17df3e458ca5813ed4b0cc440, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.942739
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065770482128509153, guid: 69b724c17df3e458ca5813ed4b0cc440, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.5467
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065770482128509153, guid: 69b724c17df3e458ca5813ed4b0cc440, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.6545
       objectReference: {fileID: 0}
     - target: {fileID: 9104192295222431146, guid: 69b724c17df3e458ca5813ed4b0cc440, type: 3}
       propertyPath: m_AnchorMax.x

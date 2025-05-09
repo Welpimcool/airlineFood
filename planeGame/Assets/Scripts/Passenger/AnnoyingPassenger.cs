@@ -13,6 +13,7 @@ public class AnnoyingPassenger : MonoBehaviour
     public static Transform bathroom;
     private Animator anim;
     private SpriteRenderer spr;
+    private int personality;
 
 
 // Start is called before the first frame update
@@ -22,6 +23,14 @@ public class AnnoyingPassenger : MonoBehaviour
         spr = GetComponent<SpriteRenderer>();
         anim.SetInteger("State",0);
         Debug.Log("Start set state to zero");
+        personality = Random.Range(1,4); //picks between all 3 layers
+        anim.SetLayerWeight(personality,1f);
+        if (transform.position.x < 0) {
+            spr.flipX = true;
+        }
+        if (personality == 2) { //if kid
+            transform.localScale = new Vector3(transform.localScale.x/1.25f,transform.localScale.y/1.25f,1);
+        }
     }
     public IEnumerator imWalkinEre(PassengerManager man) 
     {
@@ -98,17 +107,13 @@ public class AnnoyingPassenger : MonoBehaviour
             if (angle == 0) {
                 anim.SetInteger("State",0);
             } else if ((angle >= 315 && angle <= 360) || (angle >= 0 && angle <= 45)) {
-                anim.SetInteger("State",2); //was 3
-                spr.flipX = true;
+                anim.SetInteger("State",3);
             } else if (angle > 45 && angle < 135) {
                 anim.SetInteger("State",4);
-                spr.flipX = false;
             } else if (angle >= 135 && angle <= 225) {
                 anim.SetInteger("State",2);
-                spr.flipX = false;
             } else if (angle > 225 && angle < 315) {
                 anim.SetInteger("State",1);
-                spr.flipX = false;
             }
             Debug.Log("state: "+anim.GetInteger("State"),this);
         }

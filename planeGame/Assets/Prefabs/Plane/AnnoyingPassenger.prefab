@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6173712663337314940}
   - component: {fileID: 7123380577273783525}
   - component: {fileID: 8265830848195079100}
-  - component: {fileID: 64796592620588509}
+  - component: {fileID: 7046369186314849134}
   m_Layer: 0
   m_Name: AnnoyingPassenger
   m_TagString: Untagged
@@ -121,8 +121,8 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!61 &64796592620588509
-BoxCollider2D:
+--- !u!70 &7046369186314849134
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -153,16 +153,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 3}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: -0.125}
+  m_Size: {x: 1.5, y: 2.75}
+  m_Direction: 0
