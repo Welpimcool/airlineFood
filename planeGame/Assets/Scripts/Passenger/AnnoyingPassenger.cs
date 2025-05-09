@@ -103,7 +103,7 @@ public class AnnoyingPassenger : MonoBehaviour
         if (agent != null) {
             float angleInDegrees = Mathf.Atan2(agent.desiredVelocity.y, agent.desiredVelocity.x) * Mathf.Rad2Deg;
             float angle = (float)Mathf.Repeat(angleInDegrees, 360f);
-            Debug.Log("Angle: "+angle);
+            // Debug.Log("Angle: "+angle);
             if (angle == 0) {
                 anim.SetInteger("State",0);
             } else if ((angle >= 315 && angle <= 360) || (angle >= 0 && angle <= 45)) {
@@ -115,7 +115,7 @@ public class AnnoyingPassenger : MonoBehaviour
             } else if (angle > 225 && angle < 315) {
                 anim.SetInteger("State",1);
             }
-            Debug.Log("state: "+anim.GetInteger("State"),this);
+            // Debug.Log("state: "+anim.GetInteger("State"),this);
         }
         
     }
