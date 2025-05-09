@@ -30,6 +30,7 @@ public class Table : MonoBehaviour
             objHolding = Instantiate(ingredient, body.transform.position, body.transform.rotation);
             objHolding.transform.position = body.transform.position + offset;
             objHolding.transform.parent = body.transform;
+            objHolding.transform.localScale /= 100;
             objHolding.GetComponentInChildren<Ingredient>().setValue(value);
             objHolding.GetComponentInChildren<Ingredient>().setState(ingredient.GetComponentInChildren<Ingredient>().getState());
             objHolding.GetComponentInChildren<Ingredient>().setName(ingredient.GetComponentInChildren<Ingredient>().getName());

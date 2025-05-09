@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
                 Debug.Log("held item name: "+GetComponentInChildren<Ingredient>().getName());
             }
             //sprinting
+            
             if (Input.GetKey(KeyCode.LeftShift)) {
                 if (curStamina > 0 && cooldown == false){ //sprinting
                     sprinting = true;
@@ -98,11 +99,13 @@ public class Player : MonoBehaviour
                 staminaWheel.GetComponent<SpriteRenderer>().color = Color.green;
             }
         }
+        
     }
 
     void FixedUpdate() 
     {
         if (!GameManager.isPaused) {
+            
             if (sprinting == false) {
                 body.velocity = direction * walkSpeed;
             } else {
@@ -114,6 +117,7 @@ public class Player : MonoBehaviour
                     body.rotation = Vector2.Angle(Vector2.up, inpDirection);
                 } else if (Input.GetAxisRaw("Horizontal") > 0) {
                     body.rotation = Vector2.Angle(Vector2.up, inpDirection) * -1;
+                    
                 } else {
                     if (Input.GetAxisRaw("Vertical") > 0) {
                         body.rotation = 0;
@@ -123,10 +127,15 @@ public class Player : MonoBehaviour
                 }
                 
             }
+            
         }
         
         
     }
+    // void LateUpdate()
+    // {
+    //     // GetComponent<Collider2D>().transform.rotation = Quaternion.identity;
+    // }
     void pickup() {
         RaycastHit2D hit = Physics2D.Raycast(body.position,inpDirection,3f,mask);
         Debug.DrawRay(body.position,inpDirection*3f,Color.red);
@@ -195,8 +204,8 @@ public class Player : MonoBehaviour
         item.transform.position = objPos.transform.position;
         // item.transform.position = new Vector3(item.transform.position.x+inpDirection.x,item.transform.position.y+inpDirection.y,0);
         item.transform.parent = objPos.transform;
-        item.transform.localScale = new Vector3(objScale,objScale,0);
-        item.transform.rotation = body.transform.rotation;
+        item.transform.localScale = new Vector3(objScale*100,objScale*100,0);
+        // item.transform.rotation = body.transform.rotation;
     }
     public void cutCheck() {
         RaycastHit2D hit = Physics2D.Raycast(body.position,inpDirection,3f,mask);
