@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
                 } else {
                     objHolding = hit.collider.GetComponent<IngredientSpawner>().onInteraction();
                     if (objHolding != null) {
-                        objHolding = Instantiate(objHolding, body.transform.position, body.transform.rotation);
+                        objHolding = Instantiate(objHolding, body.transform.position, objHolding.transform.rotation);
                         holdItem(objHolding);
                     }
                     

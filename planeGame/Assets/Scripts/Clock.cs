@@ -20,6 +20,6 @@ public class Clock : MonoBehaviour
         img1.transform.rotation = Quaternion.Euler(0, 0, (float) -Mathf.Repeat(GameManager.currentDayTime, 360f));
         img2.transform.rotation = Quaternion.Euler(0, 0, (float) -Mathf.Repeat(GameManager.currentDayTime*6, 360f));
         img3.transform.rotation = Quaternion.Euler(0, 0, (float) -Mathf.Repeat(GameManager.currentDayTime*360, 360f));
-        Debug.Log("time: "+(float)Mathf.Repeat(GameManager.currentDayTime, 360f));
+        // Debug.Log("time: "+(float)Mathf.Repeat(GameManager.currentDayTime, 360f));
     }
 }

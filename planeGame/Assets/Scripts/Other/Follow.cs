@@ -5,7 +5,7 @@ using UnityEngine;
 public class Follow : MonoBehaviour
 {
     [SerializeField] GameObject target;
-    private Vector3 offset = new Vector3(0,0.5f,0);
+    private Vector3 offset = new Vector3(0,0.6f,0);
     private Animator anim;
     // Start is called before the first frame update
     void Start()
