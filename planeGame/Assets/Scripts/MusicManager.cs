@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    public AudioClip normalMusic;
-    public AudioClip weatherMusic;
+    public AudioSource normalMusic;
+    public AudioSource weatherMusic;
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +26,9 @@ public class MusicManager : MonoBehaviour
 
     private IEnumerator PlayTSWeather()
     {
+        normalMusic.Stop();
         yield return new WaitForSeconds(.1f);
-        transform.GetComponent<AudioSource>().Stop();
-        transform.GetComponent<AudioSource>().clip = weatherMusic;
-        transform.GetComponent<AudioSource>().Play();
+        weatherMusic.Play();
     }
 
     public void PlayNormalMusic()
@@ -39,9 +38,8 @@ public class MusicManager : MonoBehaviour
 
     private IEnumerator PlayTSNormal()
     {
+        weatherMusic.Stop();
         yield return new WaitForSeconds(.1f);
-        transform.GetComponent<AudioSource>().Stop();
-        transform.GetComponent<AudioSource>().clip = normalMusic;
-        transform.GetComponent<AudioSource>().Play();
+        normalMusic.Play();
     }
 }

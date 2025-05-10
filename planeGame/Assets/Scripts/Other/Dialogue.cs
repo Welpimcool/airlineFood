@@ -9,11 +9,12 @@ public class Dialogue : MonoBehaviour
     public float timeBetweenChar = .01f;
     public float timeBetweenLine = 1f;
     public Canvas canvas;
+    public CanvasGroup canvasGroup;
     public List<string> messages = new List<string>();
     private List<string> messageQueue = new List<string>();
     private bool isRenderingMessages = false;
 
-    public void QueueMessage(string message)
+    public void QueueMessage(string message, float delay)
     {
         messageQueue.Add(message);
 
@@ -21,13 +22,14 @@ public class Dialogue : MonoBehaviour
         {
             print("rendering message");
             isRenderingMessages = true;
-            StartCoroutine(RenderMessages());
+            StartCoroutine(RenderMessages(delay));
         }
     }
 
-    private IEnumerator RenderMessages()
+    private IEnumerator RenderMessages(float delay)
     {
-        canvas.gameObject.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        canvasGroup.alpha = 1;
         text.text = "";
         while (messageQueue.Count != 0)
         {
@@ -44,6 +46,6 @@ public class Dialogue : MonoBehaviour
         }
 
         isRenderingMessages = false;
-        canvas.gameObject.SetActive(false);
+        canvasGroup.alpha = 0;
     }
 }

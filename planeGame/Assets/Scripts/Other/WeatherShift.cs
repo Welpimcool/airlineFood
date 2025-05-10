@@ -36,7 +36,7 @@ public class WeatherShift : MonoBehaviour
     }
     void Update()
     {
-        if (GameManager.currentDayTime > 5 && (eventStatus == 0 || GameManager.isEndless == true))
+        if (GameManager.currentDayTime > 30 && (eventStatus == 0 || GameManager.isEndless == true))
         {
             eventStatus = 1;
             selectWeatherEvent();
@@ -44,7 +44,7 @@ public class WeatherShift : MonoBehaviour
             weatherEndTime = GameManager.currentDayTime + weatherDuration;
             eventMeter.SetActive(true);
             eventMeter.GetComponent<Meter>().setMaxValue(weatherDuration);
-            //music.PlayWeatherMusic();
+            music.PlayWeatherMusic();
             
         }
         
@@ -72,24 +72,24 @@ public class WeatherShift : MonoBehaviour
 
     public void selectWeatherEvent()
     {
-        int events = UnityEngine.Random.Range(1, 2);
+        int events = UnityEngine.Random.Range(1, 4);
         if (events == 1)
         {
             weather = 1;
             thunderStorm();
-            dialogueManager.QueueMessage("Thunderstorm: Be careful, passengers will get annoyed much more easily");
+            dialogueManager.QueueMessage("Thunderstorm: Be careful, passengers will get annoyed much more easily", 1f);
         }
         if (events == 2)
         {
             weather = 2;
             blizzard();
-            dialogueManager.QueueMessage("Blizzard: Beware of strong winds that will knock food off of any surface");
+            dialogueManager.QueueMessage("Blizzard: It's so cold. Cook time and chop time doubles", 1f);
         }
         if (events == 3)
         {
             weather = 3;
             PowerOut();
-            dialogueManager.QueueMessage("Heat Wave: The plane has switched to back up power because of the heat");
+            dialogueManager.QueueMessage("Heat Wave: The plane has switched to back up power because of the heat", 1f);
         }
     }
 
@@ -100,15 +100,10 @@ public class WeatherShift : MonoBehaviour
 
     public void stopWeatherEvent() //maybe make stopWeatherEvent stop all weather no matter what like previous clear method, and removes the need or the weather varible
     {
-        if (weather == 1)
-        {
-            rain.SetActive(false);
-            thunder.SetActive(false);
-        }
-        if (weather == 2)
-        {
-            snow.SetActive(false);
-        }
+        rain.SetActive(false);
+        snow.SetActive(false);
+        thunder.SetActive(false);
+        powerOut.SetActive(false);
     }
 
     public void thunderStorm()

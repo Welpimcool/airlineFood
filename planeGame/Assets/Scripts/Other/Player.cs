@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     bool cooldown = false;
     [SerializeField] GameObject staminaWheel;
     [SerializeField] GameObject objPos;
+    public ParticleSystem pickupParticles;
     // Start is called before the first frame update
     void Start()
     {
@@ -142,7 +143,6 @@ public class Player : MonoBehaviour
         // Debug.Log("checking for interactables");
         
         if (hit) {
-
             // Debug.Log("checking for spawner");
             if (hit.collider.GetComponent<IngredientSpawner>() != null) {
                 // Debug.Log("Hit something: "+hit.collider.name);

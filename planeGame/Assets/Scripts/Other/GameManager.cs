@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public static int day = 1;
     public static bool isEndless;
     private List<GameObject> orderList;
-    public static float dayTime = 270f;
+    public static float dayTime = 70f;
     public static float currentDayTime;
     public static bool isPaused = false;
     // Start is called before the first frame update

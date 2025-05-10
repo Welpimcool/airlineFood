@@ -17,7 +17,9 @@ public class PassengerManager : MonoBehaviour
     private int baseOrderTime = 100; //was 1.5 min (90)
     public static int numOrders = 3;
     public static List<GameObject> orderList = new List<GameObject> {};
-    
+    [SerializeField] AudioSource correctAudio;
+    [SerializeField] AudioSource failedAudio;
+
     public static float survivalTime;
     // Start is called before the first frame update
     void Start()
@@ -73,13 +75,14 @@ public class PassengerManager : MonoBehaviour
         orderList.Remove(pass);
         ordersCompleted++;
         StartCoroutine("waitForNewPass");
-
+        correctAudio.PlayDelayed(.5f);
     }
     public void OrderFailed(GameObject pass)
     {
         ordersFinished++;
         orderList.Remove(pass);
         StartCoroutine("waitForNewPass");
+        failedAudio.PlayDelayed(.5f);
     }
     public float setOrderTime() 
     {
