@@ -23,7 +23,7 @@ public class AnnoyingPassenger : MonoBehaviour
         spr = GetComponent<SpriteRenderer>();
         anim.SetInteger("State",0);
         Debug.Log("Start set state to zero");
-        personality = Random.Range(1,4); //picks between all 3 layers
+        personality = Random.Range(0,3); //picks between all 3 layers
         anim.SetLayerWeight(personality,1f);
         if (transform.position.x < 0) {
             spr.flipX = true;
