@@ -9,6 +9,30 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d1ec30b98463574499c6e07bed335b1e
   - enabled: 1
+    path: Assets/Scenes/Tutorials/Tutorial 1.unity
+    guid: 5e7c364a96e86f4438959d0086cb6948
+  - enabled: 1
+    path: Assets/Scenes/Tutorials/Tutorial 2.unity
+    guid: a50252789f588394f8d54f6bd10d95f7
+  - enabled: 1
+    path: Assets/Scenes/Tutorials/Tutorial 3.unity
+    guid: 6bfdfcc06fa0d044fb4935226dfe0350
+  - enabled: 1
+    path: Assets/Scenes/Tutorials/Tutorial 4.unity
+    guid: 09bc8196a825ba94993a3f45d5f8f4d4
+  - enabled: 1
+    path: Assets/Scenes/Tutorials/Tutorial 5.unity
+    guid: 19a710c496880ba419368ee7f1bbdfef
+  - enabled: 1
+    path: Assets/Scenes/Tutorials/Tutorial 6.unity
+    guid: 3fd0b225b6ed34d489d0fc779c260a40
+  - enabled: 1
+    path: Assets/Scenes/Tutorials/Tutorial 7.unity
+    guid: f65c0e122756e4b4b93961d9654b3e19
+  - enabled: 1
+    path: Assets/Scenes/Tutorials/Tutorial 8.unity
+    guid: e6a55ec5d95b8e24992f9db198de0bc3
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1

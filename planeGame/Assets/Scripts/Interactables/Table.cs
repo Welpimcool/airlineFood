@@ -53,9 +53,13 @@ public class Table : MonoBehaviour
         }
     }
     public object[] grabItem() {
-        object[] a = {objHolding,objHolding.GetComponent<Ingredient>().getValue(),objHolding.GetComponent<Ingredient>().getState()};
-        objHolding = null;
-        return a;
+        if (objHolding != null)
+        {
+            object[] a = {objHolding,objHolding.GetComponent<Ingredient>().getValue(),objHolding.GetComponent<Ingredient>().getState()};
+            objHolding = null;
+            return a;
+        }
+        return null;
     }
 
     private void holdCombinedItem(GameObject ingredient) {

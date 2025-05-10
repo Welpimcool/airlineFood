@@ -23,7 +23,7 @@ public class Ingredient : MonoBehaviour
     public static Dictionary<String, int> spriteDict = new()
     {
         ["Food"] = 0,
-        ["1Meat Plate"] = 1,
+     //["1Meat Plate"] = 1,
         ["1Meat Bun"] = 2,
         ["Bun Plate"] = 3,
         ["1Meat Bun Plate"] = 4,

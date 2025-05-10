@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         isEndless = false; //was true
         currentDayTime = 0f;
         menu.SetActive(false);
-        if (SceneManager.GetActiveScene().buildIndex == 1) {
+        if (true) {
            for (int i = 0; i < PassengerManager.numOrders; i++) {
             orderSheets[i].GetComponent<OrderSheet>().DispSprite("");
             orderSheets[i].SetActive(false);
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
                 currentDayTime -= 30;
             }
 
-            if (SceneManager.GetActiveScene().buildIndex == 1) { //if in a day
+            if (true) { //if in a day
                 currentDayTime += Time.deltaTime;
                 dayMeter.GetComponent<Meter>().setValue(dayTime-currentDayTime);
                 orderList = PassengerManager.orderList;

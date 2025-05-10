@@ -26,7 +26,7 @@ public class PassengerManager : MonoBehaviour
     void Start()
     {
         baseOrderTime -= (GlobalDayManager.GetDay() - 1) * 7;
-        if (SceneManager.GetActiveScene().buildIndex == 1) {
+        if (true) {
             survivalTime = 0;
             AnnoyingPassenger.target = target;
             AnnoyingPassenger.bathroom = bathroom;
