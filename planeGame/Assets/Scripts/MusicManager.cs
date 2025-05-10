@@ -6,22 +6,29 @@ public class MusicManager : MonoBehaviour
 {
     public AudioSource normalMusic;
     public AudioSource weatherMusic;
+    public bool audioOn;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        audioOn = true;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void AudioOff()
     {
-        
+        audioOn = false;
+        normalMusic.Stop();
+        weatherMusic.Stop();
     }
-
+    public void AudioBackOn()
+    {
+        audioOn = true;
+        normalMusic.Play();
+    }
     public void PlayWeatherMusic()
     {
-        StartCoroutine(PlayTSWeather());
+        if (audioOn)
+        {
+            StartCoroutine(PlayTSWeather());
+        }
     }
 
     private IEnumerator PlayTSWeather()
@@ -33,8 +40,12 @@ public class MusicManager : MonoBehaviour
 
     public void PlayNormalMusic()
     {
-        StartCoroutine(PlayTSNormal());
+        if (audioOn)
+        {
+            StartCoroutine(PlayTSNormal());
+        }
     }
+
 
     private IEnumerator PlayTSNormal()
     {
