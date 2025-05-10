@@ -15,12 +15,12 @@ public class GLManager : MonoBehaviour
 
     public void DisableLight()
     {
-        StartCoroutine(DisableLightYES(3000));
+        StartCoroutine(DisableLightYES(6000));
     }
 
     public IEnumerator DisableLightYES(int frames)
     {
-        for (float i = 0; i < i / frames; i += 1)
+        for (float i = 0; i <= 1; i += 1.0f / frames)
         {
             globalLight.color = Color.Lerp(globalLight.color, initialColor, i);
             yield return new WaitForEndOfFrame();

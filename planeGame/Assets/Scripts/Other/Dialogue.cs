@@ -8,17 +8,10 @@ public class Dialogue : MonoBehaviour
     public TMP_Text text;
     public float timeBetweenChar = .01f;
     public float timeBetweenLine = 1f;
+    public Canvas canvas;
     public List<string> messages = new List<string>();
     private List<string> messageQueue = new List<string>();
     private bool isRenderingMessages = false;
-
-    public void Start()
-    {
-        foreach (string m in messages)
-        {
-            QueueMessage(m);
-        }
-    }
 
     public void QueueMessage(string message)
     {
@@ -26,6 +19,7 @@ public class Dialogue : MonoBehaviour
 
         if (!isRenderingMessages)
         {
+            print("rendering message");
             isRenderingMessages = true;
             StartCoroutine(RenderMessages());
         }
@@ -33,6 +27,8 @@ public class Dialogue : MonoBehaviour
 
     private IEnumerator RenderMessages()
     {
+        canvas.gameObject.SetActive(true);
+        text.text = "";
         while (messageQueue.Count != 0)
         {
             for (int i = 0; i < messageQueue[0].Length; i++)
@@ -48,5 +44,6 @@ public class Dialogue : MonoBehaviour
         }
 
         isRenderingMessages = false;
+        canvas.gameObject.SetActive(false);
     }
 }

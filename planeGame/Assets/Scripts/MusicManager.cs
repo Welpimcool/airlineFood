@@ -21,14 +21,26 @@ public class MusicManager : MonoBehaviour
 
     public void PlayWeatherMusic()
     {
-        transform.GetComponent<AudioSource>().Pause();
+        StartCoroutine(PlayTSWeather());
+    }
+
+    private IEnumerator PlayTSWeather()
+    {
+        yield return new WaitForSeconds(.1f);
+        transform.GetComponent<AudioSource>().Stop();
         transform.GetComponent<AudioSource>().clip = weatherMusic;
         transform.GetComponent<AudioSource>().Play();
     }
 
     public void PlayNormalMusic()
     {
-        transform.GetComponent<AudioSource>().Pause();
+        StartCoroutine(PlayTSNormal());
+    }
+
+    private IEnumerator PlayTSNormal()
+    {
+        yield return new WaitForSeconds(.1f);
+        transform.GetComponent<AudioSource>().Stop();
         transform.GetComponent<AudioSource>().clip = normalMusic;
         transform.GetComponent<AudioSource>().Play();
     }

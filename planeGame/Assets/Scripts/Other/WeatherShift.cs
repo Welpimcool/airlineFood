@@ -16,6 +16,7 @@ public class WeatherShift : MonoBehaviour
     [SerializeField] public GameObject powerOut;
     [SerializeField] public GameObject eventMeter;
     [SerializeField] public MusicManager music;
+    [SerializeField] public Dialogue dialogueManager;
     private Vector3 meterPos;
     public static int weather = 0;
     public int eventStatus; //0 is no event, 1 is ongoing, 2 is ended
@@ -39,10 +40,12 @@ public class WeatherShift : MonoBehaviour
         {
             eventStatus = 1;
             selectWeatherEvent();
+            
             weatherEndTime = GameManager.currentDayTime + weatherDuration;
             eventMeter.SetActive(true);
             eventMeter.GetComponent<Meter>().setMaxValue(weatherDuration);
-            music.PlayWeatherMusic();
+            //music.PlayWeatherMusic();
+            
         }
         
         if (eventStatus == 1 && GameManager.currentDayTime > weatherEndTime)
@@ -74,12 +77,25 @@ public class WeatherShift : MonoBehaviour
         {
             weather = 1;
             thunderStorm();
+            dialogueManager.QueueMessage("Thunderstorm: Be careful, passengers will get annoyed much more easily");
         }
         if (events == 2)
         {
             weather = 2;
             blizzard();
+            dialogueManager.QueueMessage("Blizzard: Beware of strong winds that will knock food off of any surface");
         }
+        if (events == 3)
+        {
+            weather = 3;
+            PowerOut();
+            dialogueManager.QueueMessage("Heat Wave: The plane has switched to back up power because of the heat");
+        }
+    }
+
+    private void PowerOut()
+    {
+        powerOut.gameObject.SetActive(true);
     }
 
     public void stopWeatherEvent() //maybe make stopWeatherEvent stop all weather no matter what like previous clear method, and removes the need or the weather varible
