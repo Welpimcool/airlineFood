@@ -33,7 +33,9 @@ public class WeatherShift : MonoBehaviour
         meterPos = eventMeter.transform.localPosition;
         eventMeter.SetActive(false);
         eventStatus = 0;
+        weatherDuration += (GlobalDayManager.GetDay()-1) * 5f;
     }
+
     void Update()
     {
         if (GameManager.currentDayTime > 30 && (eventStatus == 0 || GameManager.isEndless == true))

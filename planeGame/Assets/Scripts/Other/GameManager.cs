@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public static int day = 1;
     public static bool isEndless;
     private List<GameObject> orderList;
-    public static float dayTime = 70f;
+    public static float dayTime = 100f;
     public static float currentDayTime;
     public static bool isPaused = false;
     // Start is called before the first frame update
@@ -86,8 +86,8 @@ public class GameManager : MonoBehaviour
                         }
                     }
                 } else { //day ended
+                    orderList.Clear();
                     day += 1;
-                    Transition.isLanding = true;
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //load into transition, later make transition go to after day
                 }
             } else { //After-Day
