@@ -11,7 +11,8 @@ public class TransitionLabel : MonoBehaviour
     void Start()
     {
         print("Day: " + GlobalDayManager.GetDay());
-        text.text = "Day " + GlobalDayManager.GetDay() + " complete";
+        text.text = "Day " + GlobalDayManager.GetDay() + " complete, " + GlobalScore.GetDayScore() + "pts";
+        GlobalScore.SetDayScore(0);
         GlobalDayManager.SetDay(GlobalDayManager.GetDay() + 1);
     }
 }

@@ -23,6 +23,7 @@ public class Passenger : MonoBehaviour
     [SerializeField] GameObject chair;
     [SerializeField] GameObject angerIcon;
     [SerializeField] GameObject AnnoyingPassanger;
+    [SerializeField] GameObject addScoreUI;
     Dictionary<string, int> foodList = new() //same as food list but only orderable items
     {
         // ["Food"] = 0,
@@ -77,7 +78,7 @@ public class Passenger : MonoBehaviour
         orderedItem = selectFood();
         // Debug.Log(orderedItem);
         bool sensitive = Random.Range(0, 2) == 1;
-        float timeRemaining = orderTime;
+        timeRemaining = orderTime;
         //Makes time tick down
         if (annoyed)
         {
@@ -92,7 +93,6 @@ public class Passenger : MonoBehaviour
         displayFood();
         while (isOrderActive &&timeRemaining > 0)
         {
-
             timeRemaining -= Time.deltaTime;
             GetComponentInChildren<Meter>().setValue(timeRemaining);
             //Makes anger increase if order took too long
@@ -154,8 +154,9 @@ public class Passenger : MonoBehaviour
         SprRend.enabled = true;
     }
 
-    public bool onInteraction(GameObject item) { 
+    public bool onInteraction(GameObject item) {
         // Debug.Log(item.ToString(),item);
+        
         if (isOrderActive) {
             Debug.Log("comparing if "+item.GetComponentInChildren<Ingredient>().getName()+" equals "+orderedItem);
             if (item.GetComponentInChildren<Ingredient>().getName().Equals(orderedItem)) {
@@ -163,7 +164,8 @@ public class Passenger : MonoBehaviour
                 isOrderActive = false;
                 isOnCooldown = true;
                 GetComponentInParent<PassengerManager>().OrderComplete(this.gameObject);
-
+                print("Time remaining: " + timeRemaining);
+                Instantiate(addScoreUI, transform.position + new Vector3(0, .5f, 0), Quaternion.identity).GetComponent<ScoreAddUI>().Initialize(timeRemaining);
 
                 Debug.Log("order filled");
                 return true; //tells player to delete item
