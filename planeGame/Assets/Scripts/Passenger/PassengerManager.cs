@@ -14,7 +14,7 @@ public class PassengerManager : MonoBehaviour
     public static int ordersCompleted;
     public static int angryPassengers;
     private int ordersFinished;
-    private int baseOrderTime = 10; //was 1.5 min (90)
+    private int baseOrderTime = 90; //was 1.5 min (90)
     public static int numOrders = 3;
     public static List<GameObject> orderList = new List<GameObject> {};
     [SerializeField] AudioSource correctAudio;
@@ -24,7 +24,8 @@ public class PassengerManager : MonoBehaviour
     public static float survivalTime;
     // Start is called before the first frame update
     void Start()
-    {  
+    {
+        baseOrderTime -= (GlobalDayManager.GetDay() - 1) * 7;
         if (SceneManager.GetActiveScene().buildIndex == 1) {
             survivalTime = 0;
             AnnoyingPassenger.target = target;

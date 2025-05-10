@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 public class LoseScreen : MonoBehaviour
 {
 
-    [SerializeField] TextMeshProUGUI score_text;
-    [SerializeField] TextMeshProUGUI timer_text;
+    [SerializeField] TMP_Text score_text;
+    [SerializeField] TMP_Text timer_text;
     // Start is called before the first frame update
     void Start()
     {
-        score_text.text = PassengerManager.ordersCompleted.ToString();
+        score_text.text = "Score: " + GlobalScore.GetScore() + "pts";
         timer_text.text = timerFormat(PassengerManager.survivalTime);
     }
 

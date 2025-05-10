@@ -9,6 +9,6 @@ public class ScoreManager : MonoBehaviour
     public UnityEvent<string, int> submitScoreEvent;
     public void submitScore()
     {
-        submitScoreEvent.Invoke(inputName.text, PassengerManager.ordersCompleted);
+        submitScoreEvent.Invoke(inputName.text, GlobalScore.GetScore());
     }
 }

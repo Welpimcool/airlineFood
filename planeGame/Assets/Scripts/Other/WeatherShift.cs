@@ -38,7 +38,7 @@ public class WeatherShift : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.currentDayTime > 30 && (eventStatus == 0 || GameManager.isEndless == true))
+        if (GameManager.currentDayTime > 45f && (eventStatus == 0 || GameManager.isEndless == true))
         {
             eventStatus = 1;
             selectWeatherEvent();
@@ -74,7 +74,7 @@ public class WeatherShift : MonoBehaviour
 
     public void selectWeatherEvent()
     {
-        int events = UnityEngine.Random.Range(3, 4);
+        int events = UnityEngine.Random.Range(1, 4);
         if (events == 1)
         {
             weather = 1;

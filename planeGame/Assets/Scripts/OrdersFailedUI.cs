@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
-public class DayUI : MonoBehaviour
+public class OrdersFailedUI : MonoBehaviour
 {
     private TMP_Text text;
 
@@ -11,6 +10,11 @@ public class DayUI : MonoBehaviour
     void Start()
     {
         text = transform.GetComponent<TMP_Text>();
-        text.text = "Day " + GlobalDayManager.GetDay();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        text.text = PassengerManager.ordersFailed + "/3 failed";
     }
 }

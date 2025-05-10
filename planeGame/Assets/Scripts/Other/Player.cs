@@ -202,6 +202,7 @@ public class Player : MonoBehaviour
         objScale = objHolding.GetComponent<Ingredient>().getScale();
 
         item.transform.position = objPos.transform.position;
+        item.GetComponent<SpriteRenderer>().sortingOrder = 13;
         // item.transform.position = new Vector3(item.transform.position.x+inpDirection.x,item.transform.position.y+inpDirection.y,0);
         item.transform.parent = objPos.transform;
         item.transform.localScale = new Vector3(objScale*100,objScale*100,0);

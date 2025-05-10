@@ -15,7 +15,7 @@ public class GLManager : MonoBehaviour
 
     public void DisableLight()
     {
-        StartCoroutine(DisableLightYES(6000));
+        StartCoroutine(DisableLightYES(10000));
     }
 
     public IEnumerator DisableLightYES(int frames)
