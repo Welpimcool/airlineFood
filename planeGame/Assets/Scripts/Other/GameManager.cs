@@ -22,26 +22,21 @@ public class GameManager : MonoBehaviour
     public static void lose()
     {
         Debug.Log("you lose");
-        if (SceneManager.GetActiveScene().buildIndex == 1) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
         
     }
     void Start()
     {
         isEndless = false; //was true
         currentDayTime = 0f;
+        Difficulty.diff = 3;
         menu.SetActive(false);
-        if (true) {
-           for (int i = 0; i < PassengerManager.numOrders; i++) {
+        for (int i = 0; i < PassengerManager.numOrders; i++) {
             orderSheets[i].GetComponent<OrderSheet>().DispSprite("");
             orderSheets[i].SetActive(false);
-            } 
-            if (!isEndless) {
+        } 
+        if (!isEndless) {
             dayMeter.GetComponent<Meter>().setMaxValue(dayTime);
-            }
-        } else {
-            dayMeter.SetActive(false);
         }
         
         
@@ -115,5 +110,9 @@ public class GameManager : MonoBehaviour
     public void Stuck() {
         player.transform.position = new Vector3(0,-15,0);
         Unpause();
+    }
+    public static void ResetVars() {
+        currentDayTime = 0f;
+        PassengerManager.ordersFailed = 0;
     }
 }

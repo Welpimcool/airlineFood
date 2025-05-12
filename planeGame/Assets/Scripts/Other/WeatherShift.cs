@@ -74,7 +74,7 @@ public class WeatherShift : MonoBehaviour
 
     public void selectWeatherEvent()
     {
-        int events = UnityEngine.Random.Range(2, 3);
+        int events = UnityEngine.Random.Range(1, 4);
         if (events == 1)
         {
             weather = 1;

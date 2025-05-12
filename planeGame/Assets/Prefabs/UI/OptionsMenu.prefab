@@ -249,7 +249,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 289.82, y: -2.0000029}
+  m_AnchoredPosition: {x: 380, y: 35}
   m_SizeDelta: {x: 105.66, y: 70.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6728474584073928443
@@ -528,7 +528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 764.73, y: -2.0000029}
+  m_AnchoredPosition: {x: 625.62, y: -35}
   m_SizeDelta: {x: 139.11, y: 70.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &561844407328290957
@@ -1225,7 +1225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 404.99396, y: -2.0000029}
+  m_AnchoredPosition: {x: 380, y: -35}
   m_SizeDelta: {x: 106.85, y: 70.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8120158860959079020
@@ -1682,7 +1682,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 608.29004, y: -2.0000029}
+  m_AnchoredPosition: {x: 490, y: 35}
   m_SizeDelta: {x: 104.46, y: 70.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4104944267301402898
@@ -1779,10 +1779,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 5887827140886717192}
+        m_TargetAssemblyTypeName: Difficulty, Assembly-CSharp
+        m_MethodName: upDiff
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1961,7 +1961,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 625.62, y: -2.0000029}
+  m_AnchoredPosition: {x: 625.62, y: 35}
   m_SizeDelta: {x: 139.11, y: 70.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6935268198867042812
@@ -2107,7 +2107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 176.39996, y: -2.0000029}
+  m_AnchoredPosition: {x: 260, y: -35}
   m_SizeDelta: {x: 121.19, y: 70.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1579951537410957323
@@ -2631,6 +2631,7 @@ GameObject:
   - component: {fileID: 2055431675844977550}
   - component: {fileID: 1437559817599819243}
   - component: {fileID: 3539958646704619291}
+  - component: {fileID: 5887827140886717192}
   m_Layer: 0
   m_Name: Difficulty
   m_TagString: Untagged
@@ -2655,7 +2656,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 507.237, y: -2.0000029}
+  m_AnchoredPosition: {x: 490, y: -35}
   m_SizeDelta: {x: 97.636, y: 70.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2055431675844977550
@@ -2752,10 +2753,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 5887827140886717192}
+        m_TargetAssemblyTypeName: Difficulty, Assembly-CSharp
+        m_MethodName: downDiff
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2764,6 +2765,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5887827140886717192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7403109534767607617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933c1e1841e944b4086f8dfd30e2c93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8531892292088763682
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,7 +2948,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 57, y: -2}
+  m_AnchoredPosition: {x: 260, y: 35}
   m_SizeDelta: {x: 117.61, y: 70.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7807238786475711400

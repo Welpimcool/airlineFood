@@ -15,6 +15,6 @@ public class OrdersFailedUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = PassengerManager.ordersFailed + "/3 failed";
+        text.text = PassengerManager.ordersFailed + "/"+Difficulty.diff+" failed";
     }
 }

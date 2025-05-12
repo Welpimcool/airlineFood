@@ -14,7 +14,9 @@ public class Cheese : Ingredient
         setMaxValue(1.75f);
         setMaxState(1);
         setScale(1);
-        GetComponentInChildren<Meter>().setMaxValue(getMaxValue());
+        if (GetComponentInChildren<Meter>() != null) {
+            GetComponentInChildren<Meter>().setMaxValue(getMaxValue());
+        }
         // setState(0);
         // setValue(0);
         setCook(false);
@@ -31,20 +33,23 @@ public class Cheese : Ingredient
     {
         if (!prop)
         {
-            GetComponentInChildren<Meter>().setValue(getValue());
-            // Debug.Log("Value: "+getValue());
-            if (getValue() >= getMaxValue())
-            {
-                setValue(0);
-                setState(getState() + 1);
-                Debug.Log("state increased:" + getState());
-                setName(getState()+"Cheese");
-                Debug.Log("new name: "+getName());
-                if (getState() <= getMaxState()) {
-                    GetComponent<SpriteRenderer>().sprite = getStateSprite(getState());
+            if (GetComponentInChildren<Meter>() != null) {
+                GetComponentInChildren<Meter>().setValue(getValue());
+                // Debug.Log("Value: "+getValue());
+                if (getValue() >= getMaxValue())
+                {
+                    setValue(0);
+                    setState(getState() + 1);
+                    Debug.Log("state increased:" + getState());
+                    setName(getState()+"Cheese");
+                    Debug.Log("new name: "+getName());
+                    if (getState() <= getMaxState()) {
+                        GetComponent<SpriteRenderer>().sprite = getStateSprite(getState());
+                    }
                 }
-                
             }
+            
+            
         }
     }
 }

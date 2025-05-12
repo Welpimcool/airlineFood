@@ -12,7 +12,7 @@ public class NextTutorial : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        if (time > 4f)
+        if (time > 4f || Input.GetKeyDown(KeyCode.Space))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

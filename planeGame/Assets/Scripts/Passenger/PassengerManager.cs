@@ -26,19 +26,11 @@ public class PassengerManager : MonoBehaviour
     void Start()
     {
         baseOrderTime -= (GlobalDayManager.GetDay() - 1) * 7;
-        if (true) {
-            survivalTime = 0;
-            AnnoyingPassenger.target = target;
-            AnnoyingPassenger.bathroom = bathroom;
-            SelectAnnoyingPassenger();
-            StartCoroutine("passOnStart");
-        } else {
-            foreach(GameObject i in PassengerList) {
-                i.GetComponent<Passenger>().disable();
-                // i.SetActive(false);
-            }
-        }
-        
+        survivalTime = 0;
+        AnnoyingPassenger.target = target;
+        AnnoyingPassenger.bathroom = bathroom;
+        SelectAnnoyingPassenger();
+        StartCoroutine("passOnStart");
     }
     //Picks a random passenger to place an order, only picks one that isnt already chosen
     public void SelectPassenger()
@@ -87,7 +79,7 @@ public class PassengerManager : MonoBehaviour
         StartCoroutine("waitForNewPass");
         failedAudio.PlayDelayed(.5f);
 
-        if (ordersFailed >= 3)
+        if (ordersFailed >= Difficulty.diff)
         {
             GameManager.lose();
         }

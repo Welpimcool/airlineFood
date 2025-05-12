@@ -13,7 +13,9 @@ public class Meat : Ingredient
         if (!prop) {
         setMaxValue(10);
         setMaxState(1);
-        GetComponentInChildren<Meter>().setMaxValue(getMaxValue());
+        if (GetComponentInChildren<Meter>() != null) {
+            GetComponentInChildren<Meter>().setMaxValue(getMaxValue());
+        }
         setCook(true);
         setCut(false);
         setName(getState()+"Meat");
@@ -30,7 +32,7 @@ public class Meat : Ingredient
         if (!prop)
         {
             //cooking
-            if (getCook()) {
+            if (getCook() && GetComponentInChildren<Meter>() != null) {
                 GetComponentInChildren<Meter>().setValue(getValue());
                 if (getValue() >= getMaxValue())
                 {
